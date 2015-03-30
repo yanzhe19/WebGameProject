@@ -55,7 +55,10 @@ module objects {
         //define function to destroy the current fence
         destroy() {
             //remove this fence from game container
-            game.removeChild(this.image);           
+            game.removeChild(this.image); 
+
+            //remove it from the array
+            fences.splice(fences.indexOf(this), 1);
         }
     }
 

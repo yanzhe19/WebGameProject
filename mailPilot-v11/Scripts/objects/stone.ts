@@ -56,7 +56,8 @@ module objects {
         destroy() {
             //remove this stone from game container
             game.removeChild(this.image);
-            //console.log("before"+stones.length);
+
+            //remove it from the array
             stones.splice(stones.indexOf(this), 1);
             //console.log(stones.length);
         }

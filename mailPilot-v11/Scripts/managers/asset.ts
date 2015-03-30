@@ -45,11 +45,12 @@ module managers {
         "images": ["assets/images/obstacle.png"],
         "frames": [
 
-            [94, 129, 50, 50],
-            [2, 129, 90, 94],
-            [2, 2, 100, 125]
+            [74, 2, 50, 50],
+            [2, 92, 60, 62],
+            [2, 2, 70, 88]
         ],
         "animations": {
+
             "crystal": [0],
             "fence": [1],
             "stone": [2]

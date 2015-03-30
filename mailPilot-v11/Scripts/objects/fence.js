@@ -42,6 +42,8 @@ var objects;
         Fence.prototype.destroy = function () {
             //remove this fence from game container
             game.removeChild(this.image);
+            //remove it from the array
+            fences.splice(fences.indexOf(this), 1);
         };
         return Fence;
     })();

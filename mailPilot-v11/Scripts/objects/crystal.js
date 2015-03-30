@@ -43,6 +43,8 @@ var objects;
         Crystal.prototype.destroy = function () {
             //remove crystal from game container
             game.removeChild(this.image);
+            //remove it from the array
+            crystals.splice(crystals.indexOf(this), 1);
         };
         return Crystal;
     })();

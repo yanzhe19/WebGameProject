@@ -136,7 +136,7 @@ module states {
                     default: addCrystal();
                 }
             },
-            (Math.floor(Math.random() * 2) * 1000 + 1500) //set interval to exetution
+            (Math.floor(Math.random() * 4 + 1) * 300 + 2500) //set interval to exetution
             );
     }
 

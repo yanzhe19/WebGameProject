@@ -35,17 +35,6 @@ var objects;
         Stone.prototype.reset = function () {
             //randomly pur stone, off screen on the right side
             this.image.x = Math.floor(Math.random() * (500) + this.stage.canvas.width);
-            //random place function
-            //var arr = []
-            //while (arr.length < 8) {
-            //    var randomnumber = Math.ceil(Math.random() * 100)
-            //    var found = false;
-            //    for (var i = 0; i < arr.length; i++) {
-            //        if (arr[i] == randomnumber) { found = true; break }
-            //    }
-            //    if (!found) arr[arr.length] = randomnumber;
-            //}
-            //document.write(arr);
             //set dx the same as background speed
             this.dx = constants.BACKGROUND_MOVING_SPEED;
             this.image.y = constants.GROUND_LEVEL;
@@ -54,6 +43,9 @@ var objects;
         Stone.prototype.destroy = function () {
             //remove this stone from game container
             game.removeChild(this.image);
+            //console.log("before"+stones.length);
+            stones.splice(stones.indexOf(this), 1);
+            //console.log(stones.length);
         };
         return Stone;
     })();

@@ -2,6 +2,7 @@
 /// <reference path="../objects/fence.ts" />
 /// <reference path="../objects/button.ts" />
 /// <reference path="../objects/submarine.ts" />
+/// <reference path="../objects/crystal.ts" />
 /// <reference path="../objects/smallFish.ts" />
 /// <reference path="../objects/label.ts" />
 /// <reference path="../objects/sea.ts" />
@@ -43,6 +44,11 @@ module states {
         //update all fences
         for (var count = 0; count < fences.length; count++) {
             fences[count].update();
+        }
+
+        //update all crystals
+        for (var count = 0; count < crystals.length; count++) {
+            crystals[count].update();
         }
 
         //check collision of objects
@@ -111,28 +117,32 @@ module states {
         setInterval(
             function () {
                 var randomSelection = Math.floor(Math.random() * 3) + 1;
+                console.log(randomSelection);
                 switch (randomSelection) {
+                    
                     case 1:
-                        addStone();
+                        if (stones.length < 3) {
+                            addStone();
+                        } else addCrystal();
                         break;
                     case 2:
-                        addFence();
+                        addCrystal();
                         break;
                     case 3:
-                        addStone();
+                        if (fences.length < 3) {
+                            addFence();
+                        } else addCrystal();
                         break;
-                    default: addStone();
+                    default: addCrystal();
                 }
             },
-            (Math.floor(Math.random() * 5) * 1000 + 1000) //set interval to exetution
+            (Math.floor(Math.random() * 2) * 1000 + 1500) //set interval to exetution
             );
     }
 
     export function addStone() {
         //add one stone 
         stones.push(new objects.Stone(stage, game));
-        //stoneCounter++;
-        //console.log("added "+stoneCounter);
     }
     export function addFence() {
         //add one fence 
@@ -140,6 +150,6 @@ module states {
     }
     export function addCrystal() {
         //add one crystal 
-        //fences[crystalCounter] = new objects.Fence(stage, game);
+        crystals.push(new objects.Crystal(stage, game));
     }
 }

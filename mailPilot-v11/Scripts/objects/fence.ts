@@ -35,7 +35,7 @@ module objects {
         //update the fence objects
         update() {
             this.image.x -= this.dx;
-            //stone move behind scene, reset to initial place
+            //stone move behind scene, remove it
             if (this.image.x < -this.width) {
                 //remove it
                 this.destroy();
@@ -45,7 +45,7 @@ module objects {
         //randomely put fence on the right side of canvas
         reset() {
             //randomly pur fence, off screen on the right side
-            this.image.x = Math.floor(Math.random() * (500) + this.stage.canvas.width);
+            this.image.x = Math.floor(Math.random() * (700) + this.stage.canvas.width);
 
             //set dx the same as background speed
             this.dx = constants.BACKGROUND_MOVING_SPEED;

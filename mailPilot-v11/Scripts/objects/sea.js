@@ -16,7 +16,7 @@ var objects;
             this.height = this.image.getBounds().height;
             this.reset();
             //set the sea move speed
-            this.dx = 3;
+            this.dx = constants.BACKGROUND_MOVING_SPEED;
             //add sea to game container
             game.addChild(this.image);
         }

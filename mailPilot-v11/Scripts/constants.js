@@ -10,6 +10,8 @@ var constants;
     constants.GAME_OVER_STATE = 2;
     constants.INSTRUCTION_STATE = 3;
     // Game Constants
+    constants.BACKGROUND_MOVING_SPEED = 3;
+    constants.GROUND_LEVEL = 240; //temporary set height to half of canvas height
     constants.SUBMARINE_NUM = 3;
     constants.SMALLFISH_NUM = 2;
     constants.LABEL_FONT = "40px Consolas";

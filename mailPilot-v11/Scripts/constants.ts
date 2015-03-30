@@ -10,6 +10,9 @@ module constants {
     export var INSTRUCTION_STATE: number = 3;
 
     // Game Constants
+    export var BACKGROUND_MOVING_SPEED = 3;
+    export var GROUND_LEVEL = 240;//temporary set height to half of canvas height
+
     export var SUBMARINE_NUM: number = 3;
     export var SMALLFISH_NUM: number = 2;
     export var LABEL_FONT = "40px Consolas";

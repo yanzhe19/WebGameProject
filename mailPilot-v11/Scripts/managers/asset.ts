@@ -13,8 +13,8 @@ module managers {
         { id: "oceanSound", src: "assets/sounds/ocean.mp3" }
     ];
 
-    // SpriteSheet Data Object
-    var spriteSheetData = {
+    // SpriteSheet Data Object for original fish game, will need to remove in future
+    var fishGameSpriteSheetData = {
         "images": ["assets/images/atlas.png"],
         "frames": [
 
@@ -28,15 +28,30 @@ module managers {
             [204, 206, 150, 97]
         ],
         "animations": {
-
-            "btnBack": [0],
-            "btnBackMenu": [1],
-            "btnInstruction": [2],
-            "btnPlay": [3],
-            "btnTryAgain": [4],
+            "btnback": [0],
+            "btnbackmenu": [1],
+            "btninstruction": [2],
+            "btnplay": [3],
+            "btntryagain": [4],
             "fish": [5],
-            "smallFish": [6],
+            "smallfish": [6],
             "submarine": [7]
+        }
+    }
+
+    // SpriteSheet Data Object for this project, this is the one we used
+    var projectGameSpriteSheetData = {
+        "images": ["assets/images/obstacle.png"],
+        "frames": [
+
+            [94, 129, 50, 50],
+            [2, 129, 90, 94],
+            [2, 2, 100, 125]
+        ],
+        "animations": {
+            "crystal": [0],
+            "fence": [1],
+            "stone": [2]
         }
     }
 
@@ -47,6 +62,8 @@ module managers {
 
         public static loader;
         public static atlas: createjs.SpriteSheet;
+        //atlas
+        //obstacleSprite
 
         //load the assets
         public static init() {
@@ -54,7 +71,7 @@ module managers {
             this.loader = new createjs.LoadQueue();
             this.loader.installPlugin(createjs.Sound);
             this.loader.loadManifest(assetManifest);
-            this.atlas = new createjs.SpriteSheet(spriteSheetData);
+            this.atlas = new createjs.SpriteSheet(fishGameSpriteSheetData);
         }
 
     }

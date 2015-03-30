@@ -113,6 +113,7 @@
     <TypeScriptCompile Include="Scripts\managers\asset.ts" />
     <TypeScriptCompile Include="Scripts\managers\collision.ts" />
     <TypeScriptCompile Include="Scripts\objects\button.ts" />
+    <TypeScriptCompile Include="Scripts\objects\fence.ts" />
     <TypeScriptCompile Include="Scripts\objects\stone.ts" />
     <TypeScriptCompile Include="Scripts\objects\submarine.ts" />
     <TypeScriptCompile Include="Scripts\objects\smallFish.ts" />

@@ -1,4 +1,6 @@
-﻿/// <reference path="../objects/button.ts" />
+﻿/// <reference path="../objects/stone.ts" />
+/// <reference path="../objects/fence.ts" />
+/// <reference path="../objects/button.ts" />
 /// <reference path="../objects/submarine.ts" />
 /// <reference path="../objects/smallFish.ts" />
 /// <reference path="../objects/label.ts" />
@@ -14,6 +16,7 @@ Revision  History : Version 2.0*/
 
 //the play state of game
 module states {
+
     //update the play state
     export function playState() {
         // +++++++++++++++++++++++++++++Update play state scene+++++++++++++++++++++++++++++++++++
@@ -26,12 +29,26 @@ module states {
         fish.update();
 
         //update all submarines
-        for (var count = 0; count < constants.SUBMARINE_NUM; count++) {
-            submarines[count].update();
+        //+++ comment temporary
+        //for (var count = 0; count < constants.SUBMARINE_NUM; count++) {
+        //    submarines[count].update();
+        //}
+
+        //update all stones
+        for (var count = 0; count < stones.length; count++) {
+            //console.log(count);
+            stones[count].update();
+        }
+
+        //update all fences
+        for (var count = 0; count < fences.length; count++) {
+            fences[count].update();
         }
 
         //check collision of objects
-        collision.update();
+        //+++ comment temporary
+        //collision.update();
+
         //update the score board
         scoreboard.update();
         // +++++++++++++++++++++++++++++End of Update play state scene+++++++++++++++++++++++++++++++++++
@@ -63,23 +80,66 @@ module states {
         stage.cursor = "none";
 
         // Create multiple submarines
-        for (var count = 0; count < constants.SUBMARINE_NUM; count++) {
-            submarines[count] = new objects.Submarine(stage, game);
-            //console.log(submarines[count]);
-        }
+        //+++comment temporary
+        //for (var count = 0; count < constants.SUBMARINE_NUM; count++) {
+        //    submarines[count] = new objects.Submarine(stage, game);
+        //    //console.log(submarines[count]);
+        //}        
+
 
         // Create multiple smallfishes
         for (var count = 0; count < constants.SMALLFISH_NUM; count++) {
             smallFishs[count] = new objects.SmallFish(stage, game);
         }
 
+        //add stone, fence and crystal in the scene
+        addObj();
+
         // Display Scoreboard
         scoreboard = new objects.Scoreboard(stage, game);
 
         // Instantiate Collision Manager
-        collision = new managers.Collision(fish, smallFishs, submarines, scoreboard);
+        //+++ comment temporary
+        //collision = new managers.Collision(fish, smallFishs, submarines, scoreboard);
 
         //add game container to stage
         stage.addChild(game);
+    }
+
+    // add object to screen Loop
+    export function addObj(): void {
+        setInterval(
+            function () {
+                var randomSelection = Math.floor(Math.random() * 3) + 1;
+                switch (randomSelection) {
+                    case 1:
+                        addStone();
+                        break;
+                    case 2:
+                        addFence();
+                        break;
+                    case 3:
+                        addStone();
+                        break;
+                    default: addStone();
+                }
+            },
+            (Math.floor(Math.random() * 5) * 1000 + 1000) //set interval to exetution
+            );
+    }
+
+    export function addStone() {
+        //add one stone 
+        stones.push(new objects.Stone(stage, game));
+        //stoneCounter++;
+        //console.log("added "+stoneCounter);
+    }
+    export function addFence() {
+        //add one fence 
+        fences.push(new objects.Fence(stage, game));
+    }
+    export function addCrystal() {
+        //add one crystal 
+        //fences[crystalCounter] = new objects.Fence(stage, game);
     }
 }

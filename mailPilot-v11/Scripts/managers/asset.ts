@@ -63,6 +63,7 @@ module managers {
 
         public static loader;
         public static atlas: createjs.SpriteSheet;
+        public static projectAtlas: createjs.SpriteSheet;
 
         //load the assets
         public static init() {
@@ -70,7 +71,10 @@ module managers {
             this.loader = new createjs.LoadQueue();
             this.loader.installPlugin(createjs.Sound);
             this.loader.loadManifest(assetManifest);
+            //atlas for the origin fish game
             this.atlas = new createjs.SpriteSheet(fishGameSpriteSheetData);
+            //atlas for the origin fish game
+            this.projectAtlas = new createjs.SpriteSheet(projectGameSpriteSheetData);
         }
 
     }

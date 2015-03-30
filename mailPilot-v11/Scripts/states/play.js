@@ -1,3 +1,5 @@
+/// <reference path="../objects/stone.ts" />
+/// <reference path="../objects/fence.ts" />
 /// <reference path="../objects/button.ts" />
 /// <reference path="../objects/submarine.ts" />
 /// <reference path="../objects/smallFish.ts" />
@@ -21,11 +23,16 @@ var states;
             smallFishs[count].update();
         }
         fish.update();
-        for (var count = 0; count < constants.SUBMARINE_NUM; count++) {
-            submarines[count].update();
+        for (var count = 0; count < stones.length; count++) {
+            //console.log(count);
+            stones[count].update();
+        }
+        for (var count = 0; count < fences.length; count++) {
+            fences[count].update();
         }
         //check collision of objects
-        collision.update();
+        //+++ comment temporary
+        //collision.update();
         //update the score board
         scoreboard.update();
         // +++++++++++++++++++++++++++++End of Update play state scene+++++++++++++++++++++++++++++++++++
@@ -52,19 +59,55 @@ var states;
         fish = new objects.Fish(stage, game);
         // Show Cursor
         stage.cursor = "none";
-        for (var count = 0; count < constants.SUBMARINE_NUM; count++) {
-            submarines[count] = new objects.Submarine(stage, game);
-        }
         for (var count = 0; count < constants.SMALLFISH_NUM; count++) {
             smallFishs[count] = new objects.SmallFish(stage, game);
         }
+        //add stone, fence and crystal in the scene
+        addObj();
         // Display Scoreboard
         scoreboard = new objects.Scoreboard(stage, game);
         // Instantiate Collision Manager
-        collision = new managers.Collision(fish, smallFishs, submarines, scoreboard);
+        //+++ comment temporary
+        //collision = new managers.Collision(fish, smallFishs, submarines, scoreboard);
         //add game container to stage
         stage.addChild(game);
     }
     states.play = play;
+    // add object to screen Loop
+    function addObj() {
+        setInterval(function () {
+            var randomSelection = Math.floor(Math.random() * 3) + 1;
+            switch (randomSelection) {
+                case 1:
+                    addStone();
+                    break;
+                case 2:
+                    addFence();
+                    break;
+                case 3:
+                    addStone();
+                    break;
+                default: addStone();
+            }
+        }, (Math.floor(Math.random() * 5) * 1000 + 1000));
+    }
+    states.addObj = addObj;
+    function addStone() {
+        //add one stone 
+        stones.push(new objects.Stone(stage, game));
+        //stoneCounter++;
+        //console.log("added "+stoneCounter);
+    }
+    states.addStone = addStone;
+    function addFence() {
+        //add one fence 
+        fences.push(new objects.Fence(stage, game));
+    }
+    states.addFence = addFence;
+    function addCrystal() {
+        //add one crystal 
+        //fences[crystalCounter] = new objects.Fence(stage, game);
+    }
+    states.addCrystal = addCrystal;
 })(states || (states = {}));
 //# sourceMappingURL=play.js.map

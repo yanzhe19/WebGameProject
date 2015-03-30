@@ -26,13 +26,13 @@ var managers;
             [204, 206, 150, 97]
         ],
         "animations": {
-            "btnback": [0],
-            "btnbackmenu": [1],
-            "btninstruction": [2],
-            "btnplay": [3],
-            "btntryagain": [4],
+            "btnBack": [0],
+            "btnBackMenu": [1],
+            "btnInstruction": [2],
+            "btnPlay": [3],
+            "btnTryAgain": [4],
             "fish": [5],
-            "smallfish": [6],
+            "smallFish": [6],
             "submarine": [7]
         }
     };
@@ -54,8 +54,6 @@ var managers;
     var Assets = (function () {
         function Assets() {
         }
-        //atlas
-        //obstacleSprite
         //load the assets
         Assets.init = function () {
             createjs.Sound.initializeDefaultPlugins();

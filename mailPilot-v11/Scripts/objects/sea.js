@@ -17,6 +17,7 @@ var objects;
             this.reset();
             //set the sea move speed
             this.dx = constants.BACKGROUND_MOVING_SPEED;
+            //yughuhi
             //add sea to game container
             game.addChild(this.image);
         }

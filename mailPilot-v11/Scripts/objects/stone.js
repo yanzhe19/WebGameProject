@@ -36,7 +36,7 @@ var objects;
             this.image.x = Math.floor(Math.random() * (100) + this.stage.canvas.width);
             //set dx the same as background speed
             this.dx = constants.BACKGROUND_MOVING_SPEED;
-            //this.dy = Math.floor(Math.random() * -5) + Math.floor(Math.random() * 5);
+            this.image.y = constants.GROUND_LEVEL;
         };
         //define function to destroy the current submarine
         Stone.prototype.destroy = function () {

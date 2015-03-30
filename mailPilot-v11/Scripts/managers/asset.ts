@@ -28,13 +28,14 @@ module managers {
             [204, 206, 150, 97]
         ],
         "animations": {
-            "btnback": [0],
-            "btnbackmenu": [1],
-            "btninstruction": [2],
-            "btnplay": [3],
-            "btntryagain": [4],
+
+            "btnBack": [0],
+            "btnBackMenu": [1],
+            "btnInstruction": [2],
+            "btnPlay": [3],
+            "btnTryAgain": [4],
             "fish": [5],
-            "smallfish": [6],
+            "smallFish": [6],
             "submarine": [7]
         }
     }
@@ -62,8 +63,6 @@ module managers {
 
         public static loader;
         public static atlas: createjs.SpriteSheet;
-        //atlas
-        //obstacleSprite
 
         //load the assets
         public static init() {

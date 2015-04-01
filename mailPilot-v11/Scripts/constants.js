@@ -11,7 +11,9 @@ var constants;
     constants.INSTRUCTION_STATE = 3;
     // Game Constants
     constants.BACKGROUND_MOVING_SPEED = 3;
-    constants.GROUND_LEVEL = 240; //temporary set height to half of canvas height
+    constants.GROUND_LEVEL = 300; //temporary set height of ground level
+    constants.STONE_NUM = 4;
+    //Math.floor(Math.random() * (3) + 3);;//randomly generated stone numbers
     constants.SUBMARINE_NUM = 3;
     constants.SMALLFISH_NUM = 2;
     constants.LABEL_FONT = "40px Consolas";

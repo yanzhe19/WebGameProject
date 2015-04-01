@@ -1,5 +1,8 @@
+/// <reference path="../objects/stone.ts" />
+/// <reference path="../objects/fence.ts" />
 /// <reference path="../objects/button.ts" />
 /// <reference path="../objects/submarine.ts" />
+/// <reference path="../objects/crystal.ts" />
 /// <reference path="../objects/smallFish.ts" />
 /// <reference path="../objects/label.ts" />
 /// <reference path="../objects/sea.ts" />
@@ -21,11 +24,19 @@ var states;
             smallFishs[count].update();
         }
         fish.update();
-        for (var count = 0; count < constants.SUBMARINE_NUM; count++) {
-            submarines[count].update();
+        for (var count = 0; count < stones.length; count++) {
+            //console.log(count);
+            stones[count].update();
+        }
+        for (var count = 0; count < fences.length; count++) {
+            fences[count].update();
+        }
+        for (var count = 0; count < crystals.length; count++) {
+            crystals[count].update();
         }
         //check collision of objects
-        collision.update();
+        //+++ comment temporary
+        //collision.update();
         //update the score board
         scoreboard.update();
         // +++++++++++++++++++++++++++++End of Update play state scene+++++++++++++++++++++++++++++++++++
@@ -52,19 +63,62 @@ var states;
         fish = new objects.Fish(stage, game);
         // Show Cursor
         stage.cursor = "none";
-        for (var count = 0; count < constants.SUBMARINE_NUM; count++) {
-            submarines[count] = new objects.Submarine(stage, game);
-        }
         for (var count = 0; count < constants.SMALLFISH_NUM; count++) {
             smallFishs[count] = new objects.SmallFish(stage, game);
         }
+        //add stone, fence and crystal in the scene
+        addObj();
         // Display Scoreboard
         scoreboard = new objects.Scoreboard(stage, game);
         // Instantiate Collision Manager
-        collision = new managers.Collision(fish, smallFishs, submarines, scoreboard);
+        //+++ comment temporary
+        //collision = new managers.Collision(fish, smallFishs, submarines, scoreboard);
         //add game container to stage
         stage.addChild(game);
     }
     states.play = play;
+    // add object to screen Loop
+    function addObj() {
+        setInterval(function () {
+            var randomSelection = Math.floor(Math.random() * 3) + 1;
+            console.log(randomSelection);
+            switch (randomSelection) {
+                case 1:
+                    if (stones.length < 3) {
+                        addStone();
+                    }
+                    else
+                        addCrystal();
+                    break;
+                case 2:
+                    addCrystal();
+                    break;
+                case 3:
+                    if (fences.length < 3) {
+                        addFence();
+                    }
+                    else
+                        addCrystal();
+                    break;
+                default: addCrystal();
+            }
+        }, (Math.floor(Math.random() * 4 + 1) * 300 + 2500));
+    }
+    states.addObj = addObj;
+    function addStone() {
+        //add one stone 
+        stones.push(new objects.Stone(stage, game));
+    }
+    states.addStone = addStone;
+    function addFence() {
+        //add one fence 
+        fences.push(new objects.Fence(stage, game));
+    }
+    states.addFence = addFence;
+    function addCrystal() {
+        //add one crystal 
+        crystals.push(new objects.Crystal(stage, game));
+    }
+    states.addCrystal = addCrystal;
 })(states || (states = {}));
 //# sourceMappingURL=play.js.map

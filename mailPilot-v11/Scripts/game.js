@@ -26,6 +26,9 @@ var fish;
 //var smallFish: objects.SmallFish;
 var smallFishs = [];
 var submarines = []; // submarine array;
+var stones = []; //stones array;
+var fences = []; //stones array;
+var crystals = []; //stones array;
 var scoreboard;
 //collision variables
 var collision;

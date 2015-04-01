@@ -45,11 +45,12 @@ module managers {
         "images": ["assets/images/obstacle.png"],
         "frames": [
 
-            [94, 129, 50, 50],
-            [2, 129, 90, 94],
-            [2, 2, 100, 125]
+            [74, 2, 50, 50],
+            [2, 92, 60, 62],
+            [2, 2, 70, 88]
         ],
         "animations": {
+
             "crystal": [0],
             "fence": [1],
             "stone": [2]
@@ -63,6 +64,7 @@ module managers {
 
         public static loader;
         public static atlas: createjs.SpriteSheet;
+        public static projectAtlas: createjs.SpriteSheet;
 
         //load the assets
         public static init() {
@@ -70,7 +72,10 @@ module managers {
             this.loader = new createjs.LoadQueue();
             this.loader.installPlugin(createjs.Sound);
             this.loader.loadManifest(assetManifest);
+            //atlas for the origin fish game
             this.atlas = new createjs.SpriteSheet(fishGameSpriteSheetData);
+            //atlas for the origin fish game
+            this.projectAtlas = new createjs.SpriteSheet(projectGameSpriteSheetData);
         }
 
     }

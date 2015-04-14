@@ -49,7 +49,7 @@ module objects {
             //ghost move behind scene, reset to initial place
             if (this.image.x < -this.width) {
                 //remove it
-                this.destroy();
+                this.reset();
             } 
         }
 
@@ -61,7 +61,7 @@ module objects {
                 switch (randomSelection) {
                     case 1:
                         if (fireballs.length < 4) {
-                            fireballs.push(new objects.Fireball(this.stage, this.game, this.ufoXPosition, this.ufoYPosition));
+                            fireballs.push(new objects.Fireball(this.stage, this.game, ufo.image.x, ufo.image.y));
                         }
                         break;               
                     default: break;
@@ -81,15 +81,15 @@ module objects {
             this.image.y = constants.GROUND_LEVEL - 220;
         }
 
-        //define function to destroy the current ghost
-        destroy() {
-            //remove this ghost from game container
-            game.removeChild(this.image);
+        ////define function to destroy the current ghost
+        //destroy() {
+        //    //remove this ghost from game container
+        //    game.removeChild(this.image);
 
-            //remove it from the array
-            ufos.splice(ufos.indexOf(this), 1);
-            //console.log(stones.length);
-        }
+        //    //remove it from the array
+        //    ufos.splice(ufos.indexOf(this), 1);
+        //    //console.log(stones.length);
+        //}
     }
 
 }   

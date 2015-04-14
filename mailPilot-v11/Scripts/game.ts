@@ -36,7 +36,7 @@ var smallFishs = [];
 var submarines = []; // submarine array;
 var stones = [];//stones array;
 var ghosts = [];//ghost array;
-var ufos = [];//ufo array;
+var ufo;//ufo object;
 var fireballs = [];//fireball array;
 var fences = [];//fences array;
 var crystals = [];//crystals array;

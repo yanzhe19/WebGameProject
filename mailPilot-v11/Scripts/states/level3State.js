@@ -33,9 +33,8 @@ var states;
         for (var count = 0; count < ghosts.length; count++) {
             ghosts[count].update();
         }
-        for (var count = 0; count < ufos.length; count++) {
-            ufos[count].update();
-        }
+        //update all object
+        ufo.update();
         //check collision of objects
         //+++ comment temporary
         //collision.update();
@@ -66,6 +65,8 @@ var states;
         stage.cursor = "none";
         //add stone, fence, crystal, ghost and ufo in the scene
         level3AddObj();
+        //add ufo to scene
+        ufo = new objects.Ufo(stage, game); // change image later
         // Display Scoreboard
         scoreboard = new objects.Scoreboard(stage, game);
         // Instantiate Collision Manager
@@ -83,30 +84,23 @@ var states;
             switch (randomSelection) {
                 case 1:
                     if (stones.length < 3) {
-                        level3AddUFO(); //level3AddStone();
+                        level3AddStone();
                     }
                     else
                         level3AddCrystal();
                     break;
                 case 2:
-                    level3AddUFO(); //level3AddCrystal();
+                    level3AddCrystal();
                     break;
                 case 3:
                     if (fences.length < 3) {
-                        level3AddUFO(); //level3AddFence();
+                        level3AddFence();
                     }
                     else
                         level3AddCrystal();
                     break;
                 case 4:
                     level3AddGhost();
-                    break;
-                case 5:
-                    if (ufos.length < 1) {
-                        level3AddUFO();
-                    }
-                    else
-                        level3AddCrystal();
                     break;
                 default: level3AddCrystal();
             }
@@ -133,10 +127,5 @@ var states;
         ghosts.push(new objects.Ghost(stage, game));
     }
     states.level3AddGhost = level3AddGhost;
-    function level3AddUFO() {
-        //add one ghost 
-        ufos.push(new objects.Ufo(stage, game)); // change later
-    }
-    states.level3AddUFO = level3AddUFO;
 })(states || (states = {}));
 //# sourceMappingURL=level3state.js.map

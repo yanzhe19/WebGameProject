@@ -14,6 +14,7 @@ module objects {
         width: number;
         height: number;
         dy: number;
+        dx: number;
 
         //constructor of ghost class
         constructor(stage: createjs.Stage, game: createjs.Container, xPosition,yPosition) {
@@ -35,6 +36,7 @@ module objects {
         //update the ghost objects
         update() {
             this.image.y += this.dy;
+            this.image.x -= this.dx;
             //fireball move behind ground, destroy it
             if (this.image.y > (constants.GROUND_LEVEL +this.height)) {
                 //remove it
@@ -50,6 +52,7 @@ module objects {
 
             //set dy to fire ball dropping speed
             this.dy = constants.FIREBSLL_DROPPING_SPEED;
+            this.dx = 2;//this is the speed of fire ball
         }
 
         //define function to destroy the current ghost

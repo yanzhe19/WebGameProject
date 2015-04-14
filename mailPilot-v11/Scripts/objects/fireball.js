@@ -25,6 +25,7 @@ var objects;
         //update the ghost objects
         Fireball.prototype.update = function () {
             this.image.y += this.dy;
+            this.image.x -= this.dx;
             //fireball move behind ground, destroy it
             if (this.image.y > (constants.GROUND_LEVEL + this.height)) {
                 //remove it
@@ -38,6 +39,7 @@ var objects;
             this.image.y = fireBallYPosition;
             //set dy to fire ball dropping speed
             this.dy = constants.FIREBSLL_DROPPING_SPEED;
+            this.dx = 2; //this is the speed of fire ball
         };
         //define function to destroy the current ghost
         Fireball.prototype.destroy = function () {

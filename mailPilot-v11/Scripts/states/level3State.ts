@@ -106,15 +106,15 @@ module states {
                 switch (randomSelection) {
                     case 1:
                         if (stones.length < 3) {
-                            level3AddStone();
+                            level3AddUFO();//level3AddStone();
                         } else level3AddCrystal();
                         break;
                     case 2:
-                        level3AddCrystal();
+                        level3AddUFO();//level3AddCrystal();
                         break;
                     case 3:
                         if (fences.length < 3) {
-                            level3AddFence();
+                            level3AddUFO();//level3AddFence();
                         } else level3AddCrystal();
                         break;
                     case 4:

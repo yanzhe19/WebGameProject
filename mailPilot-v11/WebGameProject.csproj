@@ -115,6 +115,7 @@
     <TypeScriptCompile Include="Scripts\objects\button.ts" />
     <TypeScriptCompile Include="Scripts\objects\crystal.ts" />
     <TypeScriptCompile Include="Scripts\objects\fence.ts" />
+    <TypeScriptCompile Include="Scripts\objects\fireball.ts" />
     <TypeScriptCompile Include="Scripts\objects\player.ts" />
     <TypeScriptCompile Include="Scripts\objects\ghost.ts" />
     <TypeScriptCompile Include="Scripts\objects\stone.ts" />

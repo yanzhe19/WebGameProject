@@ -7,6 +7,7 @@
 /// <reference path="objects/fish.ts" />
 /// <reference path="objects/scoreboard.ts" />
 /// <reference path="objects/ufo.ts" />
+/// <reference path="objects/fireball.ts" />
 /// <reference path="objects/label.ts" />
 /// <reference path="objects/button.ts" />
 /// <reference path="managers/collision.ts" />
@@ -35,7 +36,8 @@ var smallFishs = [];
 var submarines = []; // submarine array;
 var stones = [];//stones array;
 var ghosts = [];//ghost array;
-var ufos = [];//ghost array;
+var ufos = [];//ufo array;
+var fireballs = [];//fireball array;
 var fences = [];//fences array;
 var crystals = [];//crystals array;
 

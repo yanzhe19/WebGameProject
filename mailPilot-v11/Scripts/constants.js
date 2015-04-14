@@ -15,7 +15,8 @@ var constants;
     constants.BACKGROUND_MOVING_SPEED = 3;
     constants.GROUND_LEVEL = 300; //temporary set height of ground level
     constants.GHOST_MOVING_SPEED = 6; //the speed of ghost
-    constants.UFO_MOVING_SPEED = 1.5; //the speed of ghost
+    constants.UFO_MOVING_SPEED = 1.5; //the speed of UFO
+    constants.FIREBSLL_DROPPING_SPEED = 7; //the speed of fire ball dropping
     constants.STONE_NUM = 4;
     //Math.floor(Math.random() * (3) + 3);;//randomly generated stone numbers
     constants.SUBMARINE_NUM = 3;

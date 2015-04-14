@@ -115,7 +115,11 @@
     <TypeScriptCompile Include="Scripts\objects\button.ts" />
     <TypeScriptCompile Include="Scripts\objects\crystal.ts" />
     <TypeScriptCompile Include="Scripts\objects\fence.ts" />
+<<<<<<< HEAD
+    <TypeScriptCompile Include="Scripts\objects\player.ts" />
+=======
     <TypeScriptCompile Include="Scripts\objects\ghost.ts" />
+>>>>>>> origin/master
     <TypeScriptCompile Include="Scripts\objects\stone.ts" />
     <TypeScriptCompile Include="Scripts\objects\submarine.ts" />
     <TypeScriptCompile Include="Scripts\objects\smallFish.ts" />

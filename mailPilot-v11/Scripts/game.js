@@ -6,10 +6,13 @@
 /// <reference path="objects/sea.ts" />
 /// <reference path="objects/fish.ts" />
 /// <reference path="objects/scoreboard.ts" />
+/// <reference path="objects/ufo.ts" />
 /// <reference path="objects/label.ts" />
 /// <reference path="objects/button.ts" />
 /// <reference path="managers/collision.ts" />
 /// <reference path="states/play.ts" />
+/// <reference path="states/level2state.ts" />
+/// <reference path="states/level3state.ts" />
 /// <reference path="states/menu.ts" />
 /// <reference path="states/instruction.ts" />
 /// <reference path="states/gameover.ts" />
@@ -29,7 +32,7 @@ var smallFishs = [];
 var submarines = []; // submarine array;
 var stones = []; //stones array;
 var ghosts = []; //ghost array;
-var UFOs = []; //ghost array;
+var ufos = []; //ghost array;
 var fences = []; //fences array;
 var crystals = []; //crystals array;
 var scoreboard;

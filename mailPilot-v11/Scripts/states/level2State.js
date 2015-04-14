@@ -1,9 +1,7 @@
 /// <reference path="../objects/stone.ts" />
 /// <reference path="../objects/fence.ts" />
 /// <reference path="../objects/button.ts" />
-/// <reference path="../objects/submarine.ts" />
 /// <reference path="../objects/crystal.ts" />
-/// <reference path="../objects/smallFish.ts" />
 /// <reference path="../objects/label.ts" />
 /// <reference path="../objects/sea.ts" />
 /// <reference path="../objects/fish.ts" />
@@ -16,7 +14,7 @@ Revision  History : Version 2.0*/
 //the play state of game
 var states;
 (function (states) {
-    //update the play state
+    //update the level 2 state
     function level2State() {
         // +++++++++++++++++++++++++++++Update play state scene+++++++++++++++++++++++++++++++++++
         sea.update();
@@ -69,12 +67,11 @@ var states;
         game = new createjs.Container();
         // Instantiate Game Objects
         sea = new objects.Sea(stage, game);
-        //smallFish = new objects.SmallFish(stage, game);
         fish = new objects.Fish(stage, game);
         // Show Cursor
         stage.cursor = "none";
-        //add stone, fence and crystal in the scene
-        states.addObj();
+        //add stone, fence, crystal and ghost in the scene
+        level2AddObj();
         // Display Scoreboard
         scoreboard = new objects.Scoreboard(stage, game);
         // Instantiate Collision Manager
@@ -87,7 +84,8 @@ var states;
     // add object to screen Loop
     function level2AddObj() {
         setInterval(function () {
-            var randomSelection = Math.floor(Math.random() * 3) + 1;
+            var randomSelection = Math.floor(Math.random() * 4) + 1;
+            console.log(randomSelection);
             switch (randomSelection) {
                 case 1:
                     if (stones.length < 3) {
@@ -135,4 +133,4 @@ var states;
     }
     states.level2AddGhost = level2AddGhost;
 })(states || (states = {}));
-//# sourceMappingURL=level2State.js.map
+//# sourceMappingURL=level2state.js.map

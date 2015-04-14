@@ -3,6 +3,7 @@
 /// <reference path="../objects/button.ts" />
 /// <reference path="../objects/crystal.ts" />
 /// <reference path="../objects/label.ts" />
+/// <reference path="../objects/ufo.ts" />
 /// <reference path="../objects/sea.ts" />
 /// <reference path="../objects/fish.ts" />
 /// <reference path="../objects/scoreboard.ts" />
@@ -31,6 +32,9 @@ var states;
         }
         for (var count = 0; count < ghosts.length; count++) {
             ghosts[count].update();
+        }
+        for (var count = 0; count < ufos.length; count++) {
+            ufos[count].update();
         }
         //check collision of objects
         //+++ comment temporary
@@ -74,7 +78,8 @@ var states;
     // add object to screen Loop
     function level3AddObj() {
         setInterval(function () {
-            var randomSelection = Math.floor(Math.random() * 4) + 1;
+            var randomSelection = Math.floor(Math.random() * 5) + 1;
+            console.log(randomSelection);
             switch (randomSelection) {
                 case 1:
                     if (stones.length < 3) {
@@ -97,7 +102,7 @@ var states;
                     level3AddGhost();
                     break;
                 case 5:
-                    if (UFOs.length < 1) {
+                    if (ufos.length < 1) {
                         level3AddUFO();
                     }
                     else
@@ -130,8 +135,8 @@ var states;
     states.level3AddGhost = level3AddGhost;
     function level3AddUFO() {
         //add one ghost 
-        UFOs.push(new objects.Ghost(stage, game)); // change later
+        ufos.push(new objects.Ufo(stage, game)); // change later
     }
     states.level3AddUFO = level3AddUFO;
 })(states || (states = {}));
-//# sourceMappingURL=level3State.js.map
+//# sourceMappingURL=level3state.js.map

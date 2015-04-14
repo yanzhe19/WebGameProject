@@ -3,6 +3,7 @@
 /// <reference path="../objects/button.ts" />
 /// <reference path="../objects/crystal.ts" />
 /// <reference path="../objects/label.ts" />
+/// <reference path="../objects/ufo.ts" />
 /// <reference path="../objects/sea.ts" />
 /// <reference path="../objects/fish.ts" />
 /// <reference path="../objects/scoreboard.ts" />
@@ -42,6 +43,11 @@ module states {
         //update all ghost
         for (var count = 0; count < ghosts.length; count++) {
             ghosts[count].update();
+        }
+
+        //update all ufo
+        for (var count = 0; count < ufos.length; count++) {
+            ufos[count].update();
         }
 
         //check collision of objects
@@ -95,7 +101,8 @@ module states {
     export function level3AddObj(): void {
         setInterval(
             function () {
-                var randomSelection = Math.floor(Math.random() * 4) + 1;
+                var randomSelection = Math.floor(Math.random() * 5) + 1;
+                console.log(randomSelection);
                 switch (randomSelection) {
                     case 1:
                         if (stones.length < 3) {
@@ -114,7 +121,7 @@ module states {
                         level3AddGhost();
                         break;
                     case 5:
-                        if (UFOs.length < 1) {// maximum 2 ufo in the sky
+                        if (ufos.length < 1) {// maximum 2 ufo in the sky
                             level3AddUFO();
                         } else level3AddCrystal();
                         break;
@@ -143,6 +150,6 @@ module states {
     }
     export function level3AddUFO() {
         //add one ghost 
-        UFOs.push(new objects.Ghost(stage, game));// change later
+        ufos.push(new objects.Ufo(stage, game));// change later
     }
 }  

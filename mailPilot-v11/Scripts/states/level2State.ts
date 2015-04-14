@@ -104,10 +104,9 @@ module states {
     export function level2AddObj(): void {
         setInterval(
             function () {
-                var randomSelection = Math.floor(Math.random() * 3) + 1;
-                //console.log(randomSelection);
+                var randomSelection = Math.floor(Math.random() * 4) + 1;
+                console.log(randomSelection);
                 switch (randomSelection) {
-
                     case 1:
                         if (stones.length < 3) {
                             level2AddStone();

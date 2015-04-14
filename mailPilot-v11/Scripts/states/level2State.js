@@ -9,23 +9,20 @@
 /// <reference path="../objects/fish.ts" />
 /// <reference path="../objects/scoreboard.ts" />
 /// <reference path="../managers/collision.ts" />
-//this is the level one  state for playing game
-/*Source  file  name: menu.ts, Author's  name: Zhe Yan (300706310),  Last  Modified  by: Zhe Yan,
-Date  last  Modified: 2015_3_18,  Program description： This file is the menu state file, it controls and create the menus state,
+//this is the level two  state for playing game
+/*Source  file  name: level2State.ts, Author's  name: Zhe Yan (300706310),  Last  Modified  by: Zhe Yan,
+Date  last  Modified: 2015_4_14,  Program description： This file is the level two state file, it controls and create the level two state,
 Revision  History : Version 2.0*/
 //the play state of game
 var states;
 (function (states) {
     //update the play state
-    function playState() {
+    function level2State() {
         // +++++++++++++++++++++++++++++Update play state scene+++++++++++++++++++++++++++++++++++
         sea.update();
-        for (var count = 0; count < constants.SMALLFISH_NUM; count++) {
-            smallFishs[count].update();
-        }
+        //updates for player object
         fish.update();
         for (var count = 0; count < stones.length; count++) {
-            //console.log(count);
             stones[count].update();
         }
         for (var count = 0; count < fences.length; count++) {
@@ -55,9 +52,9 @@ var states;
             changeState(currentState);
         }
     }
-    states.playState = playState;
-    // play state Function, show the paly scene
-    function play() {
+    states.level2State = level2State;
+    // play state Function, show the level 2 scene
+    function level2() {
         // Declare new Game Container
         game = new createjs.Container();
         // Instantiate Game Objects
@@ -66,9 +63,6 @@ var states;
         fish = new objects.Fish(stage, game);
         // Show Cursor
         stage.cursor = "none";
-        for (var count = 0; count < constants.SMALLFISH_NUM; count++) {
-            smallFishs[count] = new objects.SmallFish(stage, game);
-        }
         //add stone, fence and crystal in the scene
         addObj();
         // Display Scoreboard
@@ -79,7 +73,7 @@ var states;
         //add game container to stage
         stage.addChild(game);
     }
-    states.play = play;
+    states.level2 = level2;
     // add object to screen Loop
     function addObj() {
         setInterval(function () {
@@ -98,10 +92,13 @@ var states;
                     break;
                 case 3:
                     if (fences.length < 3) {
-                        addGhost();
+                        addFence();
                     }
                     else
                         addCrystal();
+                    break;
+                case 4:
+                    addGhost();
                     break;
                 default: addCrystal();
             }
@@ -129,4 +126,4 @@ var states;
     }
     states.addGhost = addGhost;
 })(states || (states = {}));
-//# sourceMappingURL=play.js.map
+//# sourceMappingURL=level2State.js.map

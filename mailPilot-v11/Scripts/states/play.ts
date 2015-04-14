@@ -51,6 +51,11 @@ module states {
             crystals[count].update();
         }
 
+        //update all ghost
+        for (var count = 0; count < ghosts.length; count++) {
+            ghosts[count].update();
+        }
+
         //check collision of objects
         //+++ comment temporary
         //collision.update();
@@ -130,7 +135,7 @@ module states {
                         break;
                     case 3:
                         if (fences.length < 3) {
-                            addFence();
+                            addGhost();
                         } else addCrystal();
                         break;
                     default: addCrystal();
@@ -151,5 +156,9 @@ module states {
     export function addCrystal() {
         //add one crystal 
         crystals.push(new objects.Crystal(stage, game));
+    }
+    export function addGhost() {
+        //add one ghost 
+        ghosts.push(new objects.Ghost(stage, game));
     }
 }

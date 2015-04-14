@@ -1,5 +1,4 @@
-﻿/// <reference path="../objects/stone.ts" />
-/// <reference path="../objects/fence.ts" />
+﻿/// <reference path="../objects/fence.ts" />
 /// <reference path="../objects/button.ts" />
 /// <reference path="../objects/crystal.ts" />
 /// <reference path="../objects/label.ts" />
@@ -21,12 +20,6 @@ module states {
         // +++++++++++++++++++++++++++++Update play state scene+++++++++++++++++++++++++++++++++++
         sea.update();
         fish.update();
-
-        //update all stones
-        for (var count = 0; count < stones.length; count++) {
-            //console.log(count);
-            stones[count].update();
-        }
 
         //update all fences
         for (var count = 0; count < fences.length; count++) {
@@ -98,20 +91,15 @@ module states {
     export function addObj(): void {
         setInterval(
             function () {
-                var randomSelection = Math.floor(Math.random() * 3) + 1;
+                var randomSelection = Math.floor(Math.random() * 2) + 1;
                 console.log(randomSelection);
                 switch (randomSelection) {
-                    
+
                     case 1:
-                        if (stones.length < 3) {
-                            addStone();
-                        } else addCrystal();
-                        break;
-                    case 2:
                         addCrystal();
                         break;
-                    case 3:
-                        if (fences.length < 3) {
+                    case 2:
+                        if (fences.length < 6) {
                             addFence();
                         } else addCrystal();
                         break;
@@ -122,10 +110,6 @@ module states {
             );
     }
 
-    export function addStone() {
-        //add one stone 
-        stones.push(new objects.Stone(stage, game));
-    }
     export function addFence() {
         //add one fence 
         fences.push(new objects.Fence(stage, game));

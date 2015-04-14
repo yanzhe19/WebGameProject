@@ -1,5 +1,4 @@
-﻿/// <reference path="../objects/stone.ts" />
-/// <reference path="../objects/fence.ts" />
+﻿/// <reference path="../objects/fence.ts" />
 /// <reference path="../objects/button.ts" />
 /// <reference path="../objects/crystal.ts" />
 /// <reference path="../objects/label.ts" />
@@ -24,11 +23,6 @@ module states {
 
         //updates for player object
         fish.update();
-
-        //update all stones
-        for (var count = 0; count < stones.length; count++) {
-            stones[count].update();
-        }
 
         //update all fences
         for (var count = 0; count < fences.length; count++) {
@@ -102,23 +96,18 @@ module states {
     export function level3AddObj(): void {
         setInterval(
             function () {
-                var randomSelection = Math.floor(Math.random() * 5) + 1;
+                var randomSelection = Math.floor(Math.random() * 4) + 1;
                 console.log(randomSelection);
                 switch (randomSelection) {
                     case 1:
-                        if (stones.length < 3) {
-                            level3AddStone();
-                        } else level3AddCrystal();
-                        break;
-                    case 2:
                         level3AddCrystal();
                         break;
-                    case 3:
+                    case 2:
                         if (fences.length < 3) {
                             level3AddFence();
                         } else level3AddCrystal();
                         break;
-                    case 4:
+                    case 3:
                         level3AddGhost();
                         break;
                     default: level3AddCrystal();
@@ -128,10 +117,6 @@ module states {
             );
     }
 
-    export function level3AddStone() {
-        //add one stone 
-        stones.push(new objects.Stone(stage, game));
-    }
     export function level3AddFence() {
         //add one fence 
         fences.push(new objects.Fence(stage, game));

@@ -1,4 +1,3 @@
-/// <reference path="../objects/stone.ts" />
 /// <reference path="../objects/fence.ts" />
 /// <reference path="../objects/button.ts" />
 /// <reference path="../objects/crystal.ts" />
@@ -20,9 +19,6 @@ var states;
         sea.update();
         //updates for player object
         fish.update();
-        for (var count = 0; count < stones.length; count++) {
-            stones[count].update();
-        }
         for (var count = 0; count < fences.length; count++) {
             fences[count].update();
         }
@@ -84,27 +80,20 @@ var states;
     // add object to screen Loop
     function level2AddObj() {
         setInterval(function () {
-            var randomSelection = Math.floor(Math.random() * 4) + 1;
+            var randomSelection = Math.floor(Math.random() * 3) + 1;
             console.log(randomSelection);
             switch (randomSelection) {
                 case 1:
-                    if (stones.length < 3) {
-                        level2AddStone();
-                    }
-                    else
-                        level2AddCrystal();
-                    break;
-                case 2:
                     level2AddCrystal();
                     break;
-                case 3:
+                case 2:
                     if (fences.length < 3) {
                         level2AddFence();
                     }
                     else
                         level2AddCrystal();
                     break;
-                case 4:
+                case 3:
                     level2AddGhost();
                     break;
                 default: level2AddCrystal();
@@ -112,11 +101,6 @@ var states;
         }, (Math.floor(Math.random() * 4 + 1) * 300 + 2000));
     }
     states.level2AddObj = level2AddObj;
-    function level2AddStone() {
-        //add one stone 
-        stones.push(new objects.Stone(stage, game));
-    }
-    states.level2AddStone = level2AddStone;
     function level2AddFence() {
         //add one fence 
         fences.push(new objects.Fence(stage, game));

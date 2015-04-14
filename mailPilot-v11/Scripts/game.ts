@@ -34,7 +34,6 @@ var fish: objects.Fish;
 //var smallFish: objects.SmallFish;
 var smallFishs = [];
 var submarines = []; // submarine array;
-var stones = [];//stones array;
 var ghosts = [];//ghost array;
 var ufo;//ufo object;
 var fireballs = [];//fireball array;

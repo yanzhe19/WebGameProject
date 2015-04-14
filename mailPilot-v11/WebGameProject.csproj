@@ -118,7 +118,6 @@
     <TypeScriptCompile Include="Scripts\objects\fireball.ts" />
     <TypeScriptCompile Include="Scripts\objects\player.ts" />
     <TypeScriptCompile Include="Scripts\objects\ghost.ts" />
-    <TypeScriptCompile Include="Scripts\objects\stone.ts" />
     <TypeScriptCompile Include="Scripts\objects\submarine.ts" />
     <TypeScriptCompile Include="Scripts\objects\smallFish.ts" />
     <TypeScriptCompile Include="Scripts\objects\label.ts" />

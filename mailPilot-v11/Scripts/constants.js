@@ -9,6 +9,8 @@ var constants;
     constants.PLAY_STATE = 1;
     constants.GAME_OVER_STATE = 2;
     constants.INSTRUCTION_STATE = 3;
+    constants.LEVEL_TWO_STATE = 4;
+    constants.LEVEL_THREE_STATE = 5;
     // Game Constants
     constants.BACKGROUND_MOVING_SPEED = 3;
     constants.GROUND_LEVEL = 300; //temporary set height of ground level

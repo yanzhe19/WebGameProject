@@ -64,11 +64,20 @@ module states {
             //create the other state screen --> game over state screen
             currentState = constants.GAME_OVER_STATE;
             changeState(currentState);
+        } else if (scoreboard.score >= 2000) {//go to level three state when got 2000 points
+            //remove everything from the stage first
+            stage.removeChild(game);
+            fish.destroy();
+            game.removeAllChildren();
+            game.removeAllEventListeners();
+            //create the other state screen --> LEVEL Three state screen
+            currentState = constants.LEVEL_THREE_STATE;
+            changeState(currentState);
         }
     }
 
     // play state Function, show the level 2 scene
-    export function level2(): void {
+    export function level2Scene(): void {
         // Declare new Game Container
         game = new createjs.Container();
 
@@ -99,26 +108,26 @@ module states {
         setInterval(
             function () {
                 var randomSelection = Math.floor(Math.random() * 3) + 1;
-                console.log(randomSelection);
+                //console.log(randomSelection);
                 switch (randomSelection) {
 
                     case 1:
                         if (stones.length < 3) {
-                            addStone();
-                        } else addCrystal();
+                            level2AddStone();
+                        } else level2AddCrystal();
                         break;
                     case 2:
-                        addCrystal();
+                        level2AddCrystal();
                         break;
                     case 3:
                         if (fences.length < 3) {
-                            addFence();
-                        } else addCrystal();
+                            level2AddFence();
+                        } else level2AddCrystal();
                         break;
                     case 4:
-                        addGhost();
+                        level2AddGhost();
                         break;
-                    default: addCrystal();
+                    default: level2AddCrystal();
                 }
             },
             (Math.floor(Math.random() * 4 + 1) * 300 + 2000) //set interval to exetution

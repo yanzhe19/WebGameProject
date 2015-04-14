@@ -96,6 +96,11 @@ function changeState(state) {
             // instantiate instruction screen
             states.instructionScene();
             break;
+        case constants.LEVEL_TWO_STATE:
+            currentStateFunction = states.level2State;
+            // instantiate instruction screen
+            states.level2Scene();
+            break;
     }
 }
 //# sourceMappingURL=game.js.map

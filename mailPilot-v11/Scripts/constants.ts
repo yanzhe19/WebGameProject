@@ -1,6 +1,6 @@
-﻿    /*Source  file  name: constants.ts, Author's  name: Zhe Yan (300706310),  Last  Modified  by: Zhe Yan,  
-    Date  last  Modified: 2015_3_18,  Program description： This file is the constants.ts file which contains the constant variables used in game.
-    Revision  History : Version 2.0*/
+﻿/*Source  file  name: constants.ts, Author's  name: Zhe Yan (300706310),  Last  Modified  by: Zhe Yan,  
+Date  last  Modified: 2015_3_18,  Program description： This file is the constants.ts file which contains the constant variables used in game.
+Revision  History : Version 2.0*/
 //constants used in this game
 module constants {
     // State Machine Constants
@@ -8,13 +8,15 @@ module constants {
     export var PLAY_STATE: number = 1;
     export var GAME_OVER_STATE: number = 2;
     export var INSTRUCTION_STATE: number = 3;
+    export var LEVEL_TWO_STATE: number = 4;
+    export var LEVEL_THREE_STATE: number = 5;
 
     // Game Constants
     export var BACKGROUND_MOVING_SPEED = 3;
     export var GROUND_LEVEL = 300;//temporary set height of ground level
     export var GHOST_MOVING_SPEED = 6; //the speed of ghost
     export var STONE_NUM = 4;
-        //Math.floor(Math.random() * (3) + 3);;//randomly generated stone numbers
+    //Math.floor(Math.random() * (3) + 3);;//randomly generated stone numbers
 
     export var SUBMARINE_NUM: number = 3;
     export var SMALLFISH_NUM: number = 2;

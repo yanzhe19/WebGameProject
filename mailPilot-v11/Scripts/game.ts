@@ -114,6 +114,12 @@ function changeState(state: number): void {
             // instantiate instruction screen
             states.instructionScene();
             break;
+
+        case constants.LEVEL_TWO_STATE:
+            currentStateFunction = states.level2State;
+            // instantiate instruction screen
+            states.level2Scene();
+            break;
     }
 }
 

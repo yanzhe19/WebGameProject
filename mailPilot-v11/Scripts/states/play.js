@@ -1,9 +1,7 @@
 /// <reference path="../objects/stone.ts" />
 /// <reference path="../objects/fence.ts" />
 /// <reference path="../objects/button.ts" />
-/// <reference path="../objects/submarine.ts" />
 /// <reference path="../objects/crystal.ts" />
-/// <reference path="../objects/smallFish.ts" />
 /// <reference path="../objects/label.ts" />
 /// <reference path="../objects/sea.ts" />
 /// <reference path="../objects/fish.ts" />
@@ -20,9 +18,6 @@ var states;
     function playState() {
         // +++++++++++++++++++++++++++++Update play state scene+++++++++++++++++++++++++++++++++++
         sea.update();
-        for (var count = 0; count < constants.SMALLFISH_NUM; count++) {
-            smallFishs[count].update();
-        }
         fish.update();
         for (var count = 0; count < stones.length; count++) {
             //console.log(count);
@@ -33,9 +28,6 @@ var states;
         }
         for (var count = 0; count < crystals.length; count++) {
             crystals[count].update();
-        }
-        for (var count = 0; count < ghosts.length; count++) {
-            ghosts[count].update();
         }
         //check collision of objects
         //+++ comment temporary
@@ -54,6 +46,16 @@ var states;
             currentState = constants.GAME_OVER_STATE;
             changeState(currentState);
         }
+        else if (scoreboard.score >= 1000) {
+            //remove everything from the stage first
+            stage.removeChild(game);
+            fish.destroy();
+            game.removeAllChildren();
+            game.removeAllEventListeners();
+            //create the other state screen --> LEVEL TWO state screen
+            currentState = constants.LEVEL_TWO_STATE;
+            changeState(currentState);
+        }
     }
     states.playState = playState;
     // play state Function, show the paly scene
@@ -62,13 +64,9 @@ var states;
         game = new createjs.Container();
         // Instantiate Game Objects
         sea = new objects.Sea(stage, game);
-        //smallFish = new objects.SmallFish(stage, game);
         fish = new objects.Fish(stage, game);
         // Show Cursor
         stage.cursor = "none";
-        for (var count = 0; count < constants.SMALLFISH_NUM; count++) {
-            smallFishs[count] = new objects.SmallFish(stage, game);
-        }
         //add stone, fence and crystal in the scene
         addObj();
         // Display Scoreboard
@@ -98,7 +96,7 @@ var states;
                     break;
                 case 3:
                     if (fences.length < 3) {
-                        addGhost();
+                        addFence();
                     }
                     else
                         addCrystal();
@@ -123,10 +121,5 @@ var states;
         crystals.push(new objects.Crystal(stage, game));
     }
     states.addCrystal = addCrystal;
-    function addGhost() {
-        //add one ghost 
-        ghosts.push(new objects.Ghost(stage, game));
-    }
-    states.addGhost = addGhost;
 })(states || (states = {}));
 //# sourceMappingURL=play.js.map

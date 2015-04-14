@@ -1,9 +1,7 @@
 ﻿/// <reference path="../objects/stone.ts" />
 /// <reference path="../objects/fence.ts" />
 /// <reference path="../objects/button.ts" />
-/// <reference path="../objects/submarine.ts" />
 /// <reference path="../objects/crystal.ts" />
-/// <reference path="../objects/smallFish.ts" />
 /// <reference path="../objects/label.ts" />
 /// <reference path="../objects/sea.ts" />
 /// <reference path="../objects/fish.ts" />
@@ -22,18 +20,7 @@ module states {
     export function playState() {
         // +++++++++++++++++++++++++++++Update play state scene+++++++++++++++++++++++++++++++++++
         sea.update();
-        //smallFish.update();
-        //update all small fishes
-        for (var count = 0; count < constants.SMALLFISH_NUM; count++) {
-            smallFishs[count].update();
-        }
         fish.update();
-
-        //update all submarines
-        //+++ comment temporary
-        //for (var count = 0; count < constants.SUBMARINE_NUM; count++) {
-        //    submarines[count].update();
-        //}
 
         //update all stones
         for (var count = 0; count < stones.length; count++) {
@@ -49,11 +36,6 @@ module states {
         //update all crystals
         for (var count = 0; count < crystals.length; count++) {
             crystals[count].update();
-        }
-
-        //update all ghost
-        for (var count = 0; count < ghosts.length; count++) {
-            ghosts[count].update();
         }
 
         //check collision of objects
@@ -74,6 +56,15 @@ module states {
             //create the other state screen --> game over state screen
             currentState = constants.GAME_OVER_STATE;
             changeState(currentState);
+        } else if (scoreboard.score >= 1000) {//go to level two state when got 1000 points
+            //remove everything from the stage first
+            stage.removeChild(game);
+            fish.destroy();
+            game.removeAllChildren();
+            game.removeAllEventListeners();
+            //create the other state screen --> LEVEL TWO state screen
+            currentState = constants.LEVEL_TWO_STATE;
+            changeState(currentState);
         }
     }
 
@@ -84,24 +75,10 @@ module states {
 
         // Instantiate Game Objects
         sea = new objects.Sea(stage, game);
-        //smallFish = new objects.SmallFish(stage, game);
         fish = new objects.Fish(stage, game);
 
         // Show Cursor
         stage.cursor = "none";
-
-        // Create multiple submarines
-        //+++comment temporary
-        //for (var count = 0; count < constants.SUBMARINE_NUM; count++) {
-        //    submarines[count] = new objects.Submarine(stage, game);
-        //    //console.log(submarines[count]);
-        //}        
-
-
-        // Create multiple smallfishes
-        for (var count = 0; count < constants.SMALLFISH_NUM; count++) {
-            smallFishs[count] = new objects.SmallFish(stage, game);
-        }
 
         //add stone, fence and crystal in the scene
         addObj();
@@ -135,7 +112,7 @@ module states {
                         break;
                     case 3:
                         if (fences.length < 3) {
-                            addGhost();
+                            addFence();
                         } else addCrystal();
                         break;
                     default: addCrystal();
@@ -156,9 +133,5 @@ module states {
     export function addCrystal() {
         //add one crystal 
         crystals.push(new objects.Crystal(stage, game));
-    }
-    export function addGhost() {
-        //add one ghost 
-        ghosts.push(new objects.Ghost(stage, game));
     }
 }

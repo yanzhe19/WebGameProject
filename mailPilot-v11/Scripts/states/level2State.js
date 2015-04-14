@@ -51,10 +51,20 @@ var states;
             currentState = constants.GAME_OVER_STATE;
             changeState(currentState);
         }
+        else if (scoreboard.score >= 2000) {
+            //remove everything from the stage first
+            stage.removeChild(game);
+            fish.destroy();
+            game.removeAllChildren();
+            game.removeAllEventListeners();
+            //create the other state screen --> LEVEL Three state screen
+            currentState = constants.LEVEL_THREE_STATE;
+            changeState(currentState);
+        }
     }
     states.level2State = level2State;
     // play state Function, show the level 2 scene
-    function level2() {
+    function level2Scene() {
         // Declare new Game Container
         game = new createjs.Container();
         // Instantiate Game Objects
@@ -73,34 +83,33 @@ var states;
         //add game container to stage
         stage.addChild(game);
     }
-    states.level2 = level2;
+    states.level2Scene = level2Scene;
     // add object to screen Loop
     function level2AddObj() {
         setInterval(function () {
             var randomSelection = Math.floor(Math.random() * 3) + 1;
-            console.log(randomSelection);
             switch (randomSelection) {
                 case 1:
                     if (stones.length < 3) {
-                        states.addStone();
+                        level2AddStone();
                     }
                     else
-                        states.addCrystal();
+                        level2AddCrystal();
                     break;
                 case 2:
-                    states.addCrystal();
+                    level2AddCrystal();
                     break;
                 case 3:
                     if (fences.length < 3) {
-                        states.addFence();
+                        level2AddFence();
                     }
                     else
-                        states.addCrystal();
+                        level2AddCrystal();
                     break;
                 case 4:
-                    states.addGhost();
+                    level2AddGhost();
                     break;
-                default: states.addCrystal();
+                default: level2AddCrystal();
             }
         }, (Math.floor(Math.random() * 4 + 1) * 300 + 2000));
     }

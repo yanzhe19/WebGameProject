@@ -12,7 +12,7 @@ var objects;
             this.stage = stage;
             this.game = game;
             //get ghost image from sprite sheet
-            this.image = new createjs.Sprite(managers.Assets.projectAtlas, "ghost");
+            this.image = new createjs.Sprite(managers.Assets.projectAtlas, "ufo");
             this.width = this.image.getBounds().width;
             this.height = this.image.getBounds().height;
             // console.log(this.width,this.height);

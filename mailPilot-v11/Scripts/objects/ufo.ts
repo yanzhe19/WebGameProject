@@ -22,7 +22,7 @@ module objects {
             this.stage = stage;
             this.game = game;
             //get ghost image from sprite sheet
-            this.image = new createjs.Sprite(managers.Assets.projectAtlas, "ghost");
+            this.image = new createjs.Sprite(managers.Assets.projectAtlas, "ufo");
             this.width = this.image.getBounds().width;
             this.height = this.image.getBounds().height;
             // console.log(this.width,this.height);
@@ -80,16 +80,6 @@ module objects {
             this.dx = constants.UFO_MOVING_SPEED;
             this.image.y = constants.GROUND_LEVEL - 220;
         }
-
-        ////define function to destroy the current ghost
-        //destroy() {
-        //    //remove this ghost from game container
-        //    game.removeChild(this.image);
-
-        //    //remove it from the array
-        //    ufos.splice(ufos.indexOf(this), 1);
-        //    //console.log(stones.length);
-        //}
     }
 
 }   

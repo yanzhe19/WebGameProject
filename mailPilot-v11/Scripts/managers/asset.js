@@ -40,16 +40,18 @@ var managers;
     var projectGameSpriteSheetData = {
         "images": ["assets/images/obstacle.png"],
         "frames": [
-            [2, 143, 50, 50],
-            [2, 79, 60, 62],
-            [2, 195, 30, 38],
-            [2, 2, 70, 75]
+            [176, 66, 50, 50],
+            [176, 2, 60, 62],
+            [2, 59, 30, 38],
+            [104, 2, 70, 75],
+            [2, 2, 100, 55]
         ],
         "animations": {
             "crystal": [0],
             "fence": [1],
             "fireball": [2],
-            "ghost": [3]
+            "ghost": [3],
+            "ufo": [4]
         }
     };
     // Asset Manager Class

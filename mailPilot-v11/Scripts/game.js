@@ -27,8 +27,9 @@ var fish;
 var smallFishs = [];
 var submarines = []; // submarine array;
 var stones = []; //stones array;
-var fences = []; //stones array;
-var crystals = []; //stones array;
+var ghosts = []; //ghost array;
+var fences = []; //fences array;
+var crystals = []; //crystals array;
 var scoreboard;
 //collision variables
 var collision;

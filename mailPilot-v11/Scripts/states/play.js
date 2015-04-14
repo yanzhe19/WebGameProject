@@ -9,7 +9,7 @@
 /// <reference path="../objects/fish.ts" />
 /// <reference path="../objects/scoreboard.ts" />
 /// <reference path="../managers/collision.ts" />
-//this is the state for playing game
+//this is the level one  state for playing game
 /*Source  file  name: menu.ts, Author's  name: Zhe Yan (300706310),  Last  Modified  by: Zhe Yan,
 Date  last  Modified: 2015_3_18,  Program description： This file is the menu state file, it controls and create the menus state,
 Revision  History : Version 2.0*/
@@ -102,7 +102,7 @@ var states;
                     break;
                 default: addCrystal();
             }
-        }, (Math.floor(Math.random() * 4 + 1) * 300 + 2500));
+        }, (Math.floor(Math.random() * 4 + 1) * 300 + 2000));
     }
     states.addObj = addObj;
     function addStone() {

@@ -12,6 +12,7 @@ var constants;
     // Game Constants
     constants.BACKGROUND_MOVING_SPEED = 3;
     constants.GROUND_LEVEL = 300; //temporary set height of ground level
+    constants.GHOST_MOVING_SPEED = 6; //the speed of ghost
     constants.STONE_NUM = 4;
     //Math.floor(Math.random() * (3) + 3);;//randomly generated stone numbers
     constants.SUBMARINE_NUM = 3;

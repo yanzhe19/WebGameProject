@@ -12,6 +12,7 @@ module constants {
     // Game Constants
     export var BACKGROUND_MOVING_SPEED = 3;
     export var GROUND_LEVEL = 300;//temporary set height of ground level
+    export var GHOST_MOVING_SPEED = 6; //the speed of ghost
     export var STONE_NUM = 4;
         //Math.floor(Math.random() * (3) + 3);;//randomly generated stone numbers
 

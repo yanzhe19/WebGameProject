@@ -44,16 +44,16 @@ module managers {
     var projectGameSpriteSheetData = {
         "images": ["assets/images/obstacle.png"],
         "frames": [
-
-            [74, 2, 50, 50],
-            [2, 92, 60, 62],
+            [64, 169, 50, 50],
+            [2, 169, 60, 62],
+            [2, 92, 70, 75],
             [2, 2, 70, 88]
         ],
         "animations": {
-
             "crystal": [0],
             "fence": [1],
-            "stone": [2]
+            "ghost": [2],
+            "stone": [3]
         }
     }
 

@@ -42,14 +42,16 @@ var managers;
         "frames": [
             [64, 169, 50, 50],
             [2, 169, 60, 62],
+            [116, 2, 30, 38],
             [2, 92, 70, 75],
             [2, 2, 70, 88]
         ],
         "animations": {
             "crystal": [0],
             "fence": [1],
-            "ghost": [2],
-            "stone": [3]
+            "fireball": [2],
+            "ghost": [3],
+            "stone": [4]
         }
     };
     // Asset Manager Class

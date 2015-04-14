@@ -95,7 +95,7 @@ module states {
     }
 
     // add object to screen Loop
-    export function addObj(): void {
+    export function level2AddObj(): void {
         setInterval(
             function () {
                 var randomSelection = Math.floor(Math.random() * 3) + 1;
@@ -125,19 +125,19 @@ module states {
             );
     }
 
-    export function addStone() {
+    export function level2AddStone() {
         //add one stone 
         stones.push(new objects.Stone(stage, game));
     }
-    export function addFence() {
+    export function level2AddFence() {
         //add one fence 
         fences.push(new objects.Fence(stage, game));
     }
-    export function addCrystal() {
+    export function level2AddCrystal() {
         //add one crystal 
         crystals.push(new objects.Crystal(stage, game));
     }
-    export function addGhost() {
+    export function level2AddGhost() {
         //add one ghost 
         ghosts.push(new objects.Ghost(stage, game));
     }

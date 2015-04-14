@@ -64,7 +64,7 @@ var states;
         // Show Cursor
         stage.cursor = "none";
         //add stone, fence and crystal in the scene
-        addObj();
+        states.addObj();
         // Display Scoreboard
         scoreboard = new objects.Scoreboard(stage, game);
         // Instantiate Collision Manager
@@ -75,55 +75,55 @@ var states;
     }
     states.level2 = level2;
     // add object to screen Loop
-    function addObj() {
+    function level2AddObj() {
         setInterval(function () {
             var randomSelection = Math.floor(Math.random() * 3) + 1;
             console.log(randomSelection);
             switch (randomSelection) {
                 case 1:
                     if (stones.length < 3) {
-                        addStone();
+                        states.addStone();
                     }
                     else
-                        addCrystal();
+                        states.addCrystal();
                     break;
                 case 2:
-                    addCrystal();
+                    states.addCrystal();
                     break;
                 case 3:
                     if (fences.length < 3) {
-                        addFence();
+                        states.addFence();
                     }
                     else
-                        addCrystal();
+                        states.addCrystal();
                     break;
                 case 4:
-                    addGhost();
+                    states.addGhost();
                     break;
-                default: addCrystal();
+                default: states.addCrystal();
             }
         }, (Math.floor(Math.random() * 4 + 1) * 300 + 2000));
     }
-    states.addObj = addObj;
-    function addStone() {
+    states.level2AddObj = level2AddObj;
+    function level2AddStone() {
         //add one stone 
         stones.push(new objects.Stone(stage, game));
     }
-    states.addStone = addStone;
-    function addFence() {
+    states.level2AddStone = level2AddStone;
+    function level2AddFence() {
         //add one fence 
         fences.push(new objects.Fence(stage, game));
     }
-    states.addFence = addFence;
-    function addCrystal() {
+    states.level2AddFence = level2AddFence;
+    function level2AddCrystal() {
         //add one crystal 
         crystals.push(new objects.Crystal(stage, game));
     }
-    states.addCrystal = addCrystal;
-    function addGhost() {
+    states.level2AddCrystal = level2AddCrystal;
+    function level2AddGhost() {
         //add one ghost 
         ghosts.push(new objects.Ghost(stage, game));
     }
-    states.addGhost = addGhost;
+    states.level2AddGhost = level2AddGhost;
 })(states || (states = {}));
 //# sourceMappingURL=level2State.js.map

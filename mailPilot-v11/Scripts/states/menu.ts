@@ -21,7 +21,7 @@ module states {
         game.removeAllChildren();
         game.removeAllEventListeners();
         //create another state screen --> play state screen
-        currentState = constants.PLAY_STATE;
+        currentState = constants.PLAY_STATE;//place to set the initial start level, current is the play state (level one)
         changeState(currentState);
     }
 

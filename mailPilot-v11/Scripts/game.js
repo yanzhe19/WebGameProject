@@ -29,6 +29,7 @@ var smallFishs = [];
 var submarines = []; // submarine array;
 var stones = []; //stones array;
 var ghosts = []; //ghost array;
+var UFOs = []; //ghost array;
 var fences = []; //fences array;
 var crystals = []; //crystals array;
 var scoreboard;
@@ -98,8 +99,13 @@ function changeState(state) {
             break;
         case constants.LEVEL_TWO_STATE:
             currentStateFunction = states.level2State;
-            // instantiate instruction screen
+            // instantiate level two screen
             states.level2Scene();
+            break;
+        case constants.LEVEL_THREE_STATE:
+            currentStateFunction = states.level3State;
+            // instantiate level three screen
+            states.level3Scene();
             break;
     }
 }

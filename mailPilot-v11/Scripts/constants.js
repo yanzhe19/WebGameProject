@@ -21,6 +21,6 @@ var constants;
     constants.SMALLFISH_NUM = 2;
     constants.LABEL_FONT = "40px Consolas";
     constants.LABEL_COLOUR = "#FFFF00";
-    constants.PLANE_LIVES = 3;
+    constants.PLAYER_LIVES = 5;
 })(constants || (constants = {}));
 //# sourceMappingURL=constants.js.map

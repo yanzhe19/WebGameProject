@@ -1,4 +1,4 @@
-﻿/*Source  file  name: playerAsset.ts, Author's  name: Andrew Mackle (300603655),
+/*Source  file  name: playerAsset.ts, Author's  name: Andrew Mackle (300603655),
 description： This is the player asset manager file which controls all the assets associated with the player(image,audio,sprite sheet and so on) used in the game*/
 //player asset manager
 var managers;
@@ -7,7 +7,6 @@ var managers;
     var playerManifest = [
         { id: "", src: "" }
     ];
-
     // SpriteSheet Data Object for the player object
     var playerSpriteSheetData = {
         "images": ["assets/images/playerSpriteSheet.png"],
@@ -48,7 +47,6 @@ var managers;
             }
         }
     };
-
     // Asset Manager Class
     var PlayerAssets = (function () {
         function PlayerAssets() {
@@ -59,7 +57,6 @@ var managers;
             this.loader = new createjs.LoadQueue();
             this.loader.installPlugin(createjs.Sound);
             this.loader.loadManifest(playerManifest);
-
             //atlas for the player
             this.playerAtlas = new createjs.SpriteSheet(playerSpriteSheetData);
         };

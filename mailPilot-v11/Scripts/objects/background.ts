@@ -5,7 +5,7 @@ Date  last  Modified: 2015_3_18,  Program description： This file is the sea
 Revision  History : Version 2.0*/
 //This is the sea object class
 module objects {
-    export class Sea {
+    export class Background {
         //defines all properties of sea
         image: createjs.Bitmap;
         stage: createjs.Stage;
@@ -18,13 +18,14 @@ module objects {
         constructor(stage: createjs.Stage, game: createjs.Container) {
             this.stage = stage;
             this.game = game;
-            this.image = new createjs.Bitmap(managers.Assets.loader.getResult("sea"));
-            //this.width = this.image.getBounds().width;
-            //this.height = this.image.getBounds().height;
+            this.image = new createjs.Bitmap(managers.Assets.loader.getResult("background"));
+            this.width = this.image.getBounds().width;
+            this.height = this.image.getBounds().height;
             this.reset();
 
             //set the sea move speed
             this.dx = constants.BACKGROUND_MOVING_SPEED;
+            //yughuhi
 
             //add sea to game container
             game.addChild(this.image);
@@ -32,17 +33,16 @@ module objects {
 
         //update sea background
         update() {
-            this.image.x -= this.dx;
-            console.log(this.image.x);
+            this.image.x += this.dx;
             //if sea move to the end, resset its position
-            if (this.image.x <= -500) {
+            if (this.image.x >= 0) {
                 this.reset();
             }
         }
 
         //reset sea background's x position to double of canva's width
         reset() {
-            this.image.x = 0;
+            this.image.x = -638;
         }
 
         //destroy sea object

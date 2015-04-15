@@ -4,7 +4,7 @@ Date  last  Modified: 2015_3_18,  Program description： This file is the ins
 Revision  History : Version 2.0*/
 //This is the instruction state
 module states {
-    //update the instruction state sea background
+    //update the instruction state game background
     export function instructionState() {
         sea.update();
     }
@@ -31,7 +31,7 @@ module states {
         //game container
         game = new createjs.Container();
 
-        //the sea in the background
+        //set the game background
         sea = new objects.Sea(stage, game);
 
         // Show Cursor
@@ -39,14 +39,15 @@ module states {
 
         //define instruction string
         instructionsStringArray = [
-            "This is the Big Fish game, ",
-            "you can use your mouse to move the fish",
-            "If you eat one small fish, you win points",
+            "This is the Dtzz game, ",
+            "you can use the key D to move forward,",
+            "key A to move backward and key W to jump. ",
+            "There are three levels in the game.",
+            "If you collect one crystal, you win points",
             "Win as much points as possible!",
             "",
-            "However, if you collide with submarine, ",
-            "you lose one life, you have three lives in total",
-            "Have Fun!"
+            "If you collide with any obstacles, you lose one life,  ",
+            "you have five lives in total, Have Fun!"
         ];
 
         // Display the actual Instruction
@@ -60,12 +61,12 @@ module states {
         }
 
         // Display Play game Button
-        playButton = new objects.Button(stage.canvas.width * 3 / 4, 400, "btnPlay");
+        playButton = new objects.Button(stage.canvas.width * 3 / 4, 420, "btnPlay");
         game.addChild(playButton);
         playButton.addEventListener("click", playButtonClicked);
 
         // Display Go Back Button
-        goBackBtn = new objects.Button(stage.canvas.width / 4, 400, "btnBack");
+        goBackBtn = new objects.Button(stage.canvas.width / 4, 420, "btnBack");
         game.addChild(goBackBtn);
         goBackBtn.addEventListener("click", goBackBtnClicked);
 

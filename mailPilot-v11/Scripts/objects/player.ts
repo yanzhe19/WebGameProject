@@ -9,7 +9,7 @@ module objects {
         width: number;
         height: number;
         timerStart: number;
-        private state: string;
+        state: string;
 
         //the constructor of player class
         constructor() {
@@ -32,8 +32,10 @@ module objects {
 
         //event
         public keyDownEvent(event: KeyboardEvent) {
-            switch (event.charCode) {
-                case 18:
+            console.log(event.keyCode);
+            var e = event.keyCode;
+            switch (e) {
+                case 87:
                     console.log("jump ... " + event);
                     this.jump();
                     break;
@@ -48,9 +50,11 @@ module objects {
                     break;
                 case "jump":
                     //jump animation
-                    this.y = constants.GROUND_LEVEL + Math.sin(Date.now() - this.timerStart);
+                    console.log(this.y);
+                    this.y = constants.GROUND_LEVEL - Math.sin(Date.now() - this.timerStart);
+                    console.log(this.y);
                     if (this.y > constants.GROUND_LEVEL) {
-                        this.land();
+                        this.land;
                         this.y = constants.GROUND_LEVEL;
                     }
                     break;
@@ -78,11 +82,11 @@ module objects {
         public run() {
             this.state = "run";
             this.gotoAndPlay(this.state);
-            this.timerStart = Date.now();
         }
 
-        public jump() {
+        jump() {
             this.state = "jump";
+            this.timerStart = Date.now();
             this.gotoAndPlay(this.state);
         }
     }

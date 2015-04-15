@@ -32,8 +32,10 @@ var objects;
         }
         //event
         Player.prototype.keyDownEvent = function (event) {
-            switch (event.charCode) {
-                case 18:
+            console.log(event.keyCode);
+            var e = event.keyCode;
+            switch (e) {
+                case 87:
                     console.log("jump ... " + event);
                     this.jump();
                     break;
@@ -47,9 +49,11 @@ var objects;
                     break;
                 case "jump":
                     //jump animation
-                    this.y = constants.GROUND_LEVEL + Math.sin(Date.now() - this.timerStart);
+                    console.log(this.y);
+                    this.y = constants.GROUND_LEVEL - Math.sin(Date.now() - this.timerStart);
+                    console.log(this.y);
                     if (this.y > constants.GROUND_LEVEL) {
-                        this.land();
+                        this.land;
                         this.y = constants.GROUND_LEVEL;
                     }
                     break;
@@ -76,11 +80,11 @@ var objects;
         Player.prototype.run = function () {
             this.state = "run";
             this.gotoAndPlay(this.state);
-            this.timerStart = Date.now();
         };
 
         Player.prototype.jump = function () {
             this.state = "jump";
+            this.timerStart = Date.now();
             this.gotoAndPlay(this.state);
         };
         return Player;

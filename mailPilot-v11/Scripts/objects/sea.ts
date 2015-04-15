@@ -19,8 +19,8 @@ module objects {
             this.stage = stage;
             this.game = game;
             this.image = new createjs.Bitmap(managers.Assets.loader.getResult("sea"));
-            this.width = this.image.getBounds().width;
-            this.height = this.image.getBounds().height;
+            //this.width = this.image.getBounds().width;
+            //this.height = this.image.getBounds().height;
             this.reset();
 
             //set the sea move speed

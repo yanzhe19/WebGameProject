@@ -10,6 +10,7 @@ module objects {
         height: number;
         timerStart: number;
         state: string;
+        player;
 
         //the constructor of player class
         constructor() {
@@ -28,6 +29,7 @@ module objects {
 
             onkeydown = this.keyDownEvent;
             //this.addEventListener("key down", this.handleClick);
+            this.player = this;
         }
 
         //event
@@ -36,8 +38,12 @@ module objects {
             var e = event.keyCode;
             switch (e) {
                 case 87:
-                    console.log("jump ... " + event);
-                    this.jump();
+                    //console.log("jump ... " + event);
+                    player.jump();
+                    //this.timerStart = Date.now();
+                    //this.state = "jump";
+                    //player.gotoAndPlay(this.state);
+                    console.log("jump started");
                     break;
             }
         }
@@ -51,22 +57,27 @@ module objects {
                 case "jump":
                     //jump animation
                     console.log(this.y);
-                    this.y = constants.GROUND_LEVEL - Math.sin(Date.now() - this.timerStart);
+                    this.y = constants.GROUND_LEVEL - (Math.sin((Date.now() - this.timerStart) * 0.005) * 100);
                     console.log(this.y);
-                    if (this.y > constants.GROUND_LEVEL) {
-                        this.land;
-                        this.y = constants.GROUND_LEVEL;
+                    if (this.y > constants.GROUND_LEVEL + 15) {
+                        this.land();
+                        this.y = constants.GROUND_LEVEL + 15;
                     }
                     break;
                 case "land":
                     //land animation
+                    if (Date.now() - this.timerStart >= 250) {
+                        this.y = constants.GROUND_LEVEL;
+                        this.idle();
+                    }
                     break;
             }
         }
 
         public land() {
+            this.timerStart = Date.now();
             this.state = "land";
-            this.gotoAndPlay(this.state);
+            player.gotoAndPlay(this.state);
         }
 
         public idle() {
@@ -84,10 +95,15 @@ module objects {
             this.gotoAndPlay(this.state);
         }
 
-        jump() {
-            this.state = "jump";
+    //jump = new function () {
+    //    this.timerStart = Date.now();
+    //    this.state = "jump";
+    //    this.gotoAndPlay(this.state);
+    //};
+        public jump() {
             this.timerStart = Date.now();
-            this.gotoAndPlay(this.state);
+            this.state = "jump";
+            player.gotoAndPlay(this.state);
         }
     }
 }

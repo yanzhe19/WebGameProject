@@ -41,7 +41,7 @@ var managers;
             },
             "jump": {
                 "frames": [11],
-                "speed": 0.5
+                "speed": 0.05
             },
             "land": {
                 "frames": [12]

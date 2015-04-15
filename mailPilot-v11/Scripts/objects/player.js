@@ -15,32 +15,73 @@ var objects;
         //the constructor of player class
         function Player() {
             _super.call(this, managers.PlayerAssets.playerAtlas);
-            this.idleFrameRate = 100;
-            this.idleMaxFrame = 2;
-            this.walkingFrameRate = 100;
-            this.movingMaxFrame = 3;
 
-            this.state = 0;
-            this.gotoAndPlay("idle");
+            this.state = "idle";
+            this.gotoAndPlay(this.state);
             this.width = this.getBounds().width;
             this.height = this.getBounds().height;
-            this.timeStart = Date.now();
-            this.currentFrame = 0;
 
             this.regX = this.width * 0.5;
             this.regY = this.height * 0.5;
 
             this.y = constants.GROUND_LEVEL;
             this.x = constants.GROUND_LEVEL * 0.5;
+
+            onkeydown = this.keyDownEvent;
+            //this.addEventListener("key down", this.handleClick);
         }
+        //event
+        Player.prototype.keyDownEvent = function (event) {
+            switch (event.charCode) {
+                case 18:
+                    console.log("jump ... " + event);
+                    this.jump();
+                    break;
+            }
+        };
+
         //Public methods
         Player.prototype.update = function () {
             switch (this.state) {
-                case 0:
+                case "idle":
                     break;
-                case 1:
+                case "jump":
+                    //jump animation
+                    this.y = constants.GROUND_LEVEL + Math.sin(Date.now() - this.timerStart);
+                    if (this.y > constants.GROUND_LEVEL) {
+                        this.land();
+                        this.y = constants.GROUND_LEVEL;
+                    }
+                    break;
+                case "land":
                     break;
             }
+        };
+
+        Player.prototype.land = function () {
+            this.state = "land";
+            this.gotoAndPlay(this.state);
+        };
+
+        Player.prototype.idle = function () {
+            this.state = "idle";
+            this.gotoAndPlay(this.state);
+        };
+
+        Player.prototype.walk = function () {
+            this.state = "walk";
+            this.gotoAndPlay(this.state);
+        };
+
+        Player.prototype.run = function () {
+            this.state = "run";
+            this.gotoAndPlay(this.state);
+            this.timerStart = Date.now();
+        };
+
+        Player.prototype.jump = function () {
+            this.state = "jump";
+            this.gotoAndPlay(this.state);
         };
         return Player;
     })(createjs.Sprite);

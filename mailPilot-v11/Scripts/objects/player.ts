@@ -8,48 +8,82 @@ module objects {
         //define propereties of player
         width: number;
         height: number;
-        state: number;
-        elapsedTime: number;
-        timeStart: number;
-        currentFrame: number;
-        idleFrameRate: number = 100;
-        idleMaxFrame: number = 2;
-        walkingFrameRate: number = 100;
-        movingMaxFrame: number = 3;
+        timerStart: number;
+        private state: string;
 
         //the constructor of player class
         constructor() {
             super(managers.PlayerAssets.playerAtlas);
 
-            this.state = 0;
-            this.gotoAndPlay("idle");
+            this.state = "idle";
+            this.gotoAndPlay(this.state);
             this.width = this.getBounds().width;
             this.height = this.getBounds().height;
-            this.timeStart = Date.now();
-            this.currentFrame = 0;
 
             this.regX = this.width * 0.5;
             this.regY = this.height * 0.5;
 
             this.y = constants.GROUND_LEVEL;
             this.x = constants.GROUND_LEVEL * 0.5;
+
+            onkeydown = this.keyDownEvent;
+            //this.addEventListener("key down", this.handleClick);
+        }
+
+        //event
+        public keyDownEvent(event: KeyboardEvent) {
+            switch (event.charCode) {
+                case 18:
+                    console.log("jump ... " + event);
+                    this.jump();
+                    break;
+            }
         }
 
         //Public methods
         public update() {
             switch (this.state) {
-                case 0:
+                case "idle":
                     //Idle animation
-                    //this.gotoAndPlay("idle");
                     break;
-                case 1:
-                    //moving animation (walking)
+                case "jump":
+                    //jump animation
+                    this.y = constants.GROUND_LEVEL + Math.sin(Date.now() - this.timerStart);
+                    if (this.y > constants.GROUND_LEVEL) {
+                        this.land();
+                        this.y = constants.GROUND_LEVEL;
+                    }
+                    break;
+                case "land":
+                    //land animation
                     break;
             }
         }
 
-        //public idle() {
-        //    this.state = 0; 
-        //}
+        public land() {
+            this.state = "land";
+            this.gotoAndPlay(this.state);
+        }
+
+        public idle() {
+            this.state = "idle"; 
+            this.gotoAndPlay(this.state);
+        }
+
+        public walk() {
+            this.state = "walk";
+            this.gotoAndPlay(this.state);
+        }
+
+        public run() {
+            this.state = "run";
+            this.gotoAndPlay(this.state);
+            this.timerStart = Date.now();
+        }
+
+        public jump() {
+            this.state = "jump";
+            this.gotoAndPlay(this.state);
+        }
     }
 }

@@ -6,6 +6,7 @@
 /// <reference path="../objects/submarine.ts" />
 /// <reference path="../objects/button.ts" />
 /// <reference path="../objects/label.ts" />
+/// <reference path="../objects/player.ts" />
 
 /*Source  file  name: menu.ts, Author's  name: Zhe Yan (300706310),  Last  Modified  by: Zhe Yan,  
 Date  last  Modified: 2015_3_18,  Program description： This file is the menu state file, it controls and create the menus state,
@@ -40,6 +41,7 @@ module states {
     export function menuState() {
         sea.update();
         fish.update();
+        player.update();
     }
 
     //create the menu state scene
@@ -53,6 +55,7 @@ module states {
         // Instantiate Game Objects
         sea = new objects.Sea(stage, game);
         fish = new objects.Fish(stage, game);
+        player = new objects.Player();
 
         // Show Cursor
         stage.cursor = "default";
@@ -70,6 +73,10 @@ module states {
         playButton = new objects.Button(stage.canvas.width / 2, 300, "btnPlay");
         game.addChild(playButton);
         playButton.addEventListener("click", playButtonClicked);
+
+        //Display idle player object
+        //player.idle();
+        game.addChild(player);
 
         //add game container to the stage
         stage.addChild(game);

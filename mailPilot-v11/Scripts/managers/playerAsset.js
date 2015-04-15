@@ -16,9 +16,9 @@ var managers;
             [54, 0, 54, 72],
             [108, 0, 54, 72],
             [162, 0, 54, 72],
-            [0, 80, 54, 72],
-            [54, 80, 54, 72],
-            [108, 80, 54, 72],
+            [0, 79, 54, 72],
+            [57, 80, 54, 72],
+            [110, 80, 54, 72],
             [0, 170, 54, 72],
             [54, 170, 54, 72],
             [108, 170, 54, 72],
@@ -27,19 +27,19 @@ var managers;
             [480, 13, 68, 62]
         ],
         "animations": {
-            "moving 0": [0],
-            "moving 1": [1],
-            "moving 2": [2],
-            "moving 3": [3],
-            "idle 0": [4],
-            "idle 1": [5],
-            "idle 2": [6],
-            "battle ready 0": [7],
-            "battle ready 1": [8],
-            "battle ready 2": [9],
-            "battle ready 3": [10],
-            "jump": [11],
-            "land": [12]
+            "moving": {
+                "frames": [0, 1, 2, 3]
+            },
+            "idle": {
+                "frames": [4, 5, 6, 5],
+                "speed": 0.05
+            },
+            "battle ready 0": {
+                "frames": [7, 8, 9, 10]
+            },
+            "jump": {
+                "frames": [11, 12]
+            }
         }
     };
 
@@ -61,4 +61,4 @@ var managers;
     })();
     managers.PlayerAssets = PlayerAssets;
 })(managers || (managers = {}));
-//# sourceMappingURL=playerAsset.js.map
+//# sourceMappingURL=playerasset.js.map

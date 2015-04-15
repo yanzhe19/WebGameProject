@@ -13,12 +13,16 @@ module objects {
         timeStart: number;
         currentFrame: number;
         idleFrameRate: number = 100;
+        idleMaxFrame: number = 2;
+        walkingFrameRate: number = 100;
+        movingMaxFrame: number = 3;
 
         //the constructor of player class
         constructor() {
-            super(managers.PlayerAssets.playerAtlas, "idle 0");
+            super(managers.PlayerAssets.playerAtlas);
 
             this.state = 0;
+            this.gotoAndPlay("idle");
             this.width = this.getBounds().width;
             this.height = this.getBounds().height;
             this.timeStart = Date.now();
@@ -26,26 +30,26 @@ module objects {
 
             this.regX = this.width * 0.5;
             this.regY = this.height * 0.5;
+
+            this.y = constants.GROUND_LEVEL;
+            this.x = constants.GROUND_LEVEL * 0.5;
         }
 
         //Public methods
         public update() {
-            this.elapsedTime = Date.now() - this.timeStart;
             switch (this.state) {
                 case 0:
                     //Idle animation
-                    if (this.elapsedTime >= this.idleFrameRate) {
-                        this.currentFrame++;
-                        if (this.currentFrame > 2) {
-                            this.currentFrame = 0;
-                        }
-                        this.gotoAndStop("idle " + this.currentFrame.toString());
-                    }
+                    //this.gotoAndPlay("idle");
                     break;
                 case 1:
-                    //moving animation
+                    //moving animation (walking)
                     break;
             }
         }
+
+        //public idle() {
+        //    this.state = 0; 
+        //}
     }
 }

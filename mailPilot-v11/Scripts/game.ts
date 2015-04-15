@@ -1,4 +1,5 @@
 ﻿/// <reference path="constants.ts" />
+/// <reference path="managers/playerasset.ts" />
 /// <reference path="managers/asset.ts" />
 /// <reference path="objects/submarine.ts" />
 /// <reference path="objects/smallFish.ts" />
@@ -17,6 +18,7 @@
 /// <reference path="states/menu.ts" />
 /// <reference path="states/instruction.ts" />
 /// <reference path="states/gameover.ts" />
+/// <reference path="objects/player.ts" />
 
 // Big Fish Version 2.0
 /*Source  file  name: game.ts, Author's  name: Zhe Yan (300706310),  Last  Modified  by: Zhe Yan,  
@@ -31,6 +33,7 @@ var game: createjs.Container;
 //game variables
 var sea: objects.Sea;
 var fish: objects.Fish;
+var player: objects.Player;
 //var smallFish: objects.SmallFish;
 var smallFishs = [];
 var submarines = []; // submarine array;
@@ -60,9 +63,11 @@ var currentStateFunction;
 
 // Preload function - Loads Assets and initializes game;
 function preload(): void {
+    managers.PlayerAssets.init();
     managers.Assets.init();
     //after assets loaded, invoke init function
     managers.Assets.loader.addEventListener("complete", init);
+    managers.PlayerAssets.loader.addEventListener("complete", init);
 }
 
 // init called after Assets have been loaded.

@@ -1,4 +1,4 @@
-﻿/// <reference path="../managers/playerasset.ts" />
+/// <reference path="../managers/playerasset.ts" />
 // player Class
 /*Source  file  name: player.ts, Author's  name: Andrew Mackle (300603655),  Last  Modified  by: Andrew Mackle,
 Date  last  Modified: 2015_04_14,  Program description： This is to crate the player object for the player to controll*/
@@ -19,17 +19,14 @@ var objects;
             this.idleMaxFrame = 2;
             this.walkingFrameRate = 100;
             this.movingMaxFrame = 3;
-
             this.state = 0;
             this.gotoAndPlay("idle");
             this.width = this.getBounds().width;
             this.height = this.getBounds().height;
             this.timeStart = Date.now();
             this.currentFrame = 0;
-
             this.regX = this.width * 0.5;
             this.regY = this.height * 0.5;
-
             this.y = constants.GROUND_LEVEL;
             this.x = constants.GROUND_LEVEL * 0.5;
         }

@@ -13,7 +13,7 @@ var constants;
     constants.LEVEL_THREE_STATE = 5;
     // Game Constants
     constants.BACKGROUND_MOVING_SPEED = 3;
-    constants.GROUND_LEVEL = 300; //temporary set height of ground level
+    constants.GROUND_LEVEL = 327; //temporary set height of ground level
     constants.GHOST_MOVING_SPEED = 6; //the speed of ghost
     constants.UFO_MOVING_SPEED = 1.5; //the speed of UFO
     constants.FIREBSLL_DROPPING_SPEED = 3; //the speed of fire ball dropping

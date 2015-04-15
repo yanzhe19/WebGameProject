@@ -12,7 +12,7 @@ var objects;
             this.stage = stage;
             this.game = game;
             //get fence image from sprite sheet
-            this.image = new createjs.Sprite(managers.Assets.projectAtlas, "fence");
+            this.image = new createjs.Sprite(managers.Assets.projectAtlas, "stone");
             this.width = this.image.getBounds().width;
             this.height = this.image.getBounds().height;
             this.image.regX = this.width / 2;

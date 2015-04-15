@@ -40,17 +40,17 @@ var managers;
     var projectGameSpriteSheetData = {
         "images": ["assets/images/obstacle.png"],
         "frames": [
-            [176, 66, 50, 50],
-            [176, 2, 60, 62],
+            [176, 79, 50, 50],
             [2, 59, 30, 38],
-            [104, 2, 70, 75],
+            [176, 2, 70, 75],
+            [104, 2, 70, 88],
             [2, 2, 100, 55]
         ],
         "animations": {
             "crystal": [0],
-            "fence": [1],
-            "fireball": [2],
-            "ghost": [3],
+            "fireball": [1],
+            "ghost": [2],
+            "stone": [3],
             "ufo": [4]
         }
     };

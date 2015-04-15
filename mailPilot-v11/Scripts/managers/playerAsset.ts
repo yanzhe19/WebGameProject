@@ -30,18 +30,24 @@ module managers {
         ],
         "animations": {
 
-            "moving": {
-                "frames": [0, 1, 2, 3]
+            "run": {
+                "frames": [0, 1, 2, 3],
+                "speed": 0.05
             },
             "idle": {
                 "frames": [4, 5, 6, 5],
                 "speed": 0.05
             },
-            "battle ready 0": {
-                "frames": [7, 8, 9, 10]
+            "battle ready": {
+                "frames": [7, 8, 9, 10],
+                "speed": 0.05
             },
             "jump": {
-                "frames": [11, 12]
+                "frames": [11],
+                "speed": 0.5
+            },
+            "land": {
+                "frames": [12]
             }
         }
     }

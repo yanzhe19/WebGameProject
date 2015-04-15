@@ -19,13 +19,12 @@ module objects {
             this.stage = stage;
             this.game = game;
             this.image = new createjs.Bitmap(managers.Assets.loader.getResult("sea"));
-            this.width = this.image.getBounds().width;
-            this.height = this.image.getBounds().height;
+            //this.width = this.image.getBounds().width;
+            //this.height = this.image.getBounds().height;
             this.reset();
 
             //set the sea move speed
             this.dx = constants.BACKGROUND_MOVING_SPEED;
-            //yughuhi
 
             //add sea to game container
             game.addChild(this.image);
@@ -33,16 +32,17 @@ module objects {
 
         //update sea background
         update() {
-            this.image.x += this.dx;
+            this.image.x -= this.dx;
+            console.log(this.image.x);
             //if sea move to the end, resset its position
-            if (this.image.x >= 0) {
+            if (this.image.x <= -500) {
                 this.reset();
             }
         }
 
         //reset sea background's x position to double of canva's width
         reset() {
-            this.image.x = -638;
+            this.image.x = 0;
         }
 
         //destroy sea object

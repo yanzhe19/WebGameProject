@@ -84,7 +84,7 @@ module objects {
             this.gotoAndPlay(this.state);
         }
 
-        jump() {
+        public jump() {
             this.state = "jump";
             this.timerStart = Date.now();
             this.gotoAndPlay(this.state);

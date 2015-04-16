@@ -3,7 +3,6 @@
 /// <reference path="../objects/crystal.ts" />
 /// <reference path="../objects/label.ts" />
 /// <reference path="../objects/sea.ts" />
-/// <reference path="../objects/fish.ts" />
 /// <reference path="../objects/scoreboard.ts" />
 /// <reference path="../managers/collision.ts" />
 
@@ -20,9 +19,6 @@ module states {
         // +++++++++++++++++++++++++++++Update play state scene+++++++++++++++++++++++++++++++++++
         sea.update();
         player.update();
-
-        //updates for player object
-        fish.update();
 
         //update all fences
         for (var count = 0; count < fences.length; count++) {
@@ -55,7 +51,6 @@ module states {
         if (scoreboard.lives <= 0) {
             //remove everything from the stage first
             stage.removeChild(game);
-            fish.destroy();
             game.removeAllChildren();
             game.removeAllEventListeners();
             //create the other state screen --> game over state screen
@@ -64,7 +59,6 @@ module states {
         } else if (scoreboard.score >= 2000) {//go to level three state when got 2000 points
             //remove everything from the stage first
             stage.removeChild(game);
-            fish.destroy();
             game.removeAllChildren();
             game.removeAllEventListeners();
             //create the other state screen --> LEVEL Three state screen
@@ -80,7 +74,6 @@ module states {
 
         // Instantiate Game Objects
         sea = new objects.Sea(stage, game);
-        fish = new objects.Fish(stage, game);
         player = new objects.Player(state);
 
         // Show Cursor

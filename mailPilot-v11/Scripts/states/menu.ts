@@ -1,9 +1,6 @@
 ﻿/// <reference path="../constants.ts" />
 /// <reference path="../objects/scoreboard.ts" />
-/// <reference path="../objects/fish.ts" />
 /// <reference path="../objects/sea.ts" />
-/// <reference path="../objects/smallFish.ts" />
-/// <reference path="../objects/submarine.ts" />
 /// <reference path="../objects/button.ts" />
 /// <reference path="../objects/label.ts" />
 /// <reference path="../objects/player.ts" />
@@ -16,21 +13,18 @@ Revision  History : Version 2.0*/
 module states {
     //event listener when play button of menu screen clicked
     export function playButtonClicked(event: MouseEvent) {
-        fish.destroy();
-        game.removeAllChildren();
-        game.removeAllEventListeners();
         //remove everything from the stage frist
         stage.removeChild(game);
-
+        game.removeAllChildren();
+        game.removeAllEventListeners();
         //create another state screen --> play state screen
-        currentState = constants.PLAY_STATE;//place to set the initial start level, current is the play state (level one)
+        currentState = constants.LEVEL_TWO_STATE;//place to set the initial start level, current is the play state (level one)
         changeState(currentState);
     }
 
     //event listener when instruction button of menu screen clicked
     export function instructionBtnClicked(event: MouseEvent) {
         stage.removeChild(game);
-        fish.destroy();
         game.removeAllChildren();
         game.removeAllEventListeners();
         //go to the instruction state and screen changed to insturction state
@@ -41,12 +35,11 @@ module states {
     //menu state function, updates for menu states
     export function menuState() {
         sea.update();
-        fish.update();
         player.update();
     }
 
     //create the menu state scene
-    export function menu( state ) {
+    export function menu(state) {
         //label show the name of game
         var gameNameLabel: objects.Label;
 
@@ -55,14 +48,13 @@ module states {
 
         // Instantiate Game Objects
         sea = new objects.Sea(stage, game);
-        fish = new objects.Fish(stage, game);
-        player = new objects.Player( state );
+        player = new objects.Player(state);
 
         // Show Cursor
         stage.cursor = "default";
 
         // Display Game Over
-        gameNameLabel = new objects.Label(stage.canvas.width / 2, 40, "Big Fish!");
+        gameNameLabel = new objects.Label(stage.canvas.width / 2, 40, "Dtzz Game!");
         game.addChild(gameNameLabel);
 
         // Display Instruction Button

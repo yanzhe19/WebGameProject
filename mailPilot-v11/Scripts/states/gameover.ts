@@ -1,10 +1,8 @@
 ﻿/// <reference path="../constants.ts" />
 /// <reference path="../objects/button.ts" />
 /// <reference path="../objects/submarine.ts" />
-/// <reference path="../objects/smallFish.ts" />
 /// <reference path="../objects/label.ts" />
 /// <reference path="../objects/sea.ts" />
-/// <reference path="../objects/fish.ts" />
 /// <reference path="../objects/scoreboard.ts" />
 
 //this is the game over state function, sea background update for game over state
@@ -17,7 +15,6 @@ module states {
     export function gameOverState() {
         //update the sea background
         sea.update();
-        player.update();
     }
 
     // Restart Game when Try Again Button is clicked
@@ -52,7 +49,6 @@ module states {
 
         // Instantiate Game Objects
         sea = new objects.Sea(stage, game);
-        player = new objects.Player(state);
 
         // Show Cursor
         stage.cursor = "default";
@@ -78,8 +74,6 @@ module states {
         backToMenuBtn = new objects.Button(stage.canvas.width / 4, 300, "btnBackMenu");
         game.addChild(backToMenuBtn);
         backToMenuBtn.addEventListener("click", backToMenuClicked);
-
-        player = new objects.Player(state);
 
         //add the game container to stage
         stage.addChild(game);

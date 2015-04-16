@@ -7,7 +7,7 @@ module states {
     //update the instruction state game background
     export function instructionState() {
         sea.update();
-        player.update();
+        //player.update();
     }
 
     //scene variables
@@ -71,8 +71,8 @@ module states {
         game.addChild(goBackBtn);
         goBackBtn.addEventListener("click", goBackBtnClicked);
 
-        player = new objects.Player(state);
-        game.addChild(player);
+        //player = new objects.Player(state);
+        //game.addChild(player);
 
         //add game container to stage
         stage.addChild(game);

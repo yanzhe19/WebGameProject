@@ -3,7 +3,6 @@
 /// <reference path="../objects/crystal.ts" />
 /// <reference path="../objects/label.ts" />
 /// <reference path="../objects/sea.ts" />
-/// <reference path="../objects/fish.ts" />
 /// <reference path="../objects/scoreboard.ts" />
 /// <reference path="../objects/player.ts" />
 /// <reference path="../managers/collision.ts" />
@@ -20,7 +19,6 @@ module states {
     export function playState() {
         // +++++++++++++++++++++++++++++Update play state scene+++++++++++++++++++++++++++++++++++
         sea.update();
-        fish.update();
         player.update();
 
         //update all fences
@@ -49,7 +47,6 @@ module states {
         if (scoreboard.lives <= 0) {
             //remove everything from the stage first
             stage.removeChild(game);
-            fish.destroy();
             game.removeAllChildren();
             game.removeAllEventListeners();
             //create the other state screen --> game over state screen
@@ -58,7 +55,6 @@ module states {
         } else if (scoreboard.score >= 1000) {//go to level two state when got 1000 points
             //remove everything from the stage first
             stage.removeChild(game);
-            fish.destroy();
             game.removeAllChildren();
             game.removeAllEventListeners();
             //create the other state screen --> LEVEL TWO state screen
@@ -74,7 +70,6 @@ module states {
 
         // Instantiate Game Objects
         sea = new objects.Sea(stage, game);
-        fish = new objects.Fish(stage, game);
         player = new objects.Player( state );
 
         // Show Cursor
@@ -104,7 +99,7 @@ module states {
         setInterval(
             function () {
                 var randomSelection = Math.floor(Math.random() * 2) + 1;
-                console.log(randomSelection);
+                //console.log(randomSelection);
                 switch (randomSelection) {
 
                     case 1:

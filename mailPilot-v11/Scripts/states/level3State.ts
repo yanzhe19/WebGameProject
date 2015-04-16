@@ -4,7 +4,6 @@
 /// <reference path="../objects/label.ts" />
 /// <reference path="../objects/ufo.ts" />
 /// <reference path="../objects/sea.ts" />
-/// <reference path="../objects/fish.ts" />
 /// <reference path="../objects/scoreboard.ts" />
 /// <reference path="../managers/collision.ts" />
 
@@ -22,7 +21,6 @@ module states {
         sea.update();
 
         //updates for player object
-        fish.update();
         player.update();
 
         //update all fences
@@ -58,7 +56,6 @@ module states {
         if (scoreboard.lives <= 0) {
             //remove everything from the stage first
             stage.removeChild(game);
-            fish.destroy();
             game.removeAllChildren();
             game.removeAllEventListeners();
             //create the other state screen --> game over state screen
@@ -74,7 +71,6 @@ module states {
 
         // Instantiate Game Objects
         sea = new objects.Sea(stage, game);
-        fish = new objects.Fish(stage, game);
         player = new objects.Player(state);
 
         // Show Cursor

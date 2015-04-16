@@ -60,7 +60,7 @@ module objects {
                 var randomSelection = Math.floor(Math.random() * 2) + 1;
                 switch (randomSelection) {
                     case 1:
-                        if (fireballs.length < 4) {
+                        if (fireballs.length < 1) {
                             fireballs.push(new objects.Fireball(this.stage, this.game, ufo.image.x, ufo.image.y));
                         }
                         break;               

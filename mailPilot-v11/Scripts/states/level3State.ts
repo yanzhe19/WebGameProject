@@ -40,7 +40,7 @@ module states {
         }
 
         //update all object
-            ufo.update();
+        ufo.update();
 
         //check collision of objects
         //+++ comment temporary
@@ -48,6 +48,9 @@ module states {
 
         //update the score board
         scoreboard.update();
+
+        //level label update
+        levelLabel.update();
         // +++++++++++++++++++++++++++++End of Update play state scene+++++++++++++++++++++++++++++++++++
 
         //check if player dead, if dead, go to game over state
@@ -84,6 +87,9 @@ module states {
         // Display Scoreboard
         scoreboard = new objects.Scoreboard(stage, game);
 
+        //label shows the current level
+        levelLabel = new objects.LevelLabel("Level Three");
+
         // Instantiate Collision Manager
         //+++ comment temporary
         //collision = new managers.Collision(fish, smallFishs, submarines, scoreboard);
@@ -100,15 +106,19 @@ module states {
                 console.log(randomSelection);
                 switch (randomSelection) {
                     case 1:
-                        level3AddCrystal();
+                        if (crystals.length < 3) {
+                            level3AddCrystal();
+                        } else break;
                         break;
                     case 2:
                         if (fences.length < 3) {
                             level3AddFence();
-                        } else level3AddCrystal();
+                        } else break;
                         break;
                     case 3:
-                        level3AddGhost();
+                        if (ghosts.length < 2) {
+                            level3AddGhost();
+                        } else break;
                         break;
                     default: level3AddCrystal();
                 }

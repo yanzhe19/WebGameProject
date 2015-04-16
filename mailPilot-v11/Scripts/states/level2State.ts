@@ -44,6 +44,10 @@ module states {
 
         //update the score board
         scoreboard.update();
+
+        //level label update
+        levelLabel.update();
+
         // +++++++++++++++++++++++++++++End of Update play state scene+++++++++++++++++++++++++++++++++++
 
         //check if player dead, if dead, go to game over state
@@ -86,6 +90,9 @@ module states {
         // Display Scoreboard
         scoreboard = new objects.Scoreboard(stage, game);
 
+        //label shows the current level
+        levelLabel = new objects.LevelLabel("Level Two");
+
         // Instantiate Collision Manager
         //+++ comment temporary
         //collision = new managers.Collision(fish, smallFishs, submarines, scoreboard);
@@ -102,17 +109,21 @@ module states {
                 console.log(randomSelection);
                 switch (randomSelection) {
                     case 1:
-                        level2AddCrystal();
+                        if (crystals.length < 3) {//limit the number of crystal
+                            level2AddCrystal();
+                        } else break;
                         break;
                     case 2:
-                        if (fences.length < 3) {
+                        if (fences.length < 3) {//limit the number of fence
                             level2AddFence();
-                        } else level2AddCrystal();
+                        } else break;
                         break;
                     case 3:
-                        level2AddGhost();
+                        if (ghosts.length < 2) {//limit the number of ghost
+                            level2AddGhost();
+                        } else break;
                         break;
-                    default: level2AddCrystal();
+                    default: break;
                 }
             },
             (Math.floor(Math.random() * 4 + 1) * 300 + 2000) //set interval to exetution

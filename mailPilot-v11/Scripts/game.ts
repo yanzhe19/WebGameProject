@@ -18,6 +18,7 @@
 /// <reference path="states/menu.ts" />
 /// <reference path="states/instruction.ts" />
 /// <reference path="states/gameover.ts" />
+/// <reference path="objects/levellabel.ts" />
 /// <reference path="objects/player.ts" />
 
 // Big Fish Version 2.0
@@ -42,6 +43,7 @@ var ufo;//ufo object;
 var fireballs = [];//fireball array;
 var fences = [];//fences array;
 var crystals = [];//crystals array;
+var levelLabel: objects.LevelLabel;//this is the text of displaying levels
 
 var scoreboard: objects.Scoreboard;
 
@@ -107,7 +109,7 @@ function changeState(state: number): void {
             states.menu();
             break;
 
-        case constants.PLAY_STATE:
+        case constants.PLAY_STATE://this is the first level
             currentStateFunction = states.playState;
             // instantiate play screen
             states.play();

@@ -36,6 +36,8 @@ var states;
         //collision.update();
         //update the score board
         scoreboard.update();
+        //level label update
+        levelLabel.update();
         // +++++++++++++++++++++++++++++End of Update play state scene+++++++++++++++++++++++++++++++++++
         //check if player dead, if dead, go to game over state
         if (scoreboard.lives <= 0) {
@@ -65,6 +67,8 @@ var states;
         ufo = new objects.Ufo(stage, game); // change image later
         // Display Scoreboard
         scoreboard = new objects.Scoreboard(stage, game);
+        //label shows the current level
+        levelLabel = new objects.LevelLabel("Level Three");
         // Instantiate Collision Manager
         //+++ comment temporary
         //collision = new managers.Collision(fish, smallFishs, submarines, scoreboard);
@@ -79,17 +83,25 @@ var states;
             console.log(randomSelection);
             switch (randomSelection) {
                 case 1:
-                    level3AddCrystal();
+                    if (crystals.length < 3) {
+                        level3AddCrystal();
+                    }
+                    else
+                        break;
                     break;
                 case 2:
                     if (fences.length < 3) {
                         level3AddFence();
                     }
                     else
-                        level3AddCrystal();
+                        break;
                     break;
                 case 3:
-                    level3AddGhost();
+                    if (ghosts.length < 2) {
+                        level3AddGhost();
+                    }
+                    else
+                        break;
                     break;
                 default: level3AddCrystal();
             }

@@ -23,7 +23,7 @@ var objects;
         //update sea background
         Sea.prototype.update = function () {
             this.image.x -= this.dx;
-            console.log(this.image.x);
+            //console.log(this.image.x);
             //if sea move to the end, resset its position
             if (this.image.x <= -500) {
                 this.reset();

@@ -15,11 +15,11 @@ var states;
 (function (states) {
     //event listener when play button of menu screen clicked
     function playButtonClicked(event) {
-        //remove everything from the stage frist
-        stage.removeChild(game);
         fish.destroy();
         game.removeAllChildren();
         game.removeAllEventListeners();
+        //remove everything from the stage frist
+        stage.removeChild(game);
         //create another state screen --> play state screen
         currentState = constants.PLAY_STATE; //place to set the initial start level, current is the play state (level one)
         changeState(currentState);

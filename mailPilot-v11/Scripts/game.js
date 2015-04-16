@@ -18,6 +18,7 @@
 /// <reference path="states/menu.ts" />
 /// <reference path="states/instruction.ts" />
 /// <reference path="states/gameover.ts" />
+/// <reference path="objects/levellabel.ts" />
 /// <reference path="objects/player.ts" />
 // Big Fish Version 2.0
 /*Source  file  name: game.ts, Author's  name: Zhe Yan (300706310),  Last  Modified  by: Zhe Yan,
@@ -39,6 +40,7 @@ var ufo; //ufo object;
 var fireballs = []; //fireball array;
 var fences = []; //fences array;
 var crystals = []; //crystals array;
+var levelLabel; //this is the text of displaying levels
 var scoreboard;
 //collision variables
 var collision;

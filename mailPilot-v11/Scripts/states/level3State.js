@@ -94,14 +94,14 @@ var states;
                         break;
                     break;
                 case 2:
-                    if (fences.length < 3) {
+                    if (fences.length < 0) {
                         level3AddFence();
                     }
                     else
                         break;
                     break;
                 case 3:
-                    if (ghosts.length < 2) {
+                    if (ghosts.length < 1) {
                         level3AddGhost();
                     }
                     else

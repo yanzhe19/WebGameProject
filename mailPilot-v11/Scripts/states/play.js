@@ -65,6 +65,8 @@ var states;
         //set all fence and crystal to empty,clean the object
         fences = [];
         crystals = [];
+        ghosts = [];
+        fireballs = [];
         //add stone, fence and crystal in the scene
         addObj();
         // Display Scoreboard

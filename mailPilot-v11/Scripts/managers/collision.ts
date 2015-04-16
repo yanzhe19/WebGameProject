@@ -107,19 +107,19 @@ module managers {
         // Utility Function to Check Collisions
         update() {
             //check collision for crystal and player avatar
-            for (var count = 0; count < crystals.length; count++) {
+            for (var count = 0; count < this.crystals.length; count++) {
                 this.playerAndCrystal(this.crystals[count]);
             }
             //check collision for fence and player avatar
-            for (var count = 0; count < fences.length; count++) {
+            for (var count = 0; count < this.fences.length; count++) {
                 this.playerAndFence(this.fences[count]);
             }
             //check collision for ghost and player avatar
-            for (var count = 0; count < ghosts.length; count++) {
+            for (var count = 0; count < this.ghosts.length; count++) {
                 this.playerAndGhost(this.ghosts[count]);
             }
             //check collision for fireball and player avatar
-            for (var count = 0; count < fireballs.length; count++) {
+            for (var count = 0; count < this.fireballs.length; count++) {
                 this.playerAndFireball(this.fireballs[count]);
             }
         }

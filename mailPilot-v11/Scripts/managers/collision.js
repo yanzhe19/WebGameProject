@@ -92,16 +92,16 @@ var managers;
         };
         // Utility Function to Check Collisions
         Collision.prototype.update = function () {
-            for (var count = 0; count < crystals.length; count++) {
+            for (var count = 0; count < this.crystals.length; count++) {
                 this.playerAndCrystal(this.crystals[count]);
             }
-            for (var count = 0; count < fences.length; count++) {
+            for (var count = 0; count < this.fences.length; count++) {
                 this.playerAndFence(this.fences[count]);
             }
-            for (var count = 0; count < ghosts.length; count++) {
+            for (var count = 0; count < this.ghosts.length; count++) {
                 this.playerAndGhost(this.ghosts[count]);
             }
-            for (var count = 0; count < fireballs.length; count++) {
+            for (var count = 0; count < this.fireballs.length; count++) {
                 this.playerAndFireball(this.fireballs[count]);
             }
         };

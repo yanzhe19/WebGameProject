@@ -86,7 +86,6 @@ var states;
     function level2AddObj() {
         setInterval(function () {
             var randomSelection = Math.floor(Math.random() * 3) + 1;
-            console.log(randomSelection);
             switch (randomSelection) {
                 case 1:
                     if (crystals.length < 3) {
@@ -96,7 +95,7 @@ var states;
                         break;
                     break;
                 case 2:
-                    if (fences.length < 3) {
+                    if (fences.length < 2) {
                         level2AddFence();
                     }
                     else

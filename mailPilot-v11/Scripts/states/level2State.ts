@@ -108,7 +108,7 @@ module states {
         setInterval(
             function () {
                 var randomSelection = Math.floor(Math.random() * 3) + 1;
-                console.log(randomSelection);
+                //console.log(randomSelection);
                 switch (randomSelection) {
                     case 1:
                         if (crystals.length < 3) {//limit the number of crystal
@@ -116,7 +116,7 @@ module states {
                         } else break;
                         break;
                     case 2:
-                        if (fences.length < 3) {//limit the number of fence
+                        if (fences.length < 2) {//limit the number of fence
                             level2AddFence();
                         } else break;
                         break;

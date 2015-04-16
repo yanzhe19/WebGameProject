@@ -106,37 +106,37 @@ function changeState(state: number): void {
         case constants.MENU_STATE:
             currentStateFunction = states.menuState;
             // instantiate menu screen
-            states.menu();
+            states.menu( state );
             break;
 
         case constants.PLAY_STATE://this is the first level
             currentStateFunction = states.playState;
             // instantiate play screen
-            states.play();
+            states.play( state );
             break;
 
         case constants.GAME_OVER_STATE:
             currentStateFunction = states.gameOverState;
             // instantiate game over screen
-            states.gameOver();
+            states.gameOver( state );
             break;
 
         case constants.INSTRUCTION_STATE:
             currentStateFunction = states.instructionState;
             // instantiate instruction screen
-            states.instructionScene();
+            states.instructionScene( state );
             break;
 
         case constants.LEVEL_TWO_STATE:
             currentStateFunction = states.level2State;
             // instantiate level two screen
-            states.level2Scene();
+            states.level2Scene( state );
             break;
 
         case constants.LEVEL_THREE_STATE:
             currentStateFunction = states.level3State;
             // instantiate level three screen
-            states.level3Scene();
+            states.level3Scene( state );
             break;
     }
 }

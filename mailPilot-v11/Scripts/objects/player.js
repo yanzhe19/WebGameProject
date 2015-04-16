@@ -13,11 +13,35 @@ var objects;
     var Player = (function (_super) {
         __extends(Player, _super);
         //the constructor of player class
-        function Player() {
+        function Player(stateNumber) {
             _super.call(this, managers.PlayerAssets.playerAtlas);
 
-            this.state = "idle";
-            this.gotoAndPlay(this.state);
+            switch (stateNumber) {
+                case constants.MENU_STATE:
+                    this.defaultState = "idle";
+                    break;
+
+                case constants.PLAY_STATE:
+                    this.defaultState = "run";
+                    break;
+
+                case constants.GAME_OVER_STATE:
+                    this.defaultState = "idle";
+                    break;
+
+                case constants.INSTRUCTION_STATE:
+                    this.defaultState = "idle";
+                    break;
+
+                case constants.LEVEL_TWO_STATE:
+                    this.defaultState = "run";
+                    break;
+
+                case constants.LEVEL_THREE_STATE:
+                    this.defaultState = "run";
+                    break;
+            }
+            this.gotoAndPlay(this.defaultState);
             this.width = this.getBounds().width;
             this.height = this.getBounds().height;
 
@@ -58,7 +82,7 @@ var objects;
                 case "jump":
                     //jump animation
                     console.log(this.y);
-                    this.y = constants.GROUND_LEVEL - (Math.sin((Date.now() - this.timerStart) * 0.005) * 100);
+                    this.y = constants.GROUND_LEVEL - (Math.sin((Date.now() - this.timerStart) * 0.0015) * 200);
                     console.log(this.y);
                     if (this.y > constants.GROUND_LEVEL + 15) {
                         this.land();
@@ -69,8 +93,10 @@ var objects;
                     //land animation
                     if (Date.now() - this.timerStart >= 250) {
                         this.y = constants.GROUND_LEVEL;
-                        this.idle();
+                        this.defaultAnimation();
                     }
+                    break;
+                case "run":
                     break;
             }
         };
@@ -99,6 +125,11 @@ var objects;
         Player.prototype.jump = function () {
             this.state = "jump";
             this.timerStart = Date.now();
+            player.gotoAndPlay(this.state);
+        };
+
+        Player.prototype.defaultAnimation = function () {
+            this.state = this.defaultState;
             player.gotoAndPlay(this.state);
         };
         return Player;

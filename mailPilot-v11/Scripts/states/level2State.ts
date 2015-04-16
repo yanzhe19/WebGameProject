@@ -19,6 +19,7 @@ module states {
     export function level2State() {
         // +++++++++++++++++++++++++++++Update play state scene+++++++++++++++++++++++++++++++++++
         sea.update();
+        player.update();
 
         //updates for player object
         fish.update();
@@ -73,13 +74,14 @@ module states {
     }
 
     // play state Function, show the level 2 scene
-    export function level2Scene(): void {
+    export function level2Scene( state ): void {
         // Declare new Game Container
         game = new createjs.Container();
 
         // Instantiate Game Objects
         sea = new objects.Sea(stage, game);
         fish = new objects.Fish(stage, game);
+        player = new objects.Player(state);
 
         // Show Cursor
         stage.cursor = "none";
@@ -96,6 +98,8 @@ module states {
         // Instantiate Collision Manager
         //+++ comment temporary
         //collision = new managers.Collision(fish, smallFishs, submarines, scoreboard);
+
+        game.addChild(player);
 
         //add game container to stage
         stage.addChild(game);

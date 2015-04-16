@@ -10,14 +10,39 @@ module objects {
         height: number;
         timerStart: number;
         state: string;
+        defaultState: string;
         player: Player;
 
         //the constructor of player class
-        constructor() {
+        constructor(stateNumber) {
             super(managers.PlayerAssets.playerAtlas);
 
-            this.state = "idle";
-            this.gotoAndPlay(this.state);
+            switch (stateNumber){
+                case constants.MENU_STATE:
+                    this.defaultState = "idle";
+                    break;
+
+                case constants.PLAY_STATE:
+                    this.defaultState = "run";
+                    break;
+
+                case constants.GAME_OVER_STATE:
+                    this.defaultState = "idle";
+                    break;
+
+                case constants.INSTRUCTION_STATE:
+                    this.defaultState = "idle";
+                    break;
+
+                case constants.LEVEL_TWO_STATE:
+                    this.defaultState = "run";
+                    break;
+
+                case constants.LEVEL_THREE_STATE:
+                    this.defaultState = "run";
+                    break;
+            }
+            this.gotoAndPlay(this.defaultState);
             this.width = this.getBounds().width;
             this.height = this.getBounds().height;
 
@@ -59,7 +84,7 @@ module objects {
                 case "jump":
                     //jump animation
                     console.log(this.y);
-                    this.y = constants.GROUND_LEVEL - (Math.sin((Date.now() - this.timerStart) * 0.005) * 100);
+                    this.y = constants.GROUND_LEVEL - (Math.sin((Date.now() - this.timerStart) * 0.0015) * 200);
                     console.log(this.y);
                     if (this.y > constants.GROUND_LEVEL + 15) {
                         this.land();
@@ -70,8 +95,11 @@ module objects {
                     //land animation
                     if (Date.now() - this.timerStart >= 250) {
                         this.y = constants.GROUND_LEVEL;
-                        this.idle();
+                        this.defaultAnimation();
                     }
+                    break;
+                case "run":
+                    //run animation
                     break;
             }
         }
@@ -100,6 +128,11 @@ module objects {
         public jump() {
             this.state = "jump";
             this.timerStart = Date.now();
+            player.gotoAndPlay(this.state);
+        }
+
+        public defaultAnimation() {
+            this.state = this.defaultState;
             player.gotoAndPlay(this.state);
         }
     }

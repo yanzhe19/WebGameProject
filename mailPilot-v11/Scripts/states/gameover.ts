@@ -17,6 +17,7 @@ module states {
     export function gameOverState() {
         //update the sea background
         sea.update();
+        player.update();
     }
 
     // Restart Game when Try Again Button is clicked
@@ -40,7 +41,7 @@ module states {
     }
 
     // Game Over Scene
-    export function gameOver() {
+    export function gameOver( state ) {
         //labels in game over interface
         var gameOverLabel: objects.Label;
         var finalScoreLabel: objects.Label;
@@ -51,6 +52,7 @@ module states {
 
         // Instantiate Game Objects
         sea = new objects.Sea(stage, game);
+        player = new objects.Player(state);
 
         // Show Cursor
         stage.cursor = "default";
@@ -76,6 +78,8 @@ module states {
         backToMenuBtn = new objects.Button(stage.canvas.width / 4, 300, "btnBackMenu");
         game.addChild(backToMenuBtn);
         backToMenuBtn.addEventListener("click", backToMenuClicked);
+
+        player = new objects.Player(state);
 
         //add the game container to stage
         stage.addChild(game);

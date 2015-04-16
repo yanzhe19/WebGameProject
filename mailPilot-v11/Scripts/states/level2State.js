@@ -1,4 +1,4 @@
-/// <reference path="../objects/fence.ts" />
+﻿/// <reference path="../objects/fence.ts" />
 /// <reference path="../objects/button.ts" />
 /// <reference path="../objects/crystal.ts" />
 /// <reference path="../objects/label.ts" />
@@ -17,24 +17,32 @@ var states;
     function level2State() {
         // +++++++++++++++++++++++++++++Update play state scene+++++++++++++++++++++++++++++++++++
         sea.update();
+        player.update();
+
         //updates for player object
         fish.update();
+
         for (var count = 0; count < fences.length; count++) {
             fences[count].update();
         }
+
         for (var count = 0; count < crystals.length; count++) {
             crystals[count].update();
         }
+
         for (var count = 0; count < ghosts.length; count++) {
             ghosts[count].update();
         }
+
         //check collision of objects
         //+++ comment temporary
         //collision.update();
         //update the score board
         scoreboard.update();
+
         //level label update
         levelLabel.update();
+
         // +++++++++++++++++++++++++++++End of Update play state scene+++++++++++++++++++++++++++++++++++
         //check if player dead, if dead, go to game over state
         if (scoreboard.lives <= 0) {
@@ -43,37 +51,46 @@ var states;
             fish.destroy();
             game.removeAllChildren();
             game.removeAllEventListeners();
+
             //create the other state screen --> game over state screen
             currentState = constants.GAME_OVER_STATE;
             changeState(currentState);
-        }
-        else if (scoreboard.score >= 2000) {
+        } else if (scoreboard.score >= 2000) {
             //remove everything from the stage first
             stage.removeChild(game);
             fish.destroy();
             game.removeAllChildren();
             game.removeAllEventListeners();
+
             //create the other state screen --> LEVEL Three state screen
             currentState = constants.LEVEL_THREE_STATE;
             changeState(currentState);
         }
     }
     states.level2State = level2State;
+
     // play state Function, show the level 2 scene
-    function level2Scene() {
+    function level2Scene(state) {
         // Declare new Game Container
         game = new createjs.Container();
+
         // Instantiate Game Objects
         sea = new objects.Sea(stage, game);
         fish = new objects.Fish(stage, game);
+        player = new objects.Player(state);
+
         // Show Cursor
         stage.cursor = "none";
+
         //add stone, fence, crystal and ghost in the scene
         level2AddObj();
+
         // Display Scoreboard
         scoreboard = new objects.Scoreboard(stage, game);
+
         //label shows the current level
         levelLabel = new objects.LevelLabel("Level Two");
+
         // Instantiate Collision Manager
         //+++ comment temporary
         //collision = new managers.Collision(fish, smallFishs, submarines, scoreboard);
@@ -81,6 +98,7 @@ var states;
         stage.addChild(game);
     }
     states.level2Scene = level2Scene;
+
     // add object to screen Loop
     function level2AddObj() {
         setInterval(function () {
@@ -90,41 +108,40 @@ var states;
                 case 1:
                     if (crystals.length < 3) {
                         level2AddCrystal();
-                    }
-                    else
+                    } else
                         break;
                     break;
                 case 2:
                     if (fences.length < 3) {
                         level2AddFence();
-                    }
-                    else
+                    } else
                         break;
                     break;
                 case 3:
                     if (ghosts.length < 2) {
                         level2AddGhost();
-                    }
-                    else
+                    } else
                         break;
                     break;
-                default: break;
+                default:
+                    break;
             }
         }, (Math.floor(Math.random() * 4 + 1) * 300 + 2000));
     }
     states.level2AddObj = level2AddObj;
+
     function level2AddFence() {
-        //add one fence 
+        //add one fence
         fences.push(new objects.Fence(stage, game));
     }
     states.level2AddFence = level2AddFence;
     function level2AddCrystal() {
-        //add one crystal 
+        //add one crystal
         crystals.push(new objects.Crystal(stage, game));
     }
     states.level2AddCrystal = level2AddCrystal;
     function level2AddGhost() {
-        //add one ghost 
+        //add one ghost
         ghosts.push(new objects.Ghost(stage, game));
     }
     states.level2AddGhost = level2AddGhost;

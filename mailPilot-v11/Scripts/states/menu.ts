@@ -46,7 +46,7 @@ module states {
     }
 
     //create the menu state scene
-    export function menu() {
+    export function menu( state ) {
         //label show the name of game
         var gameNameLabel: objects.Label;
 
@@ -56,7 +56,7 @@ module states {
         // Instantiate Game Objects
         sea = new objects.Sea(stage, game);
         fish = new objects.Fish(stage, game);
-        player = new objects.Player();
+        player = new objects.Player( state );
 
         // Show Cursor
         stage.cursor = "default";

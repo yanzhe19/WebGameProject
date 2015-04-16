@@ -5,6 +5,7 @@
 /// <reference path="../objects/sea.ts" />
 /// <reference path="../objects/fish.ts" />
 /// <reference path="../objects/scoreboard.ts" />
+/// <reference path="../objects/player.ts" />
 /// <reference path="../managers/collision.ts" />
 
 //this is the level one  state for playing game
@@ -20,6 +21,7 @@ module states {
         // +++++++++++++++++++++++++++++Update play state scene+++++++++++++++++++++++++++++++++++
         sea.update();
         fish.update();
+        player.update();
 
         //update all fences
         for (var count = 0; count < fences.length; count++) {
@@ -66,13 +68,14 @@ module states {
     }
 
     // play state Function, show the paly scene
-    export function play(): void {
+    export function play( state ): void {
         // Declare new Game Container
         game = new createjs.Container();
 
         // Instantiate Game Objects
         sea = new objects.Sea(stage, game);
         fish = new objects.Fish(stage, game);
+        player = new objects.Player( state );
 
         // Show Cursor
         stage.cursor = "none";
@@ -89,6 +92,8 @@ module states {
         // Instantiate Collision Manager
         //+++ comment temporary
         //collision = new managers.Collision(fish, smallFishs, submarines, scoreboard);
+
+        game.addChild(player);
 
         //add game container to stage
         stage.addChild(game);

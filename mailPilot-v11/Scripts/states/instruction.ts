@@ -7,6 +7,7 @@ module states {
     //update the instruction state game background
     export function instructionState() {
         sea.update();
+        player.update();
     }
 
     //scene variables
@@ -23,7 +24,7 @@ module states {
     }
 
     //instruction scene
-    export function instructionScene() {
+    export function instructionScene( state ) {
         //array used to display instructions
         var actualInstructionsLine = [];
         var instructionsStringArray = [];
@@ -69,6 +70,9 @@ module states {
         goBackBtn = new objects.Button(stage.canvas.width / 4, 420, "btnBack");
         game.addChild(goBackBtn);
         goBackBtn.addEventListener("click", goBackBtnClicked);
+
+        player = new objects.Player(state);
+        game.addChild(player);
 
         //add game container to stage
         stage.addChild(game);

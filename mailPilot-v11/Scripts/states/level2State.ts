@@ -36,8 +36,7 @@ module states {
         }
 
         //check collision of objects
-        //+++ comment temporary
-        //collision.update();
+        collision.update();
 
         //update the score board
         scoreboard.update();
@@ -79,18 +78,24 @@ module states {
         // Show Cursor
         stage.cursor = "none";
 
+        //set all fence and crystal to empty,clean the object
+        fences = [];
+        crystals = [];
+        ghosts = [];
+
         //add stone, fence, crystal and ghost in the scene
         level2AddObj();
 
         // Display Scoreboard
-        scoreboard = new objects.Scoreboard(stage, game);
+        //scoreboard = new objects.Scoreboard(stage, game);
+        game.addChild(scoreboard.label);
 
         //label shows the current level
         levelLabel = new objects.LevelLabel("Level Two");
 
         // Instantiate Collision Manager
-        //+++ comment temporary
-        //collision = new managers.Collision(fish, smallFishs, submarines, scoreboard);
+        //in level two, no fireball exists, so pass empty array to collision manager
+        collision = new managers.Collision(player, crystals, fences, ghosts, [], scoreboard);
 
         game.addChild(player);
 

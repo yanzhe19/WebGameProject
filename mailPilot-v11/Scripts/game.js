@@ -1,11 +1,8 @@
 /// <reference path="constants.ts" />
 /// <reference path="managers/playerasset.ts" />
 /// <reference path="managers/asset.ts" />
-/// <reference path="objects/submarine.ts" />
-/// <reference path="objects/smallFish.ts" />
 /// <reference path="objects/ghost.ts" />
 /// <reference path="objects/sea.ts" />
-/// <reference path="objects/fish.ts" />
 /// <reference path="objects/scoreboard.ts" />
 /// <reference path="objects/ufo.ts" />
 /// <reference path="objects/fireball.ts" />
@@ -30,11 +27,8 @@ var stage;
 var game;
 //game variables
 var sea;
-var fish;
 var player;
 //var smallFish: objects.SmallFish;
-var smallFishs = [];
-var submarines = []; // submarine array;
 var ghosts = []; //ghost array;
 var ufo; //ufo object;
 var fireballs = []; //fireball array;
@@ -94,9 +88,9 @@ function changeState(state) {
             states.menu(state);
             break;
         case constants.PLAY_STATE:
-            currentStateFunction = states.playState;
             // instantiate play screen
             states.play(state);
+            currentStateFunction = states.playState;
             break;
         case constants.GAME_OVER_STATE:
             currentStateFunction = states.gameOverState;

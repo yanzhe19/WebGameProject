@@ -75,6 +75,10 @@ module states {
         // Show Cursor
         stage.cursor = "none";
 
+        //set all fence and crystal to empty,clean the object
+        fences = [];
+        crystals = [];
+
         //add stone, fence and crystal in the scene
         addObj();
 
@@ -85,7 +89,7 @@ module states {
         levelLabel = new objects.LevelLabel("Level One");
 
         // Instantiate Collision Manager
-        //+++ comment temporary
+        //in level one, no ghost and fire ball, so pass empty array to collison 
         collision = new managers.Collision(player, crystals, fences,[],[], scoreboard);
 
         game.addChild(player);
@@ -101,7 +105,6 @@ module states {
                 var randomSelection = Math.floor(Math.random() * 2) + 1;
                 //console.log(randomSelection);
                 switch (randomSelection) {
-
                     case 1:
                         if (crystals.length < 3) {//limit the number of crystal
                             addCrystal();

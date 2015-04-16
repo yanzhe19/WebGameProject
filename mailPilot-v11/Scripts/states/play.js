@@ -62,6 +62,9 @@ var states;
         player = new objects.Player(state);
         // Show Cursor
         stage.cursor = "none";
+        //set all fence and crystal to empty,clean the object
+        fences = [];
+        crystals = [];
         //add stone, fence and crystal in the scene
         addObj();
         // Display Scoreboard
@@ -69,7 +72,7 @@ var states;
         //label shows the current level
         levelLabel = new objects.LevelLabel("Level One");
         // Instantiate Collision Manager
-        //+++ comment temporary
+        //in level one, no ghost and fire ball, so pass empty array to collison 
         collision = new managers.Collision(player, crystals, fences, [], [], scoreboard);
         game.addChild(player);
         //add game container to stage

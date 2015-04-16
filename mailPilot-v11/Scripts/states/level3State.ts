@@ -43,7 +43,7 @@ module states {
 
         //check collision of objects
         //+++ comment temporary
-        //collision.update();
+        collision.update();
 
         //update the score board
         scoreboard.update();
@@ -76,6 +76,12 @@ module states {
         // Show Cursor
         stage.cursor = "none";
 
+        //set all fence and crystal to empty,clean the object
+        fences = [];
+        crystals = [];
+        ghosts = [];
+        fireballs = [];
+
         //add stone, fence, crystal, ghost and ufo in the scene
         level3AddObj();
 
@@ -83,14 +89,14 @@ module states {
         ufo = new objects.Ufo(stage, game);// change image later
 
         // Display Scoreboard
-        scoreboard = new objects.Scoreboard(stage, game);
+        game.addChild(scoreboard.label);
 
         //label shows the current level
         levelLabel = new objects.LevelLabel("Level Three");
 
         // Instantiate Collision Manager
         //+++ comment temporary
-        //collision = new managers.Collision(fish, smallFishs, submarines, scoreboard);
+        collision = new managers.Collision(player, crystals, fences, ghosts, fireballs, scoreboard);
 
         game.addChild(player);
 

@@ -33,7 +33,7 @@ module states {
 
         //check collision of objects
         //+++ comment temporary
-        //collision.update();
+        collision.update();
 
         //update the score board
         scoreboard.update();
@@ -86,7 +86,7 @@ module states {
 
         // Instantiate Collision Manager
         //+++ comment temporary
-        //collision = new managers.Collision(fish, smallFishs, submarines, scoreboard);
+        collision = new managers.Collision(player, crystals, fences,[],[], scoreboard);
 
         game.addChild(player);
 

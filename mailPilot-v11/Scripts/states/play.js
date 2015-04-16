@@ -26,7 +26,7 @@ var states;
         }
         //check collision of objects
         //+++ comment temporary
-        //collision.update();
+        collision.update();
         //update the score board
         scoreboard.update();
         //level label update
@@ -70,7 +70,7 @@ var states;
         levelLabel = new objects.LevelLabel("Level One");
         // Instantiate Collision Manager
         //+++ comment temporary
-        //collision = new managers.Collision(fish, smallFishs, submarines, scoreboard);
+        collision = new managers.Collision(player, crystals, fences, [], [], scoreboard);
         game.addChild(player);
         //add game container to stage
         stage.addChild(game);

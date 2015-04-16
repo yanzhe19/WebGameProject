@@ -43,7 +43,7 @@ var objects;
         };
         //define function to destroy the current ghost
         Fireball.prototype.destroy = function () {
-            //remove this ghost from game container
+            //remove this fireball from game container
             game.removeChild(this.image);
             //remove it from the array
             fireballs.splice(fireballs.indexOf(this), 1);

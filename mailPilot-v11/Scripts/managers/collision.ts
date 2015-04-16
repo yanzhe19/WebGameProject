@@ -11,16 +11,20 @@ Revision  History : Version 2.0*/
 module managers {
     export class Collision {
         // class variables
-        private fish: objects.Fish;
-        private smallFishs = [];
-        private submarines = [];
+        private playerObj: objects.Player;
+        private fences = [];
+        private ghosts = [];
+        private fireballs = [];
+        private crystals = [];
         private scoreboard: objects.Scoreboard;
 
         //constructor
-        constructor(fish: objects.Fish, smallFishs, submarines, scoreboard: objects.Scoreboard) {
-            this.fish = fish;
-            this.smallFishs = smallFishs;
-            this.submarines = submarines;
+        constructor(playerObj: objects.Player, crystals, fences, ghosts, fireballs, scoreboard: objects.Scoreboard) {
+            this.playerObj = playerObj;
+            this.fences = fences;
+            this.ghosts = ghosts;
+            this.fireballs = fireballs;
+            this.crystals = crystals;
             this.scoreboard = scoreboard;
         }
 
@@ -41,45 +45,82 @@ module managers {
             return result;
         }
 
-        // check collision between fish and any submarine object
-        private fishAndSubmarine(submarine: objects.Submarine) {
+        // check collision between player and any crystal object
+        private playerAndCrystal(crystal: objects.Crystal) {
             var p1: createjs.Point = new createjs.Point();
             var p2: createjs.Point = new createjs.Point();
-            p1.x = this.fish.image.x;
-            p1.y = this.fish.image.y;
-            p2.x = submarine.image.x;
-            p2.y = submarine.image.y;
-            if (this.distance(p1, p2) < ((this.fish.height / 2) + (submarine.height / 2))) {
-                createjs.Sound.play("explode");
-                this.scoreboard.lives -= 1;
-                submarine.reset();
-            }
-        }
-
-        // check collision between fish and smallFish
-        private fishAndSmallfish(smallFishInstance: objects.SmallFish) {
-            var p1: createjs.Point = new createjs.Point();
-            var p2: createjs.Point = new createjs.Point();
-            p1.x = this.fish.image.x;
-            p1.y = this.fish.image.y;
-            p2.x = smallFishInstance.image.x;
-            p2.y = smallFishInstance.image.y;
-            if (this.distance(p1, p2) < ((this.fish.height / 2) + (smallFishInstance.height / 2))) {
+            p1.x = this.playerObj.x;
+            p1.y = this.playerObj.y;
+            p2.x = crystal.image.x;
+            p2.y = crystal.image.y;
+            if (this.distance(p1, p2) < ((this.playerObj.height / 2) + (crystal.height / 2))) {
                 createjs.Sound.play("pickup");
                 this.scoreboard.score += 100;
-                smallFishInstance.reset();
+                crystal.reset();
             }
         }
 
+        // check collision between player and fence
+        private playerAndFence(fence: objects.Fence) {
+            var p1: createjs.Point = new createjs.Point();
+            var p2: createjs.Point = new createjs.Point();
+            p1.x = this.playerObj.x;
+            p1.y = this.playerObj.y;
+            p2.x = fence.image.x;
+            p2.y = fence.image.y;
+            if (this.distance(p1, p2) < ((this.playerObj.height / 2) + (fence.height / 2))) {
+                createjs.Sound.play("explode"); 
+                this.scoreboard.lives -= 1;
+                fence.reset();
+            }
+        }
+
+        // check collision between player and ghost
+        private playerAndGhost(ghost: objects.Ghost) {
+            var p1: createjs.Point = new createjs.Point();
+            var p2: createjs.Point = new createjs.Point();
+            p1.x = this.playerObj.x;
+            p1.y = this.playerObj.y;
+            p2.x = ghost.image.x;
+            p2.y = ghost.image.y;
+            if (this.distance(p1, p2) < ((this.playerObj.height / 2) + (ghost.height / 2))) {
+                createjs.Sound.play("explode");
+                this.scoreboard.lives -= 1;
+                ghost.reset();
+            }
+        }
+
+        // check collision between player and fence
+        private playerAndFireball(fireball: objects.Fireball) {
+            var p1: createjs.Point = new createjs.Point();
+            var p2: createjs.Point = new createjs.Point();
+            p1.x = this.playerObj.x;
+            p1.y = this.playerObj.y;
+            p2.x = fireball.image.x;
+            p2.y = fireball.image.y;
+            if (this.distance(p1, p2) < ((this.playerObj.height / 2) + (fireball.height / 2))) {
+                createjs.Sound.play("explode");
+                this.scoreboard.lives -= 1;
+                fireball.destroy();
+            }
+        }
         // Utility Function to Check Collisions
         update() {
-            //check collision for submarine and player avatar
-            for (var count = 0; count < constants.SUBMARINE_NUM; count++) {
-                this.fishAndSubmarine(this.submarines[count]);
+            //check collision for crystal and player avatar
+            for (var count = 0; count < crystals.length; count++) {
+                this.playerAndCrystal(this.crystals[count]);
             }
-            //check collision for small fish and player avatar
-            for (var count = 0; count < constants.SMALLFISH_NUM; count++) {
-                this.fishAndSmallfish(this.smallFishs[count]);
+            //check collision for fence and player avatar
+            for (var count = 0; count < fences.length; count++) {
+                this.playerAndFence(this.fences[count]);
+            }
+            //check collision for ghost and player avatar
+            for (var count = 0; count < ghosts.length; count++) {
+                this.playerAndGhost(this.ghosts[count]);
+            }
+            //check collision for fireball and player avatar
+            for (var count = 0; count < fireballs.length; count++) {
+                this.playerAndFireball(this.fireballs[count]);
             }
         }
     }

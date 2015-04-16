@@ -57,7 +57,7 @@ module objects {
 
         //define function to destroy the current ghost
         destroy() {
-            //remove this ghost from game container
+            //remove this fireball from game container
             game.removeChild(this.image);
 
             //remove it from the array

@@ -36,7 +36,11 @@ module managers {
             },
             "walk": {
                 "frames": [0, 1, 2, 3],
-                "speed": 0.1
+                "speed": 0.2
+            },
+            "sprint": {
+                "frames": [0, 1, 2, 3],
+                "speed": 0.4
             },
             "idle": {
                 "frames": [4, 5, 6, 5],

@@ -15,6 +15,8 @@ var objects;
         //the constructor of player class
         function Player(stateNumber) {
             _super.call(this, managers.PlayerAssets.playerAtlas);
+            this.walking = false;
+            this.sprinting = false;
 
             switch (stateNumber) {
                 case constants.MENU_STATE:
@@ -52,6 +54,7 @@ var objects;
             this.x = constants.GROUND_LEVEL * 0.5;
 
             onkeydown = this.keyDownEvent;
+            onkeyup = this.keyupEvent;
 
             //this.addEventListener("key down", this.handleClick);
             this.player = this;
@@ -59,18 +62,50 @@ var objects;
         //event
         Player.prototype.keyDownEvent = function (event) {
             console.log(event.keyCode);
-            var e = event.keyCode;
-            switch (e) {
-                case 87:
-                    //jump event
-                    console.log("jump event");
-                    player.jump();
-                    break;
-                case 83:
-                    //land event
-                    console.log("land event");
-                    player.land();
-                    break;
+            this.e = event;
+            if (this.e.type == "keydown") {
+                switch (this.e.keyCode) {
+                    case 87:
+                        //jump event
+                        console.log("jump event");
+                        player.jump();
+                        break;
+                    case 83:
+                        //land event
+                        console.log("land event");
+                        player.land();
+                        break;
+                    case 68:
+                        //sprint event
+                        console.log("sprint event");
+                        player.sprint();
+                        break;
+                    case 65:
+                        //walk event
+                        console.log("walk event");
+                        player.walk();
+                        break;
+                }
+            }
+        };
+
+        Player.prototype.keyupEvent = function (event) {
+            console.log(event.keyCode);
+            console.log(event.type);
+            this.e = event;
+            if (this.e.type == "keyup") {
+                switch (this.e.keyCode) {
+                    case 68:
+                        //end sprint event
+                        player.sprinting = false;
+                        player.defaultAnimation();
+                        break;
+                    case 65:
+                        //end walk event
+                        player.walking = false;
+                        player.defaultAnimation();
+                        break;
+                }
             }
         };
 
@@ -82,7 +117,7 @@ var objects;
                 case "jump":
                     //jump animation
                     console.log(this.y);
-                    this.y = constants.GROUND_LEVEL - (Math.sin((Date.now() - this.timerStart) * 0.002) * 150);
+                    this.y = constants.GROUND_LEVEL - (Math.sin((Date.now() - this.timerStart) * 0.0025) * 150);
                     console.log(this.y);
                     if (this.y > constants.GROUND_LEVEL + 15) {
                         this.land();
@@ -94,11 +129,19 @@ var objects;
                     if (Date.now() - this.timerStart >= 250) {
                         this.y = constants.GROUND_LEVEL;
                         this.defaultAnimation();
-                        this.timerStart = Date.now();
+                        this.timerStart = 1000000000;
                     }
                     this.x -= constants.BACKGROUND_MOVING_SPEED;
                     break;
-                case "run":
+                case "sprint":
+                    //sprint animation
+                    this.x += constants.BACKGROUND_MOVING_SPEED;
+                    break;
+                case "walk":
+                    //walk animation
+                    this.x -= constants.BACKGROUND_MOVING_SPEED * 1.5;
+                    break;
+                default:
                     break;
             }
         };
@@ -116,12 +159,27 @@ var objects;
 
         Player.prototype.walk = function () {
             this.state = "walk";
-            this.gotoAndPlay(this.state);
+
+            //this.gotoAndPlay(this.state);
+            if (this.walking == false) {
+                this.walking = true;
+                this.gotoAndPlay(this.state);
+            }
         };
 
         Player.prototype.run = function () {
             this.state = "run";
             this.gotoAndPlay(this.state);
+        };
+
+        Player.prototype.sprint = function () {
+            this.state = "sprint";
+
+            //this.gotoAndPlay(this.state);
+            if (this.sprinting == false) {
+                this.sprinting = true;
+                this.gotoAndPlay(this.state);
+            }
         };
 
         Player.prototype.jump = function () {

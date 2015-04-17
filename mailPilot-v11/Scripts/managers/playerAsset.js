@@ -57,6 +57,20 @@ var managers;
         }
     };
 
+    // SpriteSheet Data Object for the player object
+    var spellSpriteSheetData = {
+        "images": ["assets/images/spellSpriteSheet.png"],
+        "frames": [
+            [0, 0, 0, 0]
+        ],
+        "animations": {
+            "cast": {
+                "frames": [0, 1, 2, 3],
+                "speed": 0.2
+            }
+        }
+    };
+
     // Asset Manager Class
     var PlayerAssets = (function () {
         function PlayerAssets() {
@@ -70,6 +84,7 @@ var managers;
 
             //atlas for the player
             this.playerAtlas = new createjs.SpriteSheet(playerSpriteSheetData);
+            this.spellAtlas = new createjs.SpriteSheet(spellSpriteSheetData);
         };
         return PlayerAssets;
     })();

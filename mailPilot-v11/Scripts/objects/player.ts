@@ -19,11 +19,11 @@ module objects {
         e: KeyboardEvent;
         grounded: boolean;
         flying: boolean;
+        castSpell;
 
         //the constructor of player class
         constructor(stateNumber) {
             super(managers.PlayerAssets.playerAtlas);
-
             switch (stateNumber){
                 case constants.MENU_STATE:
                     this.defaultState = "idle";
@@ -133,6 +133,10 @@ module objects {
                             player.walking = false;
                             player.defaultAnimation();
                         }
+                        break;
+                    case 69:
+                        //spell attack
+                        player.castSpell.push(new objects.lightningSpell());
                         break;
                 }
             }

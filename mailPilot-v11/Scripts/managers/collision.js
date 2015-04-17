@@ -1,6 +1,3 @@
-﻿/// <reference path="../objects/submarine.ts" />
-/// <reference path="../objects/smallFish.ts" />
-/// <reference path="../objects/fish.ts" />
 /// <reference path="../objects/scoreboard.ts" />
 /*Source  file  name: collision.ts, Author's  name: Zhe Yan (300706310),  Last  Modified  by: Zhe Yan,
 Date  last  Modified: 2015_3_18,  Program description： This file check if two objects are collide (fish&submarine, fish&smallFish), if collide, the corresponding action will taken(point or life increase/decrease and game over)
@@ -27,18 +24,13 @@ var managers;
             var result = 0;
             var xPoints = 0;
             var yPoints = 0;
-
             xPoints = p2.x - p1.x;
             xPoints = xPoints * xPoints;
-
             yPoints = p2.y - p1.y;
             yPoints = yPoints * yPoints;
-
             result = Math.sqrt(xPoints + yPoints);
-
             return result;
         };
-
         // check collision between player and any crystal object
         Collision.prototype.playerAndCrystal = function (crystal) {
             var p1 = new createjs.Point();
@@ -53,7 +45,6 @@ var managers;
                 crystal.reset();
             }
         };
-
         // check collision between player and fence
         Collision.prototype.playerAndFence = function (fence) {
             var p1 = new createjs.Point();
@@ -68,7 +59,6 @@ var managers;
                 fence.reset();
             }
         };
-
         // check collision between player and ghost
         Collision.prototype.playerAndGhost = function (ghost) {
             var p1 = new createjs.Point();
@@ -83,7 +73,6 @@ var managers;
                 ghost.reset();
             }
         };
-
         // check collision between player and fence
         Collision.prototype.playerAndFireball = function (fireball) {
             var p1 = new createjs.Point();
@@ -98,7 +87,6 @@ var managers;
                 fireball.destroy();
             }
         };
-
         // check collision between spell and ghost
         Collision.prototype.spellAndGhost = function (spell, ghost) {
             var p1 = new createjs.Point();
@@ -113,70 +101,73 @@ var managers;
                 spell.destroy();
             }
         };
-
         //create spell
         Collision.prototype.channelSpell = function (spell) {
             if ((Date.now() - spell.castingStartTime) >= 5000) {
                 this.scoreboard.score -= 1;
                 spell.destroy();
-            } else if ((Date.now() - spell.castingStartTime) >= 4500 && spell.count < 9) {
+            }
+            else if ((Date.now() - spell.castingStartTime) >= 4500 && spell.count < 9) {
                 this.scoreboard.score -= 1;
                 spell.count++;
-            } else if ((Date.now() - spell.castingStartTime) >= 4000 && spell.count < 8) {
+            }
+            else if ((Date.now() - spell.castingStartTime) >= 4000 && spell.count < 8) {
                 this.scoreboard.score -= 1;
                 spell.count++;
-            } else if ((Date.now() - spell.castingStartTime) >= 3500 && spell.count < 7) {
+            }
+            else if ((Date.now() - spell.castingStartTime) >= 3500 && spell.count < 7) {
                 this.scoreboard.score -= 1;
                 spell.count++;
-            } else if ((Date.now() - spell.castingStartTime) >= 3000 && spell.count < 6) {
+            }
+            else if ((Date.now() - spell.castingStartTime) >= 3000 && spell.count < 6) {
                 this.scoreboard.score -= 1;
                 spell.count++;
-            } else if ((Date.now() - spell.castingStartTime) >= 2500 && spell.count < 5) {
+            }
+            else if ((Date.now() - spell.castingStartTime) >= 2500 && spell.count < 5) {
                 this.scoreboard.score -= 1;
                 spell.count++;
-            } else if ((Date.now() - spell.castingStartTime) >= 2000 && spell.count < 4) {
+            }
+            else if ((Date.now() - spell.castingStartTime) >= 2000 && spell.count < 4) {
                 this.scoreboard.score -= 1;
                 spell.count++;
-            } else if ((Date.now() - spell.castingStartTime) >= 1500 && spell.count < 3) {
+            }
+            else if ((Date.now() - spell.castingStartTime) >= 1500 && spell.count < 3) {
                 this.scoreboard.score -= 1;
                 spell.count++;
-            } else if ((Date.now() - spell.castingStartTime) >= 1000 && spell.count < 2) {
+            }
+            else if ((Date.now() - spell.castingStartTime) >= 1000 && spell.count < 2) {
                 this.scoreboard.score -= 1;
                 spell.count++;
-            } else if ((Date.now() - spell.castingStartTime) >= 500 && spell.count < 1) {
+            }
+            else if ((Date.now() - spell.castingStartTime) >= 500 && spell.count < 1) {
                 this.scoreboard.score -= 1;
                 spell.count++;
             }
         };
-
         // Utility Function to Check Collisions
         Collision.prototype.update = function () {
             for (var count = 0; count < this.crystals.length; count++) {
                 this.playerAndCrystal(this.crystals[count]);
             }
-
             for (var count = 0; count < this.fences.length; count++) {
                 this.playerAndFence(this.fences[count]);
             }
-
             for (var count = 0; count < this.ghosts.length; count++) {
                 this.playerAndGhost(this.ghosts[count]);
             }
-
             for (var count = 0; count < this.fireballs.length; count++) {
                 this.playerAndFireball(this.fireballs[count]);
             }
-
             for (var count = 0; count < this.playerObj.spells.length; count++) {
                 for (var countI = 0; countI < this.ghosts.length; countI++) {
                     this.spellAndGhost(this.playerObj.spells[count], this.ghosts[countI]);
                 }
             }
-
             for (var count = 0; count < this.playerObj.spells.length; count++) {
                 if (this.scoreboard.score > 0) {
                     this.channelSpell(this.playerObj.spells[count]);
-                } else {
+                }
+                else {
                     this.playerObj.spells[count].destroy();
                 }
             }

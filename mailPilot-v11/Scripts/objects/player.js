@@ -168,11 +168,11 @@ var objects;
                         player.y = constants.GROUND_LEVEL;
                         player.defaultAnimation();
                     }
-
                     if (player.x <= 20) {
                         player.y = constants.GROUND_LEVEL;
                         player.defaultAnimation();
-                    } else {
+                    }
+                    else {
                         player.x -= constants.BACKGROUND_MOVING_SPEED;
                     }
                     break;

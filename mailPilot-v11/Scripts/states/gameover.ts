@@ -1,6 +1,5 @@
 ﻿/// <reference path="../constants.ts" />
 /// <reference path="../objects/button.ts" />
-/// <reference path="../objects/submarine.ts" />
 /// <reference path="../objects/label.ts" />
 /// <reference path="../objects/sea.ts" />
 /// <reference path="../objects/scoreboard.ts" />

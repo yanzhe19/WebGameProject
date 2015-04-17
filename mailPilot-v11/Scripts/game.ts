@@ -38,6 +38,7 @@ var fireballs = [];//fireball array;
 var fences = [];//fences array;
 var crystals = [];//crystals array;
 var levelLabel: objects.LevelLabel;//this is the text of displaying levels
+var backgroundSound: createjs.SoundInstance;
 
 var scoreboard: objects.Scoreboard;
 
@@ -62,8 +63,8 @@ function preload(): void {
     managers.PlayerAssets.init();
     managers.Assets.init();
     //after assets loaded, invoke init function
-    managers.Assets.loader.addEventListener("complete", init);
-    managers.PlayerAssets.loader.addEventListener("complete", init);
+    managers.Assets.loader.addEventListener("complete", new function () { managers.PlayerAssets.loader.addEventListener("complete", init); });
+    
 }
 
 // init called after Assets have been loaded.
@@ -73,6 +74,8 @@ function init(): void {
     createjs.Ticker.setFPS(60);
     createjs.Ticker.addEventListener("tick", gameLoop);
     optimizeForMobile();
+
+    this.backgroundSound = createjs.Sound.play('backgroundSound', createjs.Sound.INTERRUPT_NONE, 0, 0, -1, 1, 0);
 
     //set the current game staate to MENU_STATE
     currentState = constants.MENU_STATE;
@@ -100,7 +103,10 @@ function changeState(state: number): void {
         case constants.MENU_STATE:
             currentStateFunction = states.menuState;
             // instantiate menu screen
-            states.menu( state );
+            states.menu(state);
+
+            //this.backgroundSound.stop();
+            //this.backgroundSound.start();
             break;
 
         case constants.PLAY_STATE://this is the first level
@@ -112,25 +118,25 @@ function changeState(state: number): void {
         case constants.GAME_OVER_STATE:
             currentStateFunction = states.gameOverState;
             // instantiate game over screen
-            states.gameOver( state );
+            states.gameOver(state);
             break;
 
         case constants.INSTRUCTION_STATE:
             currentStateFunction = states.instructionState;
             // instantiate instruction screen
-            states.instructionScene( state );
+            states.instructionScene(state);
             break;
 
         case constants.LEVEL_TWO_STATE:
             currentStateFunction = states.level2State;
             // instantiate level two screen
-            states.level2Scene( state );
+            states.level2Scene(state);
             break;
 
         case constants.LEVEL_THREE_STATE:
             currentStateFunction = states.level3State;
             // instantiate level three screen
-            states.level3Scene( state );
+            states.level3Scene(state);
             break;
     }
 }

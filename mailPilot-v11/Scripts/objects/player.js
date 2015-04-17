@@ -17,7 +17,6 @@ var objects;
             _super.call(this, managers.PlayerAssets.playerAtlas);
             this.walking = false;
             this.sprinting = false;
-
             switch (stateNumber) {
                 case constants.MENU_STATE:
                     this.defaultState = "idle";
@@ -126,6 +125,10 @@ var objects;
                             player.walking = false;
                             player.defaultAnimation();
                         }
+                        break;
+                    case 69:
+                        //spell attack
+                        player.castSpell.push(new objects.lightningSpell());
                         break;
                 }
             }

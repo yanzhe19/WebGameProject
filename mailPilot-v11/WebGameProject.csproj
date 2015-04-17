@@ -79,6 +79,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\sounds\Plastic3_-_Epic_Dramatic_Loop.mp3" />
+    <Content Include="assets\sounds\spellCastNoise.mp3" />
     <Content Include="css\app.css" />
     <Content Include="css\normalize.css" />
     <Content Include="assets\images\loading.jpg" />
@@ -123,6 +124,7 @@
     <TypeScriptCompile Include="Scripts\objects\levelLabel.ts" />
     <TypeScriptCompile Include="Scripts\objects\player.ts" />
     <TypeScriptCompile Include="Scripts\objects\ghost.ts" />
+    <TypeScriptCompile Include="Scripts\objects\spell.ts" />
     <TypeScriptCompile Include="Scripts\objects\submarine.ts" />
     <TypeScriptCompile Include="Scripts\objects\smallFish.ts" />
     <TypeScriptCompile Include="Scripts\objects\label.ts" />

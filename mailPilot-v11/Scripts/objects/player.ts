@@ -113,11 +113,11 @@ module objects {
                         break;
                     case 38:
                         //up arrow: volume up
-                        backgroundSound.setVolume(backgroundSound.getVolume() + 0.1);
+                        backgroundSound.setVolume(backgroundSound.getVolume() + 0.01);
                         break;
                     case 40:
                         //down arrow: volume down
-                        backgroundSound.setVolume(backgroundSound.getVolume() - 0.1);
+                        backgroundSound.setVolume(backgroundSound.getVolume() - 0.01);
                         break;
                 }
             }

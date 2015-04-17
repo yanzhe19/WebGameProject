@@ -17,6 +17,7 @@ var objects;
             _super.call(this, managers.PlayerAssets.playerAtlas);
             this.walking = false;
             this.sprinting = false;
+            this.spells = [];
 
             switch (stateNumber) {
                 case constants.MENU_STATE:
@@ -139,12 +140,19 @@ var objects;
                         //M: Mute or unmute music
                         backgroundSound.setMute(!backgroundSound.getMute());
                         break;
+                    case 69:
+                        //E: cast spell
+                        player.spells.push(new objects.Spell(player.x, player.y, player));
+                        break;
                 }
             }
         };
 
         //Public methods
         Player.prototype.update = function () {
+            for (var count = 0; count < player.spells.length; count++) {
+                player.spells[count].update();
+            }
             switch (player.state) {
                 case "idle":
                     break;

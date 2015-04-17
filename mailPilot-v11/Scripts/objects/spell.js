@@ -13,15 +13,29 @@ var objects;
     var Spell = (function (_super) {
         __extends(Spell, _super);
         //the constructor of spell class
-        function Spell(stateNumber) {
+        function Spell(x, y, player) {
             _super.call(this, managers.PlayerAssets.playerAtlas);
-            this.spell = this;
+            this.castingStartTime = Date.now();
+            this.gotoAndPlay("spell");
+            this.width = this.getBounds().width;
+            this.height = this.getBounds().height;
+            this.regX = this.width * 0.5;
+            this.regY = this.height * 0.5;
+            this.spellCastNoise = createjs.Sound.play('spellCastNoise');
+            this.y = y;
+            this.x = x;
+            this.player = player;
+            game.addChild(this);
         }
         //Public methods
         Spell.prototype.update = function () {
+            this.x += constants.BACKGROUND_MOVING_SPEED;
         };
 
         Spell.prototype.destroy = function () {
+            this.spellCastNoise.stop();
+            this.player.spells.splice(this.player.spells.indexOf(this), 1);
+            game.removeChild(this);
         };
         return Spell;
     })(createjs.Sprite);

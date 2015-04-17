@@ -20,6 +20,7 @@ module objects {
         grounded: boolean;
         flying: boolean;
         jumpNumber: number;
+        spells = [];
 
         //the constructor of player class
         constructor(stateNumber) {
@@ -147,12 +148,19 @@ module objects {
                         //M: Mute or unmute music
                         backgroundSound.setMute(!backgroundSound.getMute());
                         break;
+                    case 69:
+                        //E: cast spell
+                        player.spells.push(new objects.Spell(player.x, player.y, player));
+                        break;
                 }
             }
         }
 
         //Public methods
         public update() {
+            for (var count = 0; count < player.spells.length; count++) {
+                player.spells[count].update();
+            }
             switch (player.state) {
                 case "idle":
                     //Idle animation

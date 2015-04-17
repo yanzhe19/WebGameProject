@@ -104,6 +104,15 @@ module managers {
                 fireball.destroy();
             }
         }
+
+        //create spell
+        channelSpell(spell: objects.Spell) {
+            this.scoreboard.score -= (Date.now() - spell.castingStartTime) * 0.000001;
+            if ((Date.now() - spell.castingStartTime) >= 10000) {
+                spell.destroy();
+            }
+        }
+
         // Utility Function to Check Collisions
         update() {
             //check collision for crystal and player avatar
@@ -121,6 +130,10 @@ module managers {
             //check collision for fireball and player avatar
             for (var count = 0; count < this.fireballs.length; count++) {
                 this.playerAndFireball(this.fireballs[count]);
+            }
+            //channel mana into spells per second
+            for (var count = 0; count < this.playerObj.spells.length; count++) {
+                this.channelSpell(this.playerObj.spells[count]);
             }
         }
     }

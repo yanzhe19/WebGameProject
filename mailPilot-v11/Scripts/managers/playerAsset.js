@@ -6,7 +6,8 @@ var managers;
     // Image and Sound Manifest;
     var playerManifest = [
         { id: "backgroundSound", src: "assets/sounds/Plastic3_-_Epic_Dramatic_Loop.mp3" },
-        { id: "spellCastNoise", src: "assets/sounds/spellCastNoise.mp3" }
+        { id: "spellCastNoise", src: "assets/sounds/spellCastNoise.mp3" },
+        { id: "spellCast", src: "assets/sounds/spellCast.mp3" }
     ];
 
     // SpriteSheet Data Object for the player object

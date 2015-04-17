@@ -21,9 +21,16 @@ var objects;
             this.height = this.getBounds().height;
             this.regX = this.width * 0.5;
             this.regY = this.height * 0.5;
-            this.spellCastNoise = createjs.Sound.play('spellCastNoise');
+            if (Math.random() < 0.5) {
+                this.spellCastNoise = createjs.Sound.play('spellCastNoise');
+                console.log("1");
+            } else {
+                this.spellCastNoise = createjs.Sound.play('spellCast');
+                console.log("2");
+            }
             this.y = y;
             this.x = x;
+            this.count = 0;
             this.player = player;
             game.addChild(this);
         }

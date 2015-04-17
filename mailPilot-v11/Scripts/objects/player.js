@@ -21,32 +21,44 @@ var objects;
             switch (stateNumber) {
                 case constants.MENU_STATE:
                     this.defaultState = "idle";
+                    this.grounded = true;
+                    this.flying = false;
                     break;
 
                 case constants.PLAY_STATE:
                     this.defaultState = "run";
+                    this.grounded = true;
+                    this.flying = false;
                     break;
 
                 case constants.GAME_OVER_STATE:
                     this.defaultState = "idle";
+                    this.grounded = true;
+                    this.flying = false;
                     break;
 
                 case constants.INSTRUCTION_STATE:
                     this.defaultState = "idle";
+                    this.grounded = true;
+                    this.flying = false;
                     break;
 
                 case constants.LEVEL_TWO_STATE:
                     this.defaultState = "run";
+                    this.grounded = true;
+                    this.flying = false;
                     break;
 
                 case constants.LEVEL_THREE_STATE:
                     this.defaultState = "run";
+                    this.grounded = true;
+                    this.flying = false;
                     break;
             }
             this.gotoAndPlay(this.defaultState);
             this.width = this.getBounds().width;
             this.height = this.getBounds().height;
-
+            this.pauseDuration = 0;
             this.regX = this.width * 0.5;
             this.regY = this.height * 0.5;
 
@@ -62,9 +74,9 @@ var objects;
         //event
         Player.prototype.keyDownEvent = function (event) {
             console.log(event.keyCode);
-            this.e = event;
-            if (this.e.type == "keydown") {
-                switch (this.e.keyCode) {
+            player.e = event;
+            if (player.e.type == "keydown") {
+                switch (player.e.keyCode) {
                     case 87:
                         //jump event
                         console.log("jump event");
@@ -92,9 +104,9 @@ var objects;
         Player.prototype.keyupEvent = function (event) {
             console.log(event.keyCode);
             console.log(event.type);
-            this.e = event;
-            if (this.e.type == "keyup") {
-                switch (this.e.keyCode) {
+            player.e = event;
+            if (player.e.type == "keyup") {
+                switch (player.e.keyCode) {
                     case 68:
                         //end sprint event
                         player.sprinting = false;
@@ -111,35 +123,44 @@ var objects;
 
         //Public methods
         Player.prototype.update = function () {
-            switch (this.state) {
+            switch (player.state) {
                 case "idle":
                     break;
                 case "jump":
                     //jump animation
-                    console.log(this.y);
-                    this.y = constants.GROUND_LEVEL - (Math.sin((Date.now() - this.timerStart) * 0.0025) * 150);
-                    console.log(this.y);
-                    if (this.y > constants.GROUND_LEVEL + 15) {
-                        this.land();
+                    console.log(player.y);
+                    if (player.flying == true) {
+                        player.pauseDuration = Date.now() - player.pauseStart;
+                        if (player.pauseDuration >= 1000) {
+                            player.flying = false;
+                        }
+                    }
+                    player.y = constants.GROUND_LEVEL - (Math.sin((Date.now() - (player.timerStart + player.pauseDuration)) * 0.0025) * 150);
+                    console.log(player.y);
+                    if (player.y > constants.GROUND_LEVEL + 15) {
+                        //player.pauseDuration = 0;
+                        player.land();
                     }
                     break;
                 case "land":
                     //land animation
-                    this.y = constants.GROUND_LEVEL + 15;
-                    if (Date.now() - this.timerStart >= 250) {
-                        this.y = constants.GROUND_LEVEL;
-                        this.defaultAnimation();
-                        this.timerStart = 1000000000;
+                    player.y = constants.GROUND_LEVEL + 15;
+                    if (Date.now() - player.timerStart >= 250) {
+                        player.y = constants.GROUND_LEVEL;
+                        player.defaultAnimation();
+                        //player.timerStart = 1000000000;
                     }
-                    this.x -= constants.BACKGROUND_MOVING_SPEED;
+                    player.x -= constants.BACKGROUND_MOVING_SPEED;
                     break;
                 case "sprint":
                     //sprint animation
-                    this.x += constants.BACKGROUND_MOVING_SPEED;
+                    player.x += constants.BACKGROUND_MOVING_SPEED;
                     break;
                 case "walk":
                     //walk animation
-                    this.x -= constants.BACKGROUND_MOVING_SPEED * 1.5;
+                    player.x -= constants.BACKGROUND_MOVING_SPEED * 1.5;
+                    break;
+                case "run":
                     break;
                 default:
                     break;
@@ -147,50 +168,64 @@ var objects;
         };
 
         Player.prototype.land = function () {
-            this.timerStart = Date.now();
-            this.state = "land";
-            player.gotoAndPlay(this.state);
+            player.grounded = true;
+            player.timerStart = Date.now();
+            player.state = "land";
+            player.gotoAndPlay(player.state);
+            player.pauseDuration = 0;
         };
 
         Player.prototype.idle = function () {
-            this.state = "idle";
-            this.gotoAndPlay(this.state);
+            player.state = "idle";
+            player.gotoAndPlay(player.state);
+            player.grounded = true;
         };
 
         Player.prototype.walk = function () {
-            this.state = "walk";
+            player.state = "walk";
 
             //this.gotoAndPlay(this.state);
-            if (this.walking == false) {
-                this.walking = true;
-                this.gotoAndPlay(this.state);
+            if (player.walking == false) {
+                player.walking = true;
+                player.gotoAndPlay(player.state);
             }
+            player.grounded = true;
         };
 
         Player.prototype.run = function () {
-            this.state = "run";
-            this.gotoAndPlay(this.state);
+            player.state = "run";
+            player.gotoAndPlay(player.state);
+            player.grounded = true;
         };
 
         Player.prototype.sprint = function () {
-            this.state = "sprint";
+            player.state = "sprint";
 
             //this.gotoAndPlay(this.state);
-            if (this.sprinting == false) {
-                this.sprinting = true;
-                this.gotoAndPlay(this.state);
+            if (player.sprinting == false) {
+                player.sprinting = true;
+                player.gotoAndPlay(player.state);
             }
+            player.grounded = true;
         };
 
         Player.prototype.jump = function () {
-            this.state = "jump";
-            this.timerStart = Date.now();
-            player.gotoAndPlay(this.state);
+            console.log(player.grounded);
+            if (player.grounded == false && player.flying == false) {
+                player.pauseStart = Date.now();
+                player.flying = true;
+            }
+            if (player.grounded == true) {
+                player.timerStart = Date.now();
+                player.state = "jump";
+                player.gotoAndPlay(player.state);
+            }
+            player.grounded = false;
         };
 
         Player.prototype.defaultAnimation = function () {
-            this.state = this.defaultState;
-            player.gotoAndPlay(this.state);
+            player.state = player.defaultState;
+            player.gotoAndPlay(player.state);
         };
         return Player;
     })(createjs.Sprite);

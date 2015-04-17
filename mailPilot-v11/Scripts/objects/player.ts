@@ -122,14 +122,14 @@ module objects {
                 switch (player.e.keyCode) {
                     case 68:
                         //end sprint event
-                        if (player.sprinting == true){
+                        if (player.grounded == true){
                             player.sprinting = false;
                             player.defaultAnimation();
                         }
                         break;
                     case 65:
                         //end walk event
-                        if (player.walking == true) {
+                        if (player.grounded == true) {
                             player.walking = false;
                             player.defaultAnimation();
                         }
@@ -201,6 +201,7 @@ module objects {
         }
 
         public walk() {
+            player.y = constants.GROUND_LEVEL;
             player.state = "walk";
             //this.gotoAndPlay(this.state);
             if (player.walking == false) {
@@ -217,6 +218,7 @@ module objects {
         }
 
         public sprint() {
+            player.y = constants.GROUND_LEVEL;
             player.state = "sprint";
             //this.gotoAndPlay(this.state);
             if (player.sprinting == false) {

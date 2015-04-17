@@ -115,14 +115,14 @@ var objects;
                 switch (player.e.keyCode) {
                     case 68:
                         //end sprint event
-                        if (player.sprinting == true) {
+                        if (player.grounded == true) {
                             player.sprinting = false;
                             player.defaultAnimation();
                         }
                         break;
                     case 65:
                         //end walk event
-                        if (player.walking == true) {
+                        if (player.grounded == true) {
                             player.walking = false;
                             player.defaultAnimation();
                         }
@@ -192,6 +192,7 @@ var objects;
         };
 
         Player.prototype.walk = function () {
+            player.y = constants.GROUND_LEVEL;
             player.state = "walk";
 
             //this.gotoAndPlay(this.state);
@@ -209,6 +210,7 @@ var objects;
         };
 
         Player.prototype.sprint = function () {
+            player.y = constants.GROUND_LEVEL;
             player.state = "sprint";
 
             //this.gotoAndPlay(this.state);

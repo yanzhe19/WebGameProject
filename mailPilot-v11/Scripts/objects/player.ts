@@ -201,6 +201,7 @@ module objects {
         }
 
         public walk() {
+            player.y = constants.GROUND_LEVEL;
             player.state = "walk";
             //this.gotoAndPlay(this.state);
             if (player.walking == false) {
@@ -217,6 +218,7 @@ module objects {
         }
 
         public sprint() {
+            player.y = constants.GROUND_LEVEL;
             player.state = "sprint";
             //this.gotoAndPlay(this.state);
             if (player.sprinting == false) {

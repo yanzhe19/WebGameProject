@@ -192,6 +192,7 @@ var objects;
         };
 
         Player.prototype.walk = function () {
+            player.y = constants.GROUND_LEVEL;
             player.state = "walk";
 
             //this.gotoAndPlay(this.state);
@@ -209,6 +210,7 @@ var objects;
         };
 
         Player.prototype.sprint = function () {
+            player.y = constants.GROUND_LEVEL;
             player.state = "sprint";
 
             //this.gotoAndPlay(this.state);

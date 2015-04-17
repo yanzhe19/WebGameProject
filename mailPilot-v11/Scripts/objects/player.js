@@ -103,6 +103,14 @@ var objects;
                             player.walk();
                         }
                         break;
+                    case 38:
+                        //up arrow: volume up
+                        backgroundSound.setVolume(backgroundSound.getVolume() + 0.1);
+                        break;
+                    case 40:
+                        //down arrow: volume down
+                        backgroundSound.setVolume(backgroundSound.getVolume() - 0.1);
+                        break;
                 }
             }
         };
@@ -126,6 +134,10 @@ var objects;
                             player.walking = false;
                             player.defaultAnimation();
                         }
+                        break;
+                    case 77:
+                        //M: Mute or un mute music
+                        backgroundSound.setMute(!backgroundSound.getMute());
                         break;
                 }
             }

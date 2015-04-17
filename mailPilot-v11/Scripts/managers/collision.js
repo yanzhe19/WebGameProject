@@ -101,9 +101,36 @@ var managers;
 
         //create spell
         Collision.prototype.channelSpell = function (spell) {
-            this.scoreboard.score -= (Date.now() - spell.castingStartTime) * 0.000001;
-            if ((Date.now() - spell.castingStartTime) >= 10000) {
+            if ((Date.now() - spell.castingStartTime) >= 5000) {
+                this.scoreboard.score -= 1;
                 spell.destroy();
+            } else if ((Date.now() - spell.castingStartTime) >= 4500 && spell.count < 9) {
+                this.scoreboard.score -= 1;
+                spell.count++;
+            } else if ((Date.now() - spell.castingStartTime) >= 4000 && spell.count < 8) {
+                this.scoreboard.score -= 1;
+                spell.count++;
+            } else if ((Date.now() - spell.castingStartTime) >= 3500 && spell.count < 7) {
+                this.scoreboard.score -= 1;
+                spell.count++;
+            } else if ((Date.now() - spell.castingStartTime) >= 3000 && spell.count < 6) {
+                this.scoreboard.score -= 1;
+                spell.count++;
+            } else if ((Date.now() - spell.castingStartTime) >= 2500 && spell.count < 5) {
+                this.scoreboard.score -= 1;
+                spell.count++;
+            } else if ((Date.now() - spell.castingStartTime) >= 2000 && spell.count < 4) {
+                this.scoreboard.score -= 1;
+                spell.count++;
+            } else if ((Date.now() - spell.castingStartTime) >= 1500 && spell.count < 3) {
+                this.scoreboard.score -= 1;
+                spell.count++;
+            } else if ((Date.now() - spell.castingStartTime) >= 1000 && spell.count < 2) {
+                this.scoreboard.score -= 1;
+                spell.count++;
+            } else if ((Date.now() - spell.castingStartTime) >= 500 && spell.count < 1) {
+                this.scoreboard.score -= 1;
+                spell.count++;
             }
         };
 

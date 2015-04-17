@@ -19,6 +19,7 @@ module objects {
         e: KeyboardEvent;
         grounded: boolean;
         flying: boolean;
+        jumpNumber: number;
 
         //the constructor of player class
         constructor(stateNumber) {
@@ -147,8 +148,8 @@ module objects {
                 case "jump":
                     //jump animation
                     console.log(player.y);
-                    if (player.flying == true) {
-                        player.pauseDuration = Date.now() - player.pauseStart
+                    if (player.flying == true && player.jumpNumber == 1) {
+                        player.pauseDuration = Date.now() - player.pauseStart;
                         if (player.pauseDuration >= 1000) {
                             player.flying = false;
                         }
@@ -230,16 +231,18 @@ module objects {
 
         public jump() {
             console.log(player.grounded);
-            if (player.grounded == false && player.flying == false) {
+            if (player.grounded == false && player.flying == false && player.jumpNumber == 0 ) {
                 player.pauseStart = Date.now();
                 player.flying = true;
+                player.jumpNumber++;
             }
             if (player.grounded == true) {
                 player.timerStart = Date.now();
                 player.state = "jump";
                 player.gotoAndPlay(player.state);
+                player.grounded = false;
+                player.jumpNumber = 0;
             }
-            player.grounded = false;
         }
 
         public defaultAnimation() {

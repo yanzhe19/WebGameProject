@@ -40,6 +40,7 @@ module objects {
         //Public methods
         public update() {
             this.x += constants.BACKGROUND_MOVING_SPEED;
+            if(game.)
         }
 
         public destroy() {

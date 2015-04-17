@@ -189,7 +189,13 @@ module objects {
                         player.defaultAnimation();
                         //player.timerStart = 1000000000;
                     }
-                    player.x -= constants.BACKGROUND_MOVING_SPEED;
+                    
+                    if (player.x <= 20) {
+                        player.y = constants.GROUND_LEVEL;
+                        player.defaultAnimation();
+                    } else {
+                        player.x -= constants.BACKGROUND_MOVING_SPEED;
+                    }
                     break;
                 case "sprint":
                     //sprint animation
@@ -197,7 +203,9 @@ module objects {
                     break;
                 case "walk":
                     //walk animation
-                    player.x -= constants.BACKGROUND_MOVING_SPEED * 1.5;
+                    if (player.x > 20) {
+                        player.x -= constants.BACKGROUND_MOVING_SPEED * 1.5;
+                    }
                     break;
                 case "run":
                     //run

@@ -89,7 +89,9 @@ module states {
         ufo = new objects.Ufo(stage, game);// change image later
 
         // Display Scoreboard
-        game.addChild(scoreboard.label);
+        if (scoreboard == null) {
+            scoreboard = new objects.Scoreboard(stage, game);
+        }else game.addChild(scoreboard.label);
 
         //label shows the current level
         levelLabel = new objects.LevelLabel("Level Three");

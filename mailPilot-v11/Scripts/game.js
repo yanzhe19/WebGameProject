@@ -1,4 +1,4 @@
-﻿/// <reference path="constants.ts" />
+/// <reference path="constants.ts" />
 /// <reference path="managers/playerasset.ts" />
 /// <reference path="managers/asset.ts" />
 /// <reference path="objects/ghost.ts" />
@@ -25,48 +25,39 @@ Revision  History : Version 2.0*/
 //stage and game container
 var stage;
 var game;
-
 //game variables
 var sea;
 var player;
-
 //var smallFish: objects.SmallFish;
-var ghosts = [];
-var ufo;
-var fireballs = [];
-var fences = [];
-var crystals = [];
-var levelLabel;
+var ghosts = []; //ghost array;
+var ufo; //ufo object;
+var fireballs = []; //fireball array;
+var fences = []; //fences array;
+var crystals = []; //crystals array;
+var levelLabel; //this is the text of displaying levels
 var backgroundSound;
-
 var scoreboard;
-
 //collision variables
 var collision;
-
 //Buttons needed for the big fish game
 var tryAgain;
 var playButton;
 var instructionBtn;
 var goBackBtn;
 var backToMenuBtn;
-
 //state variables
 var currentState;
 var currentStateFunction;
-
 //+++++++++++++++++++++++++++++++++++++++++++END of variable section++++++++++++++++++++++++++++++++
 // Preload function - Loads Assets and initializes game;
 function preload() {
     managers.PlayerAssets.init();
     managers.Assets.init();
-
     //after assets loaded, invoke init function
     managers.Assets.loader.addEventListener("complete", new function () {
         managers.PlayerAssets.loader.addEventListener("complete", init);
     });
 }
-
 // init called after Assets have been loaded.
 function init() {
     stage = new createjs.Stage(document.getElementById("canvas"));
@@ -74,69 +65,53 @@ function init() {
     createjs.Ticker.setFPS(60);
     createjs.Ticker.addEventListener("tick", gameLoop);
     optimizeForMobile();
-
     this.backgroundSound = createjs.Sound.play('backgroundSound', createjs.Sound.INTERRUPT_NONE, 0, 0, -1, 1, 0);
-
     //set the current game staate to MENU_STATE
     currentState = constants.MENU_STATE;
     changeState(currentState);
 }
-
 // Add touch support for mobile devices
 function optimizeForMobile() {
     if (createjs.Touch.isSupported()) {
         createjs.Touch.enable(stage);
     }
 }
-
 // Game Loop
 function gameLoop(event) {
     //invoke the current state function, to update game state accordingly
     currentStateFunction();
     stage.update();
 }
-
 //function to change game state
 function changeState(state) {
     switch (state) {
         case constants.MENU_STATE:
             currentStateFunction = states.menuState;
-
             // instantiate menu screen
             states.menu(state);
-
             break;
-
         case constants.PLAY_STATE:
             // instantiate play screen
             states.play(state);
             currentStateFunction = states.playState;
             break;
-
         case constants.GAME_OVER_STATE:
             currentStateFunction = states.gameOverState;
-
             // instantiate game over screen
             states.gameOver(state);
             break;
-
         case constants.INSTRUCTION_STATE:
             currentStateFunction = states.instructionState;
-
             // instantiate instruction screen
             states.instructionScene(state);
             break;
-
         case constants.LEVEL_TWO_STATE:
             currentStateFunction = states.level2State;
-
             // instantiate level two screen
             states.level2Scene(state);
             break;
-
         case constants.LEVEL_THREE_STATE:
             currentStateFunction = states.level3State;
-
             // instantiate level three screen
             states.level3Scene(state);
             break;

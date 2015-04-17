@@ -139,7 +139,7 @@ var objects;
                 case "jump":
                     //jump animation
                     console.log(player.y);
-                    if (player.flying == true) {
+                    if (player.flying == true && player.jumpNumber == 1) {
                         player.pauseDuration = Date.now() - player.pauseStart;
                         if (player.pauseDuration >= 1000) {
                             player.flying = false;
@@ -223,16 +223,18 @@ var objects;
 
         Player.prototype.jump = function () {
             console.log(player.grounded);
-            if (player.grounded == false && player.flying == false) {
+            if (player.grounded == false && player.flying == false && player.jumpNumber == 0) {
                 player.pauseStart = Date.now();
                 player.flying = true;
+                player.jumpNumber++;
             }
             if (player.grounded == true) {
                 player.timerStart = Date.now();
                 player.state = "jump";
                 player.gotoAndPlay(player.state);
+                player.grounded = false;
+                player.jumpNumber = 0;
             }
-            player.grounded = false;
         };
 
         Player.prototype.defaultAnimation = function () {

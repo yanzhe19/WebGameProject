@@ -32,8 +32,8 @@ var managers;
                 "speed": 0.2
             },
             "walk": {
-                "frames": [0, 1, 2, 3],
-                "speed": 0.2
+                "frames": [3, 2, 1, 0],
+                "speed": 0.1
             },
             "sprint": {
                 "frames": [0, 1, 2, 3],
@@ -48,8 +48,7 @@ var managers;
                 "speed": 0.05
             },
             "jump": {
-                "frames": [11],
-                "speed": 0.05
+                "frames": [11]
             },
             "land": {
                 "frames": [12]

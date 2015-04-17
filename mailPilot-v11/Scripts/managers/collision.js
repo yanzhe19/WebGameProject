@@ -1,4 +1,4 @@
-/// <reference path="../objects/submarine.ts" />
+﻿/// <reference path="../objects/submarine.ts" />
 /// <reference path="../objects/smallFish.ts" />
 /// <reference path="../objects/fish.ts" />
 /// <reference path="../objects/scoreboard.ts" />
@@ -27,13 +27,18 @@ var managers;
             var result = 0;
             var xPoints = 0;
             var yPoints = 0;
+
             xPoints = p2.x - p1.x;
             xPoints = xPoints * xPoints;
+
             yPoints = p2.y - p1.y;
             yPoints = yPoints * yPoints;
+
             result = Math.sqrt(xPoints + yPoints);
+
             return result;
         };
+
         // check collision between player and any crystal object
         Collision.prototype.playerAndCrystal = function (crystal) {
             var p1 = new createjs.Point();
@@ -48,6 +53,7 @@ var managers;
                 crystal.reset();
             }
         };
+
         // check collision between player and fence
         Collision.prototype.playerAndFence = function (fence) {
             var p1 = new createjs.Point();
@@ -62,6 +68,7 @@ var managers;
                 fence.reset();
             }
         };
+
         // check collision between player and ghost
         Collision.prototype.playerAndGhost = function (ghost) {
             var p1 = new createjs.Point();
@@ -76,6 +83,7 @@ var managers;
                 ghost.reset();
             }
         };
+
         // check collision between player and fence
         Collision.prototype.playerAndFireball = function (fireball) {
             var p1 = new createjs.Point();
@@ -90,19 +98,35 @@ var managers;
                 fireball.destroy();
             }
         };
+
+        //create spell
+        Collision.prototype.channelSpell = function (spell) {
+            this.scoreboard.score -= (Date.now() - spell.castingStartTime) * 0.000001;
+            if ((Date.now() - spell.castingStartTime) >= 10000) {
+                spell.destroy();
+            }
+        };
+
         // Utility Function to Check Collisions
         Collision.prototype.update = function () {
             for (var count = 0; count < this.crystals.length; count++) {
                 this.playerAndCrystal(this.crystals[count]);
             }
+
             for (var count = 0; count < this.fences.length; count++) {
                 this.playerAndFence(this.fences[count]);
             }
+
             for (var count = 0; count < this.ghosts.length; count++) {
                 this.playerAndGhost(this.ghosts[count]);
             }
+
             for (var count = 0; count < this.fireballs.length; count++) {
                 this.playerAndFireball(this.fireballs[count]);
+            }
+
+            for (var count = 0; count < this.playerObj.spells.length; count++) {
+                this.channelSpell(this.playerObj.spells[count]);
             }
         };
         return Collision;

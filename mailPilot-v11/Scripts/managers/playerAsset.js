@@ -5,7 +5,8 @@ var managers;
 (function (managers) {
     // Image and Sound Manifest;
     var playerManifest = [
-        { id: "backgroundSound", src: "assets/sounds/Plastic3_-_Epic_Dramatic_Loop.mp3" }
+        { id: "backgroundSound", src: "assets/sounds/Plastic3_-_Epic_Dramatic_Loop.mp3" },
+        { id: "spellCastNoise", src: "assets/sounds/spellCastNoise.mp3" }
     ];
 
     // SpriteSheet Data Object for the player object
@@ -25,7 +26,7 @@ var managers;
             [162, 170, 54, 72],
             [410, 2, 54, 73],
             [480, 13, 68, 62],
-            [547, 0, 109, 108]
+            [547, 0, 108, 107]
         ],
         "animations": {
             "run": {

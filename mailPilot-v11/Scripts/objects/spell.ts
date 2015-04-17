@@ -5,24 +5,38 @@ Program description： This is to crate the spell object for the player to cast*
 
 module objects {
     export class Spell extends createjs.Sprite {
-        //define propereties of player
+        //define propereties of the spell
         width: number;
         height: number;
+        castingStartTime: number;
         spell: Spell;
-
+        spellCastNoise: createjs.SoundInstance;
+        player: Player;
         //the constructor of spell class
-        constructor(stateNumber) {
+        constructor(x, y, player) {
             super(managers.PlayerAssets.playerAtlas);
-            this.spell = this;
+            this.castingStartTime = Date.now();
+            this.gotoAndPlay("spell");
+            this.width = this.getBounds().width;
+            this.height = this.getBounds().height;
+            this.regX = this.width * 0.5;
+            this.regY = this.height * 0.5;
+            this.spellCastNoise = createjs.Sound.play('spellCastNoise');
+            this.y = y;
+            this.x = x;
+            this.player = player;
+            game.addChild(this);
         }
 
         //Public methods
         public update() {
-
+            this.x += constants.BACKGROUND_MOVING_SPEED;
         }
 
         public destroy() {
-
+            this.spellCastNoise.stop();
+            this.player.spells.splice(this.player.spells.indexOf(this), 1);
+            game.removeChild(this);
         }
     }
 }

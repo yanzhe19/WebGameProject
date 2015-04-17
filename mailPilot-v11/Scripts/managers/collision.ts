@@ -190,7 +190,11 @@ module managers {
             }
             //channel mana into spells per second
             for (var count = 0; count < this.playerObj.spells.length; count++) {
-                this.channelSpell(this.playerObj.spells[count]);
+                if (this.scoreboard.score > 0) {
+                    this.channelSpell(this.playerObj.spells[count]);
+                } else {
+                    this.playerObj.spells[count].destroy();
+                }
             }
         }
     }

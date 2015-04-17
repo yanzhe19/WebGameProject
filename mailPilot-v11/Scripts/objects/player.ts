@@ -53,6 +53,7 @@ module objects {
             this.x = constants.GROUND_LEVEL * 0.5;
 
             onkeydown = this.keyDownEvent;
+            
             //this.addEventListener("key down", this.handleClick);
             this.player = this;
         }
@@ -88,11 +89,11 @@ module objects {
                     console.log(this.y);
                     if (this.y > constants.GROUND_LEVEL + 15) {
                         this.land();
-                        this.y = constants.GROUND_LEVEL + 15;
                     }
                     break;
                 case "land":
                     //land animation
+                    this.y = constants.GROUND_LEVEL + 15;
                     if (Date.now() - this.timerStart >= 250) {
                         this.y = constants.GROUND_LEVEL;
                         this.defaultAnimation();

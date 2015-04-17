@@ -5,7 +5,7 @@ description： This is the player asset manager file which controls all the asse
 module managers {
     // Image and Sound Manifest;
     var playerManifest = [
-        { id: "", src: "" }
+        { id: "backgroundSound", src: "assets/sounds/Plastic3_-_Epic_Dramatic_Loop.mp3" }
     ];
 
     // SpriteSheet Data Object for the player object

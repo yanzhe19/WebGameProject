@@ -1,4 +1,4 @@
-/// <reference path="../managers/playerasset.ts" />
+﻿/// <reference path="../managers/playerasset.ts" />
 // player Class
 /*Source  file  name: player.ts, Author's  name: Andrew Mackle (300603655),  Last  Modified  by: Andrew Mackle,
 Date  last  Modified: 2015_04_14,  Program description： This is to crate the player object for the player to controll*/
@@ -15,22 +15,28 @@ var objects;
         //the constructor of player class
         function Player(stateNumber) {
             _super.call(this, managers.PlayerAssets.playerAtlas);
+
             switch (stateNumber) {
                 case constants.MENU_STATE:
                     this.defaultState = "idle";
                     break;
+
                 case constants.PLAY_STATE:
                     this.defaultState = "run";
                     break;
+
                 case constants.GAME_OVER_STATE:
                     this.defaultState = "idle";
                     break;
+
                 case constants.INSTRUCTION_STATE:
                     this.defaultState = "idle";
                     break;
+
                 case constants.LEVEL_TWO_STATE:
                     this.defaultState = "run";
                     break;
+
                 case constants.LEVEL_THREE_STATE:
                     this.defaultState = "run";
                     break;
@@ -38,11 +44,15 @@ var objects;
             this.gotoAndPlay(this.defaultState);
             this.width = this.getBounds().width;
             this.height = this.getBounds().height;
+
             this.regX = this.width * 0.5;
             this.regY = this.height * 0.5;
+
             this.y = constants.GROUND_LEVEL;
             this.x = constants.GROUND_LEVEL * 0.5;
+
             onkeydown = this.keyDownEvent;
+
             //this.addEventListener("key down", this.handleClick);
             this.player = this;
         }
@@ -63,6 +73,7 @@ var objects;
                     break;
             }
         };
+
         //Public methods
         Player.prototype.update = function () {
             switch (this.state) {
@@ -75,11 +86,11 @@ var objects;
                     console.log(this.y);
                     if (this.y > constants.GROUND_LEVEL + 15) {
                         this.land();
-                        this.y = constants.GROUND_LEVEL + 15;
                     }
                     break;
                 case "land":
                     //land animation
+                    this.y = constants.GROUND_LEVEL + 15;
                     if (Date.now() - this.timerStart >= 250) {
                         this.y = constants.GROUND_LEVEL;
                         this.defaultAnimation();
@@ -89,28 +100,34 @@ var objects;
                     break;
             }
         };
+
         Player.prototype.land = function () {
             this.timerStart = Date.now();
             this.state = "land";
             player.gotoAndPlay(this.state);
         };
+
         Player.prototype.idle = function () {
             this.state = "idle";
             this.gotoAndPlay(this.state);
         };
+
         Player.prototype.walk = function () {
             this.state = "walk";
             this.gotoAndPlay(this.state);
         };
+
         Player.prototype.run = function () {
             this.state = "run";
             this.gotoAndPlay(this.state);
         };
+
         Player.prototype.jump = function () {
             this.state = "jump";
             this.timerStart = Date.now();
             player.gotoAndPlay(this.state);
         };
+
         Player.prototype.defaultAnimation = function () {
             this.state = this.defaultState;
             player.gotoAndPlay(this.state);

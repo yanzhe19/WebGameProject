@@ -78,6 +78,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\sounds\Plastic3_-_Epic_Dramatic_Loop.mp3" />
     <Content Include="css\app.css" />
     <Content Include="css\normalize.css" />
     <Content Include="assets\images\loading.jpg" />

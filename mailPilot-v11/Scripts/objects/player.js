@@ -136,7 +136,7 @@ var objects;
                         }
                         break;
                     case 77:
-                        //M: Mute or un mute music
+                        //M: Mute or unmute music
                         backgroundSound.setMute(!backgroundSound.getMute());
                         break;
                 }

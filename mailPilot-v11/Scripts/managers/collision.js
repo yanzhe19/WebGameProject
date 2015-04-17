@@ -1,6 +1,3 @@
-/// <reference path="../objects/submarine.ts" />
-/// <reference path="../objects/smallFish.ts" />
-/// <reference path="../objects/fish.ts" />
 /// <reference path="../objects/scoreboard.ts" />
 /*Source  file  name: collision.ts, Author's  name: Zhe Yan (300706310),  Last  Modified  by: Zhe Yan,
 Date  last  Modified: 2015_3_18,  Program description： This file check if two objects are collide (fish&submarine, fish&smallFish), if collide, the corresponding action will taken(point or life increase/decrease and game over)

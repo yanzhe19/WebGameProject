@@ -61,12 +61,8 @@
   <ItemGroup>
     <Content Include="assets\images\atlas.png" />
     <Content Include="assets\images\background.png" />
-    <Content Include="assets\images\fish.png" />
     <Content Include="assets\images\obstacle.png" />
     <Content Include="assets\images\playerSpriteSheet.png" />
-    <Content Include="assets\images\sea.jpg" />
-    <Content Include="assets\images\smallFish.png" />
-    <Content Include="assets\images\submarine.png" />
     <Content Include="assets\sounds\explosion.wav" />
     <Content Include="assets\sounds\ocean.mp3" />
     <Content Include="assets\sounds\pickup.wav" />
@@ -126,11 +122,8 @@
     <TypeScriptCompile Include="Scripts\objects\player.ts" />
     <TypeScriptCompile Include="Scripts\objects\ghost.ts" />
     <TypeScriptCompile Include="Scripts\objects\spell.ts" />
-    <TypeScriptCompile Include="Scripts\objects\submarine.ts" />
-    <TypeScriptCompile Include="Scripts\objects\smallFish.ts" />
     <TypeScriptCompile Include="Scripts\objects\label.ts" />
     <TypeScriptCompile Include="Scripts\objects\sea.ts" />
-    <TypeScriptCompile Include="Scripts\objects\fish.ts" />
     <TypeScriptCompile Include="Scripts\objects\scoreboard.ts" />
     <TypeScriptCompile Include="Scripts\lib\preloadjs.d.ts" />
     <TypeScriptCompile Include="Scripts\lib\soundjs.d.ts" />

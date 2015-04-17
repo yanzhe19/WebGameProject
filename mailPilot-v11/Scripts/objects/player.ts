@@ -85,7 +85,7 @@ module objects {
                 case "jump":
                     //jump animation
                     console.log(this.y);
-                    this.y = constants.GROUND_LEVEL - (Math.sin((Date.now() - this.timerStart) * 0.0015) * 200);
+                    this.y = constants.GROUND_LEVEL - (Math.sin((Date.now() - this.timerStart) * 0.002) * 150);
                     console.log(this.y);
                     if (this.y > constants.GROUND_LEVEL + 15) {
                         this.land();
@@ -97,7 +97,9 @@ module objects {
                     if (Date.now() - this.timerStart >= 250) {
                         this.y = constants.GROUND_LEVEL;
                         this.defaultAnimation();
+                        this.timerStart = Date.now();
                     }
+                    this.x -= constants.BACKGROUND_MOVING_SPEED;
                     break;
                 case "run":
                     //run animation

@@ -29,7 +29,11 @@ var managers;
         "animations": {
             "run": {
                 "frames": [0, 1, 2, 3],
-                "speed": 0.05
+                "speed": 0.2
+            },
+            "walk": {
+                "frames": [0, 1, 2, 3],
+                "speed": 0.1
             },
             "idle": {
                 "frames": [4, 5, 6, 5],

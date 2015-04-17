@@ -36,13 +36,9 @@ var ufo;
 var fireballs = [];
 var fences = [];
 var crystals = [];
-
-//var keypress = [];
 var levelLabel;
 var backgroundSound;
-var volumeAdjustmentValue = 10;
 
-//var ev;
 var scoreboard;
 
 //collision variables
@@ -81,56 +77,11 @@ function init() {
 
     this.backgroundSound = createjs.Sound.play('backgroundSound', createjs.Sound.INTERRUPT_NONE, 0, 0, -1, 1, 0);
 
-    //onkeypress = controllsKeyEvent;
     //set the current game staate to MENU_STATE
     currentState = constants.MENU_STATE;
     changeState(currentState);
 }
 
-//var controllsKeyEvent = function (event: KeyboardEvent) {
-//    console.log(event.keyCode);
-//    ev = event;
-//    if (ev.type == "keyup") {
-//        switch (ev.keyCode) {
-//            case 49:
-//                //1: change to level 1
-//                changeState(constants.PLAY_STATE);
-//                break;
-//            case 50:
-//                //2: change to level 2
-//                changeState(constants.LEVEL_TWO_STATE);
-//                break;
-//            case 51:
-//                //3: change to level 3
-//                changeState(constants.LEVEL_THREE_STATE);
-//                break;
-//            case 77:
-//                //M: mute or unmute
-//                backgroundSound.setMute(!backgroundSound.getMute());
-//                break;
-//            case 40:
-//                //down arrow key: volume down
-//                backgroundSound.setVolume(backgroundSound.getVolume() - volumeAdjustmentValue);
-//                break;
-//            case 38:
-//                //up arrow key: volume up
-//                backgroundSound.setVolume(backgroundSound.getVolume() + volumeAdjustmentValue);
-//                break;
-//            case 87:
-//                //W
-//                break;
-//            case 83:
-//                //S
-//                break;
-//            case 68:
-//                //D
-//                break;
-//            case 65:
-//                //A
-//                break;
-//        }
-//    }
-//}
 // Add touch support for mobile devices
 function optimizeForMobile() {
     if (createjs.Touch.isSupported()) {

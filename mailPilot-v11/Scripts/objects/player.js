@@ -61,7 +61,7 @@ var objects;
             this.pauseDuration = 0;
             this.regX = this.width * 0.5;
             this.regY = this.height * 0.5;
-            this.landed = true;
+
             this.y = constants.GROUND_LEVEL;
             this.x = constants.GROUND_LEVEL * 0.5;
 
@@ -139,13 +139,13 @@ var objects;
                 case "jump":
                     //jump animation
                     console.log(player.y);
-                    if (player.flying == true && player.landed == false) {
+                    if (player.flying == true) {
                         player.pauseDuration = Date.now() - player.pauseStart;
                         if (player.pauseDuration >= 1000) {
                             player.flying = false;
                         }
                     }
-                    player.y = constants.GROUND_LEVEL - (Math.sin((Date.now() - (player.timerStart + player.pauseDuration)) * 0.002) * 150);
+                    player.y = constants.GROUND_LEVEL - (Math.sin((Date.now() - (player.timerStart + player.pauseDuration)) * 0.0025) * 150);
                     console.log(player.y);
                     if (player.y > constants.GROUND_LEVEL + 15) {
                         //player.pauseDuration = 0;
@@ -223,18 +223,16 @@ var objects;
 
         Player.prototype.jump = function () {
             console.log(player.grounded);
-            if (player.grounded == false && player.flying == false && player.landed == true) {
+            if (player.grounded == false && player.flying == false) {
                 player.pauseStart = Date.now();
                 player.flying = true;
-                player.landed = false;
             }
             if (player.grounded == true) {
                 player.timerStart = Date.now();
                 player.state = "jump";
                 player.gotoAndPlay(player.state);
-                player.grounded = false;
-                player.landed = true;
             }
+            player.grounded = false;
         };
 
         Player.prototype.defaultAnimation = function () {

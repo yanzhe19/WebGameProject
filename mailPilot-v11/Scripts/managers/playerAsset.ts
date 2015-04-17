@@ -35,8 +35,8 @@ module managers {
                 "speed": 0.2
             },
             "walk": {
-                "frames": [3, 2, 1, 0],
-                "speed": 0.1
+                "frames": [0, 1, 2, 3],
+                "speed": 0.2
             },
             "sprint": {
                 "frames": [0, 1, 2, 3],
@@ -51,7 +51,8 @@ module managers {
                 "speed": 0.05
             },
             "jump": {
-                "frames": [11]
+                "frames": [11],
+                "speed": 0.05
             },
             "land": {
                 "frames": [12]

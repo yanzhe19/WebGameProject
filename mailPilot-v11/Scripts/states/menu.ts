@@ -67,8 +67,6 @@ module states {
         game.addChild(playButton);
         playButton.addEventListener("click", playButtonClicked);
 
-        //onkeypress = this.keyEvent;
-
         //Display idle player object
         //player.idle();
         game.addChild(player);
@@ -76,61 +74,4 @@ module states {
         //add game container to the stage
         stage.addChild(game);
     }
-
-    //export function keyEvent(event: KeyboardEvent) {
-    //    console.log(event.keyCode);
-    //    var e = event;
-    //    if (e.type == "keypress") {
-    //        switch (e.keyCode) {
-    //            case 49:
-    //                //1: change to level 1
-    //                stage.removeChild(game);
-    //                game.removeAllChildren();
-    //                game.removeAllEventListeners();
-    //                currentState = constants.PLAY_STATE;
-    //                changeState(currentState);
-    //                break;
-    //            case 50:
-    //                //2: change to level 2
-    //                stage.removeChild(game);
-    //                game.removeAllChildren();
-    //                game.removeAllEventListeners();
-    //                currentState = constants.LEVEL_TWO_STATE;
-    //                changeState(currentState);
-    //                break;
-    //            case 51:
-    //                //3: change to level 3
-    //                stage.removeChild(game);
-    //                game.removeAllChildren();
-    //                game.removeAllEventListeners();
-    //                currentState = constants.LEVEL_THREE_STATE;
-    //                changeState(currentState);
-    //                break;
-    //            case 77:
-    //                //M: mute or unmute
-    //                backgroundSound.setMute(!backgroundSound.getMute());
-    //                break;
-    //            case 40:
-    //                //down arrow key: volume down
-    //                backgroundSound.setVolume(backgroundSound.getVolume() - volumeAdjustmentValue);
-    //                break;
-    //            case 38:
-    //                //up arrow key: volume up
-    //                backgroundSound.setVolume(backgroundSound.getVolume() + volumeAdjustmentValue);
-    //                break;
-    //            case 87:
-    //                //W
-    //                break;
-    //            case 83:
-    //                //S
-    //                break;
-    //            case 68:
-    //                //D
-    //                break;
-    //            case 65:
-    //                //A
-    //                break;
-    //        }
-    //    }
-    //}
 } 

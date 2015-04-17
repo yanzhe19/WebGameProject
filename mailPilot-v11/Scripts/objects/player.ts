@@ -91,18 +91,24 @@ module objects {
                         break;
                     case 83:
                         //land event
-                        console.log("land event");
-                        player.land();
+                        if (player.grounded == true) {
+                            console.log("land event");
+                            player.land();
+                        }
                         break;
                     case 68:
                         //sprint event
-                        console.log("sprint event");
-                        player.sprint();
+                        if (player.grounded == true) {
+                            console.log("sprint event");
+                            player.sprint();
+                        }
                         break;
                     case 65:
                         //walk event
-                        console.log("walk event");
-                        player.walk();
+                        if (player.grounded == true) {
+                            console.log("walk event");
+                            player.walk();
+                        }
                         break;
                 }
             }
@@ -116,13 +122,17 @@ module objects {
                 switch (player.e.keyCode) {
                     case 68:
                         //end sprint event
-                        player.sprinting = false;
-                        player.defaultAnimation();
+                        if (player.sprinting == true){
+                            player.sprinting = false;
+                            player.defaultAnimation();
+                        }
                         break;
                     case 65:
                         //end walk event
-                        player.walking = false;
-                        player.defaultAnimation();
+                        if (player.walking == true) {
+                            player.walking = false;
+                            player.defaultAnimation();
+                        }
                         break;
                 }
             }

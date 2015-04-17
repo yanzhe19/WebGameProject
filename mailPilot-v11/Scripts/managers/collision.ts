@@ -105,6 +105,21 @@ module managers {
             }
         }
 
+        // check collision between spell and ghost
+        private spellAndGhost(spell: objects.Spell, ghost: objects.Ghost) {
+            var p1: createjs.Point = new createjs.Point();
+            var p2: createjs.Point = new createjs.Point();
+            p1.x = ghost.image.x;
+            p1.y = ghost.image.y;
+            p2.x = spell.x;
+            p2.y = spell.y;
+            if (this.distance(p1, p2) < ((ghost.height / 2) + (spell.height / 2))) {
+                createjs.Sound.play("explode");
+                ghost.destroy();
+                spell.destroy();
+            }
+        }
+
         //create spell
         channelSpell(spell: objects.Spell) {
             if ((Date.now() - spell.castingStartTime) >= 5000) {
@@ -166,6 +181,12 @@ module managers {
             //check collision for fireball and player avatar
             for (var count = 0; count < this.fireballs.length; count++) {
                 this.playerAndFireball(this.fireballs[count]);
+            }
+            //check collision for all spells and all gohost
+            for (var count = 0; count < this.playerObj.spells.length; count++) {
+                for (var countI = 0; countI < this.ghosts.length; countI++) {
+                    this.spellAndGhost(this.playerObj.spells[count], this.ghosts[countI]);
+                }
             }
             //channel mana into spells per second
             for (var count = 0; count < this.playerObj.spells.length; count++) {

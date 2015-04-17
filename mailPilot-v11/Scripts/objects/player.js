@@ -1,4 +1,4 @@
-﻿/// <reference path="../managers/playerasset.ts" />
+/// <reference path="../managers/playerasset.ts" />
 // player Class
 /*Source  file  name: player.ts, Author's  name: Andrew Mackle (300603655),  Last  Modified  by: Andrew Mackle,
 Date  last  Modified: 2015_04_14,  Program description： This is to crate the player object for the player to controll*/
@@ -18,38 +18,32 @@ var objects;
             this.walking = false;
             this.sprinting = false;
             this.spells = [];
-
             switch (stateNumber) {
                 case constants.MENU_STATE:
                     this.defaultState = "idle";
                     this.grounded = true;
                     this.flying = false;
                     break;
-
                 case constants.PLAY_STATE:
                     this.defaultState = "run";
                     this.grounded = true;
                     this.flying = false;
                     break;
-
                 case constants.GAME_OVER_STATE:
                     this.defaultState = "idle";
                     this.grounded = true;
                     this.flying = false;
                     break;
-
                 case constants.INSTRUCTION_STATE:
                     this.defaultState = "idle";
                     this.grounded = true;
                     this.flying = false;
                     break;
-
                 case constants.LEVEL_TWO_STATE:
                     this.defaultState = "run";
                     this.grounded = true;
                     this.flying = false;
                     break;
-
                 case constants.LEVEL_THREE_STATE:
                     this.defaultState = "run";
                     this.grounded = true;
@@ -62,13 +56,10 @@ var objects;
             this.pauseDuration = 0;
             this.regX = this.width * 0.5;
             this.regY = this.height * 0.5;
-
             this.y = constants.GROUND_LEVEL;
             this.x = constants.GROUND_LEVEL * 0.5;
-
             onkeydown = this.keyDownEvent;
             onkeyup = this.keyupEvent;
-
             //this.addEventListener("key down", this.handleClick);
             this.player = this;
         }
@@ -115,7 +106,6 @@ var objects;
                 }
             }
         };
-
         Player.prototype.keyupEvent = function (event) {
             console.log(event.keyCode);
             console.log(event.type);
@@ -147,7 +137,6 @@ var objects;
                 }
             }
         };
-
         //Public methods
         Player.prototype.update = function () {
             for (var count = 0; count < player.spells.length; count++) {
@@ -178,7 +167,6 @@ var objects;
                     if (Date.now() - player.timerStart >= 250) {
                         player.y = constants.GROUND_LEVEL;
                         player.defaultAnimation();
-                        //player.timerStart = 1000000000;
                     }
                     player.x -= constants.BACKGROUND_MOVING_SPEED;
                     break;
@@ -196,7 +184,6 @@ var objects;
                     break;
             }
         };
-
         Player.prototype.land = function () {
             player.grounded = true;
             player.timerStart = Date.now();
@@ -204,17 +191,14 @@ var objects;
             player.gotoAndPlay(player.state);
             player.pauseDuration = 0;
         };
-
         Player.prototype.idle = function () {
             player.state = "idle";
             player.gotoAndPlay(player.state);
             player.grounded = true;
         };
-
         Player.prototype.walk = function () {
             player.y = constants.GROUND_LEVEL;
             player.state = "walk";
-
             //this.gotoAndPlay(this.state);
             if (player.walking == false) {
                 player.walking = true;
@@ -222,17 +206,14 @@ var objects;
             }
             player.grounded = true;
         };
-
         Player.prototype.run = function () {
             player.state = "run";
             player.gotoAndPlay(player.state);
             player.grounded = true;
         };
-
         Player.prototype.sprint = function () {
             player.y = constants.GROUND_LEVEL;
             player.state = "sprint";
-
             //this.gotoAndPlay(this.state);
             if (player.sprinting == false) {
                 player.sprinting = true;
@@ -240,7 +221,6 @@ var objects;
             }
             player.grounded = true;
         };
-
         Player.prototype.jump = function () {
             console.log(player.grounded);
             if (player.grounded == false && player.flying == false && player.jumpNumber == 0) {
@@ -256,7 +236,6 @@ var objects;
                 player.jumpNumber = 0;
             }
         };
-
         Player.prototype.defaultAnimation = function () {
             player.state = player.defaultState;
             player.gotoAndPlay(player.state);

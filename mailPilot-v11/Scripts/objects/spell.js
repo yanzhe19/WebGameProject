@@ -1,4 +1,4 @@
-﻿/// <reference path="../managers/playerasset.ts" />
+/// <reference path="../managers/playerasset.ts" />
 // spell Class
 /*Source  file  name: spell.ts, Author's  name: Andrew Mackle (300603655),
 Program description： This is to crate the spell object for the player to cast*/
@@ -24,7 +24,8 @@ var objects;
             if (Math.random() < 0.5) {
                 this.spellCastNoise = createjs.Sound.play('spellCastNoise');
                 console.log("1");
-            } else {
+            }
+            else {
                 this.spellCastNoise = createjs.Sound.play('spellCast');
                 console.log("2");
             }
@@ -38,7 +39,6 @@ var objects;
         Spell.prototype.update = function () {
             this.x += constants.BACKGROUND_MOVING_SPEED;
         };
-
         Spell.prototype.destroy = function () {
             this.spellCastNoise.stop();
             this.player.spells.splice(this.player.spells.indexOf(this), 1);

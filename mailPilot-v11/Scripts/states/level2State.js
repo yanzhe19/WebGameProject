@@ -71,7 +71,11 @@ var states;
         level2AddObj();
         // Display Scoreboard
         //scoreboard = new objects.Scoreboard(stage, game);
-        game.addChild(scoreboard.label);
+        if (scoreboard == null) {
+            scoreboard = new objects.Scoreboard(stage, game);
+        }
+        else
+            game.addChild(scoreboard.label);
         //label shows the current level
         levelLabel = new objects.LevelLabel("Level Two");
         // Instantiate Collision Manager

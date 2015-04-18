@@ -16,7 +16,7 @@ module states {
 
     //update the level 2 state
     export function level2State() {
-        // +++++++++++++++++++++++++++++Update play state scene+++++++++++++++++++++++++++++++++++
+        // +++++++++++++++++++++++++++++Update level 2 state scene+++++++++++++++++++++++++++++++++++
         sea.update();
         player.update();
 
@@ -44,7 +44,7 @@ module states {
         //level label update
         levelLabel.update();
 
-        // +++++++++++++++++++++++++++++End of Update play state scene+++++++++++++++++++++++++++++++++++
+        // +++++++++++++++++++++++++++++End of Update level 2 state scene+++++++++++++++++++++++++++++++++++
 
         //check if player dead, if dead, go to game over state
         if (scoreboard.lives <= 0) {

@@ -124,6 +124,7 @@ module objects {
             }
         }
 
+        //++++++++++++++++++++++++++++++++++++++++++++++++key event section++++++++++++++++++++++++++++++++++++++++++++++
         public keyupEvent(event: KeyboardEvent) {
             console.log(event.keyCode);
             console.log(event.type);
@@ -215,6 +216,7 @@ module objects {
             }
         }
 
+        //function for player's different status
         public land() {
             player.grounded = true;
             player.timerStart = Date.now();

@@ -37,7 +37,7 @@ var states;
         //define instruction string
         instructionsStringArray = [
             "This is the Dtzz game, ",
-            "you can use the key D to move forward,",
+            "Press key D to move forward, Key E to fire spell",
             "key A to move backward and key W to jump. ",
             "There are three levels in the game.",
             "If you collect one crystal, you win points",

@@ -42,6 +42,7 @@ module objects {
             this.x += constants.BACKGROUND_MOVING_SPEED;
         }
 
+        //method to destory the spell
         public destroy() {
             this.spellCastNoise.stop();
             this.player.spells.splice(this.player.spells.indexOf(this), 1);

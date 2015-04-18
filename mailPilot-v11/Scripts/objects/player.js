@@ -106,6 +106,7 @@ var objects;
                 }
             }
         };
+        //++++++++++++++++++++++++++++++++++++++++++++++++key event section++++++++++++++++++++++++++++++++++++++++++++++
         Player.prototype.keyupEvent = function (event) {
             console.log(event.keyCode);
             console.log(event.type);
@@ -192,6 +193,7 @@ var objects;
                     break;
             }
         };
+        //function for player's different status
         Player.prototype.land = function () {
             player.grounded = true;
             player.timerStart = Date.now();

@@ -17,7 +17,7 @@ module states {
 
     //update the level 3 state
     export function level3State() {
-        // +++++++++++++++++++++++++++++Update play state scene+++++++++++++++++++++++++++++++++++
+        // +++++++++++++++++++++++++++++Update level 3 state scene+++++++++++++++++++++++++++++++++++
         sea.update();
 
         //updates for player object
@@ -50,7 +50,7 @@ module states {
 
         //level label update
         levelLabel.update();
-        // +++++++++++++++++++++++++++++End of Update play state scene+++++++++++++++++++++++++++++++++++
+        // +++++++++++++++++++++++++++++End of Update level 3 state scene+++++++++++++++++++++++++++++++++++
 
         //check if player dead, if dead, go to game over state
         if (scoreboard.lives <= 0) {
@@ -112,6 +112,8 @@ module states {
             function () {
                 var randomSelection = Math.floor(Math.random() * 4) + 1;
                 console.log(randomSelection);
+
+                //switch method to create different object
                 switch (randomSelection) {
                     case 1:
                         if (crystals.length < 3) {

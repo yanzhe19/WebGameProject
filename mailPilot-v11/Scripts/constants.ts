@@ -13,15 +13,13 @@ module constants {
 
     // Game Constants
     export var BACKGROUND_MOVING_SPEED = 3;
-    export var GROUND_LEVEL = 327;//temporary set height of ground level
+    export var GROUND_LEVEL = 330;//temporary set height of ground level
     export var GHOST_MOVING_SPEED = 6; //the speed of ghost
     export var UFO_MOVING_SPEED = 1.5; //the speed of UFO
     export var FIREBSLL_DROPPING_SPEED = 3; //the speed of fire ball dropping
     export var PLAYER_LIVES = 15;
     //Math.floor(Math.random() * (3) + 3);;//randomly generated stone numbers
 
-    export var SUBMARINE_NUM: number = 3;
-    export var SMALLFISH_NUM: number = 2;
     export var LABEL_FONT = "40px Consolas";
     export var LABEL_COLOUR = "#FFFF00";
 }

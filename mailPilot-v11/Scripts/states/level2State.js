@@ -14,7 +14,7 @@ var states;
 (function (states) {
     //update the level 2 state
     function level2State() {
-        // +++++++++++++++++++++++++++++Update play state scene+++++++++++++++++++++++++++++++++++
+        // +++++++++++++++++++++++++++++Update level 2 state scene+++++++++++++++++++++++++++++++++++
         sea.update();
         player.update();
         for (var count = 0; count < fences.length; count++) {
@@ -32,7 +32,7 @@ var states;
         scoreboard.update();
         //level label update
         levelLabel.update();
-        // +++++++++++++++++++++++++++++End of Update play state scene+++++++++++++++++++++++++++++++++++
+        // +++++++++++++++++++++++++++++End of Update level 2 state scene+++++++++++++++++++++++++++++++++++
         //check if player dead, if dead, go to game over state
         if (scoreboard.lives <= 0) {
             //remove everything from the stage first

@@ -39,6 +39,7 @@ var objects;
         Spell.prototype.update = function () {
             this.x += constants.BACKGROUND_MOVING_SPEED;
         };
+        //method to destory the spell
         Spell.prototype.destroy = function () {
             this.spellCastNoise.stop();
             this.player.spells.splice(this.player.spells.indexOf(this), 1);

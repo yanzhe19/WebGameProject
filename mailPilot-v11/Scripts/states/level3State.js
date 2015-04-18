@@ -15,7 +15,7 @@ var states;
 (function (states) {
     //update the level 3 state
     function level3State() {
-        // +++++++++++++++++++++++++++++Update play state scene+++++++++++++++++++++++++++++++++++
+        // +++++++++++++++++++++++++++++Update level 3 state scene+++++++++++++++++++++++++++++++++++
         sea.update();
         //updates for player object
         player.update();
@@ -37,7 +37,7 @@ var states;
         scoreboard.update();
         //level label update
         levelLabel.update();
-        // +++++++++++++++++++++++++++++End of Update play state scene+++++++++++++++++++++++++++++++++++
+        // +++++++++++++++++++++++++++++End of Update level 3 state scene+++++++++++++++++++++++++++++++++++
         //check if player dead, if dead, go to game over state
         if (scoreboard.lives <= 0) {
             //remove everything from the stage first

@@ -1,4 +1,7 @@
-﻿module objects {
+﻿/*Source  file  name: levelLabel.ts, Author's  name: Zhe Yan (300706310),  Last  Modified  by: Zhe Yan,  
+Date  last  Modified: 2015_4_17,  Program description： This file is the level label object file, it's the obejct which shows the level label in the game,
+Revision  History : Version 2.0*/
+module objects {
     export class LevelLabel extends objects.Label {
          dx: number;
          width: number;
@@ -11,6 +14,7 @@
             game.addChild(this);
         }
 
+        //update method for level label
         update() {
             this.x -= this.dx
             if (this.x < (0- this.width)) {
